@@ -1,0 +1,724 @@
++ echo 'Beginning trial 07 of 10'
+Beginning trial 07 of 10
++ echo ':::DLPAL /mlperf_data/nvdlfwea+mlperftv50+stable_diffusion-arm+20250423.sqsh 38 18 gb200node[01-18] '\''unknown'\'' GB200_18x04x08'
+:::DLPAL /mlperf_data/nvdlfwea+mlperftv50+stable_diffusion-arm+20250423.sqsh 38 18 gb200node[01-18] 'unknown' GB200_18x04x08
+++ srun -N1 -n1 --container-name=stable_diffusion_38 --no-container-mount-home --container-remap-root --container-writable mlperf-sysjson.sh
++ echo ':::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"18","host_processors_per_node":"2","host_processor_model_name":"Neoverse-V2","host_processor_core_count":"72","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"1.7 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"4","accelerator_model_name":"HGX GB200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"189471 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-nvidia-64k","nvidia_kernel_driver":"570.124.06"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}'
+:::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"18","host_processors_per_node":"2","host_processor_model_name":"Neoverse-V2","host_processor_core_count":"72","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"1.7 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"4","accelerator_model_name":"HGX GB200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"189471 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-nvidia-64k","nvidia_kernel_driver":"570.124.06"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}
++ srun -N1 -n1 --container-name=stable_diffusion_38 --no-container-mount-home --container-remap-root --container-writable bash -c 'echo ":::GITCOMMITID ${GIT_COMMIT_ID} ${LAUNCHER_GIT_COMMIT_ID}"'
+:::GITCOMMITID 8c262b08b227bd43cefaeedd061fe71d67271031 
++ [[ 1 -eq 1 ]]
++ srun --ntasks-per-node=1 --mpi=pmix bash -c 'echo -n '\''Clearing cache on '\'' && hostname && sync && sudo /sbin/sysctl vm.drop_caches=3'
+Clearing cache on gb200node04
+Clearing cache on gb200node15
+Clearing cache on gb200node08
+Clearing cache on gb200node13
+Clearing cache on gb200node01
+Clearing cache on gb200node16
+Clearing cache on gb200node12
+Clearing cache on gb200node02
+Clearing cache on gb200node07
+Clearing cache on gb200node05
+Clearing cache on gb200node09
+Clearing cache on gb200node11
+Clearing cache on gb200node06
+Clearing cache on gb200node03
+Clearing cache on gb200node17
+Clearing cache on gb200node18
+Clearing cache on gb200node14
+Clearing cache on gb200node10
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
++ srun --ntasks-per-node=1 --mpi=pmix --container-name=stable_diffusion_38 --no-container-mount-home --container-remap-root --container-writable python -c '
+from mlperf_logging import mllog
+mllogger = mllog.get_mllogger()
+mllogger.event(key=mllog.constants.CACHE_CLEAR, value=True)'
+:::MLLOG {"namespace": "", "time_ms": 1746149105782, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105795, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105799, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105801, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105803, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105805, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105809, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105813, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105815, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105817, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105818, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105822, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105835, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105837, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105844, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105847, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105859, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1746149105858, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
++ export RANDOM_SEED=15086
++ RANDOM_SEED=15086
++ export EXP_NAME=stable-diffusion2-train-250501170821306610851-07
++ EXP_NAME=stable-diffusion2-train-250501170821306610851-07
++ set +e
+++ date +%s
++ echo 'RUNANDTIME_START 1746149105'
+RUNANDTIME_START 1746149105
++ srun -l --mpi=pmix --ntasks-per-node=4 --time=50 --container-name=stable_diffusion_38 --no-container-mount-home --container-remap-root --container-writable --container-mounts=./results:/results,/mlperf_data/sd/datasets/laion-400m/webdataset-moments-filtered-encoded:/datasets,/mlperf_data/sd/datasets/coco2014:/coco2014/,/mlperf_data/sd/checkpoints/clip:/checkpoints/clip,/mlperf_data/sd/checkpoints/inception:/checkpoints/inception,/mlperf_data/sd/checkpoints/sd:/checkpoints/sd --container-workdir=/workspace/sd --container-env=MASTER_PORT,MASTER_ADDR slurm2pytorch ./run_and_time.sh
+ 0: RANDOM_SEED=15086
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149118993, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/sd/main.py", "lineno": 86}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149119745, "event_type": "POINT_IN_TIME", "key": "seed", "value": 3506960594, "metadata": {"file": "/workspace/sd/main.py", "lineno": 109}}
+ 0: GPU available: True (cuda), used: True
+ 0: TPU available: False, using: 0 TPU cores
+ 0: HPU available: False, using: 0 HPUs
+ 0: [NeMo E 2025-05-01 18:25:19 nemo_logging:417] You are running multi-node training without SLURM handling the processes. Please note that this is not tested in NeMo and could result in errors.
+ 0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/72
+52: Initializing distributed: GLOBAL_RANK: 52, MEMBER: 53/72
+54: Initializing distributed: GLOBAL_RANK: 54, MEMBER: 55/72
+55: Initializing distributed: GLOBAL_RANK: 55, MEMBER: 56/72
+ 8: Initializing distributed: GLOBAL_RANK: 8, MEMBER: 9/72
+53: Initializing distributed: GLOBAL_RANK: 53, MEMBER: 54/72
+32: Initializing distributed: GLOBAL_RANK: 32, MEMBER: 33/72
+11: Initializing distributed: GLOBAL_RANK: 11, MEMBER: 12/72
+24: Initializing distributed: GLOBAL_RANK: 24, MEMBER: 25/72
+12: Initializing distributed: GLOBAL_RANK: 12, MEMBER: 13/72
+35: Initializing distributed: GLOBAL_RANK: 35, MEMBER: 36/72
+ 3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/72
+33: Initializing distributed: GLOBAL_RANK: 33, MEMBER: 34/72
+56: Initializing distributed: GLOBAL_RANK: 56, MEMBER: 57/72
+69: Initializing distributed: GLOBAL_RANK: 69, MEMBER: 70/72
+10: Initializing distributed: GLOBAL_RANK: 10, MEMBER: 11/72
+68: Initializing distributed: GLOBAL_RANK: 68, MEMBER: 69/72
+13: Initializing distributed: GLOBAL_RANK: 13, MEMBER: 14/72
+ 9: Initializing distributed: GLOBAL_RANK: 9, MEMBER: 10/72
+34: Initializing distributed: GLOBAL_RANK: 34, MEMBER: 35/72
+70: Initializing distributed: GLOBAL_RANK: 70, MEMBER: 71/72
+44: Initializing distributed: GLOBAL_RANK: 44, MEMBER: 45/72
+20: Initializing distributed: GLOBAL_RANK: 20, MEMBER: 21/72
+36: Initializing distributed: GLOBAL_RANK: 36, MEMBER: 37/72
+ 4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/72
+58: Initializing distributed: GLOBAL_RANK: 58, MEMBER: 59/72
+ 2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/72
+40: Initializing distributed: GLOBAL_RANK: 40, MEMBER: 41/72
+45: Initializing distributed: GLOBAL_RANK: 45, MEMBER: 46/72
+15: Initializing distributed: GLOBAL_RANK: 15, MEMBER: 16/72
+66: Initializing distributed: GLOBAL_RANK: 66, MEMBER: 67/72
+14: Initializing distributed: GLOBAL_RANK: 14, MEMBER: 15/72
+42: Initializing distributed: GLOBAL_RANK: 42, MEMBER: 43/72
+ 1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/72
+63: Initializing distributed: GLOBAL_RANK: 63, MEMBER: 64/72
+23: Initializing distributed: GLOBAL_RANK: 23, MEMBER: 24/72
+ 6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/72
+37: Initializing distributed: GLOBAL_RANK: 37, MEMBER: 38/72
+16: Initializing distributed: GLOBAL_RANK: 16, MEMBER: 17/72
+65: Initializing distributed: GLOBAL_RANK: 65, MEMBER: 66/72
+47: Initializing distributed: GLOBAL_RANK: 47, MEMBER: 48/72
+18: Initializing distributed: GLOBAL_RANK: 18, MEMBER: 19/72
+ 7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/72
+67: Initializing distributed: GLOBAL_RANK: 67, MEMBER: 68/72
+26: Initializing distributed: GLOBAL_RANK: 26, MEMBER: 27/72
+39: Initializing distributed: GLOBAL_RANK: 39, MEMBER: 40/72
+46: Initializing distributed: GLOBAL_RANK: 46, MEMBER: 47/72
+38: Initializing distributed: GLOBAL_RANK: 38, MEMBER: 39/72
+59: Initializing distributed: GLOBAL_RANK: 59, MEMBER: 60/72
+ 5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/72
+21: Initializing distributed: GLOBAL_RANK: 21, MEMBER: 22/72
+28: Initializing distributed: GLOBAL_RANK: 28, MEMBER: 29/72
+62: Initializing distributed: GLOBAL_RANK: 62, MEMBER: 63/72
+61: Initializing distributed: GLOBAL_RANK: 61, MEMBER: 62/72
+30: Initializing distributed: GLOBAL_RANK: 30, MEMBER: 31/72
+25: Initializing distributed: GLOBAL_RANK: 25, MEMBER: 26/72
+41: Initializing distributed: GLOBAL_RANK: 41, MEMBER: 42/72
+27: Initializing distributed: GLOBAL_RANK: 27, MEMBER: 28/72
+57: Initializing distributed: GLOBAL_RANK: 57, MEMBER: 58/72
+22: Initializing distributed: GLOBAL_RANK: 22, MEMBER: 23/72
+29: Initializing distributed: GLOBAL_RANK: 29, MEMBER: 30/72
+19: Initializing distributed: GLOBAL_RANK: 19, MEMBER: 20/72
+17: Initializing distributed: GLOBAL_RANK: 17, MEMBER: 18/72
+43: Initializing distributed: GLOBAL_RANK: 43, MEMBER: 44/72
+48: Initializing distributed: GLOBAL_RANK: 48, MEMBER: 49/72
+31: Initializing distributed: GLOBAL_RANK: 31, MEMBER: 32/72
+64: Initializing distributed: GLOBAL_RANK: 64, MEMBER: 65/72
+51: Initializing distributed: GLOBAL_RANK: 51, MEMBER: 52/72
+71: Initializing distributed: GLOBAL_RANK: 71, MEMBER: 72/72
+49: Initializing distributed: GLOBAL_RANK: 49, MEMBER: 50/72
+50: Initializing distributed: GLOBAL_RANK: 50, MEMBER: 51/72
+60: Initializing distributed: GLOBAL_RANK: 60, MEMBER: 61/72
+ 0: ----------------------------------------------------------------------------------------------------
+ 0: distributed_backend=nccl
+ 0: All distributed processes registered. Starting with 72 processes
+ 0: ----------------------------------------------------------------------------------------------------
+ 0: 
+ 0: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+12: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+61: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+28: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 3: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 1: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+24: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+52: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 2: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+16: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+36: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+20: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+44: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+40: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+32: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+56: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+51: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 4: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+66: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 8: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+13: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+14: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+15: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+29: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+62: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+30: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+63: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+31: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+26: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+27: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+21: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+25: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+22: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+70: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+37: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+23: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+53: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+45: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+41: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+57: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+49: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+17: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+38: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+54: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+46: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+42: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+58: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+50: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+18: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+39: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+55: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+47: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+43: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+33: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+59: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+48: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 5: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+19: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 9: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+34: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 6: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+60: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+65: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+10: LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+35: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 7: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+67: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+11: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+64: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+68: LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+69: LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+71: LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145438, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 271}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 576, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 275}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "opt_name", "value": "adamw", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 279}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_1", "value": 0.9, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 280}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_2", "value": 0.999, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 281}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "opt_adamw_epsilon", "value": 1e-08, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 282}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145453, "event_type": "POINT_IN_TIME", "key": "opt_adamw_weight_decay", "value": 0.01, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 283}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 0.000117504, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 285}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_steps", "value": 1000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 286}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 6513144, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 291}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 30000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 292}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "stable_diffusion", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 294}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "SUBMISSION_ORG_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 294}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 294}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145454, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 294}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149145455, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "18xSUBMISSION_PLATFORM_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 294}}
+ 0: 
+ 0:   | Name  | Type            | Params | Mode 
+ 0: --------------------------------------------------
+ 0: 0 | model | LatentDiffusion | 865 M  | train
+ 0: --------------------------------------------------
+ 0: 865 M     Trainable params
+ 0: 0         Non-trainable params
+ 0: 865 M     Total params
+ 0: 3,463.643 Total estimated model params size (MB)
+ 0: 993       Modules in train mode
+ 0: 482       Modules in eval mode
+12: SLURM auto-requeueing enabled. Setting signal handlers.
+29: SLURM auto-requeueing enabled. Setting signal handlers.
+ 2: SLURM auto-requeueing enabled. Setting signal handlers.
+18: SLURM auto-requeueing enabled. Setting signal handlers.
+27: SLURM auto-requeueing enabled. Setting signal handlers.
+33: SLURM auto-requeueing enabled. Setting signal handlers.
+ 0: SLURM auto-requeueing enabled. Setting signal handlers.
+22: SLURM auto-requeueing enabled. Setting signal handlers.
+46: SLURM auto-requeueing enabled. Setting signal handlers.
+ 1: SLURM auto-requeueing enabled. Setting signal handlers.
+ 3: SLURM auto-requeueing enabled. Setting signal handlers.
+36: SLURM auto-requeueing enabled. Setting signal handlers.
+53: SLURM auto-requeueing enabled. Setting signal handlers.
+13: SLURM auto-requeueing enabled. Setting signal handlers.
+62: SLURM auto-requeueing enabled. Setting signal handlers.
+ 8: SLURM auto-requeueing enabled. Setting signal handlers.
+49: SLURM auto-requeueing enabled. Setting signal handlers.
+ 4: SLURM auto-requeueing enabled. Setting signal handlers.
+68: SLURM auto-requeueing enabled. Setting signal handlers.
+17: SLURM auto-requeueing enabled. Setting signal handlers.
+14: SLURM auto-requeueing enabled. Setting signal handlers.
+66: SLURM auto-requeueing enabled. Setting signal handlers.
+41: SLURM auto-requeueing enabled. Setting signal handlers.
+30: SLURM auto-requeueing enabled. Setting signal handlers.
+16: SLURM auto-requeueing enabled. Setting signal handlers.
+15: SLURM auto-requeueing enabled. Setting signal handlers.
+37: SLURM auto-requeueing enabled. Setting signal handlers.
+31: SLURM auto-requeueing enabled. Setting signal handlers.
+19: SLURM auto-requeueing enabled. Setting signal handlers.
+39: SLURM auto-requeueing enabled. Setting signal handlers.
+28: SLURM auto-requeueing enabled. Setting signal handlers.
+24: SLURM auto-requeueing enabled. Setting signal handlers.
+38: SLURM auto-requeueing enabled. Setting signal handlers.
+20: SLURM auto-requeueing enabled. Setting signal handlers.
+25: SLURM auto-requeueing enabled. Setting signal handlers.
+21: SLURM auto-requeueing enabled. Setting signal handlers.
+45: SLURM auto-requeueing enabled. Setting signal handlers.
+57: SLURM auto-requeueing enabled. Setting signal handlers.
+26: SLURM auto-requeueing enabled. Setting signal handlers.
+23: SLURM auto-requeueing enabled. Setting signal handlers.
+44: SLURM auto-requeueing enabled. Setting signal handlers.
+47: SLURM auto-requeueing enabled. Setting signal handlers.
+35: SLURM auto-requeueing enabled. Setting signal handlers.
+32: SLURM auto-requeueing enabled. Setting signal handlers.
+ 5: SLURM auto-requeueing enabled. Setting signal handlers.
+63: SLURM auto-requeueing enabled. Setting signal handlers.
+ 9: SLURM auto-requeueing enabled. Setting signal handlers.
+54: SLURM auto-requeueing enabled. Setting signal handlers.
+40: SLURM auto-requeueing enabled. Setting signal handlers.
+34: SLURM auto-requeueing enabled. Setting signal handlers.
+51: SLURM auto-requeueing enabled. Setting signal handlers.
+ 6: SLURM auto-requeueing enabled. Setting signal handlers.
+61: SLURM auto-requeueing enabled. Setting signal handlers.
+10: SLURM auto-requeueing enabled. Setting signal handlers.
+52: SLURM auto-requeueing enabled. Setting signal handlers.
+42: SLURM auto-requeueing enabled. Setting signal handlers.
+59: SLURM auto-requeueing enabled. Setting signal handlers.
+ 7: SLURM auto-requeueing enabled. Setting signal handlers.
+60: SLURM auto-requeueing enabled. Setting signal handlers.
+11: SLURM auto-requeueing enabled. Setting signal handlers.
+55: SLURM auto-requeueing enabled. Setting signal handlers.
+43: SLURM auto-requeueing enabled. Setting signal handlers.
+56: SLURM auto-requeueing enabled. Setting signal handlers.
+58: SLURM auto-requeueing enabled. Setting signal handlers.
+69: SLURM auto-requeueing enabled. Setting signal handlers.
+67: SLURM auto-requeueing enabled. Setting signal handlers.
+70: SLURM auto-requeueing enabled. Setting signal handlers.
+65: SLURM auto-requeueing enabled. Setting signal handlers.
+71: SLURM auto-requeueing enabled. Setting signal handlers.
+64: SLURM auto-requeueing enabled. Setting signal handlers.
+50: SLURM auto-requeueing enabled. Setting signal handlers.
+48: SLURM auto-requeueing enabled. Setting signal handlers.
+ 0: CUDAGraphCallback: disable autocast cache.
+ 0: CUDAGraphCallback: disable autocast cache.
+32: ninja: no work to do.
+33: ninja: no work to do.
+36: ninja: no work to do.
+ 0: ninja: no work to do.
+20: ninja: no work to do.
+14: ninja: no work to do.
+55: ninja: no work to do.
+21: ninja: no work to do.
+34: ninja: no work to do.
+ 1: ninja: no work to do.
+56: ninja: no work to do.
+ 8: ninja: no work to do.
+ 4: ninja: no work to do.
+54: ninja: no work to do.
+12: ninja: no work to do.
+44: ninja: no work to do.
+37: ninja: no work to do.
+ 6: ninja: no work to do.
+11: ninja: no work to do.
+15: ninja: no work to do.
+52: ninja: no work to do.
+35: ninja: no work to do.
+57: ninja: no work to do.
+29: ninja: no work to do.
+39: ninja: no work to do.
+66: ninja: no work to do.
+22: ninja: no work to do.
+70: ninja: no work to do.
+ 5: ninja: no work to do.
+28: ninja: no work to do.
+19: ninja: no work to do.
+ 2: ninja: no work to do.
+53: ninja: no work to do.
+13: ninja: no work to do.
+24: ninja: no work to do.
+ 9: ninja: no work to do.
+61: ninja: no work to do.
+ 7: ninja: no work to do.
+41: ninja: no work to do.
+50: ninja: no work to do.
+31: ninja: no work to do.
+46: ninja: no work to do.
+65: ninja: no work to do.
+18: ninja: no work to do.
+40: ninja: no work to do.
+25: ninja: no work to do.
+48: ninja: no work to do.
+38: ninja: no work to do.
+26: ninja: no work to do.
+62: ninja: no work to do.
+69: ninja: no work to do.
+58: ninja: no work to do.
+42: ninja: no work to do.
+64: ninja: no work to do.
+49: ninja: no work to do.
+60: ninja: no work to do.
+45: ninja: no work to do.
+71: ninja: no work to do.
+59: ninja: no work to do.
+ 0: CUDAGraphCallback: set optimizer.zero_grad as nop during graph capturing.
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149208463, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 426}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149208463, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 426}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149208464, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149240412, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149240413, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5472.405871855425, "train_step_time": 0.10525535084346851, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 0}}
+ 0: Epoch 0, global step 888: 'timestamp' reached 1746149240411.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149240411.0-step=888-consumed_samples=511488.0.ckpt' as top 1
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149240943, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 511488}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149273022, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 511488}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149273023, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 15684.732692636253, "train_step_time": 0.036723609594597896, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 888}}
+ 0: Epoch 1, global step 1776: 'timestamp' reached 1746149273022.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149273022.0-step=1776-consumed_samples=1022976.0.ckpt' as top 2
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149273526, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 1022976}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149305683, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 1022976}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149305683, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 15660.807874134442, "train_step_time": 0.0367797117894108, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 1776}}
+ 0: Epoch 1, global step 2664: 'timestamp' reached 1746149305682.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149305682.0-step=2664-consumed_samples=1534464.0.ckpt' as top 3
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149306196, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 1534464}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149338420, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 1534464}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149338420, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 15624.112057004706, "train_step_time": 0.03686609503941466, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 2664}}
+ 0: Epoch 2, global step 3552: 'timestamp' reached 1746149338419.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149338419.0-step=3552-consumed_samples=2045952.0.ckpt' as top 4
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149338922, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 2045952}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149371208, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 2045952}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149371208, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 15599.910248142054, "train_step_time": 0.03692328935473212, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 3552}}
+ 0: Epoch 3, global step 4440: 'timestamp' reached 1746149371207.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149371207.0-step=4440-consumed_samples=2557440.0.ckpt' as top 5
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149371713, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 2557440}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149403997, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 470, "samples_count": 2557440}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149403997, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 15599.363966310873, "train_step_time": 0.03692458238963826, "max_memory_usage": 11.104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 494, "step_num": 4440}}
+ 0: Epoch 3, global step 5328: 'timestamp' reached 1746149403996.00000 (best 1746149240411.00000), saving model to '/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/stable-diffusion2-train-250501170821306610851-07--timestamp=1746149403996.0-step=5328-consumed_samples=3068928.0.ckpt' as top 6
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149404495, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 436, "samples_count": 3068928}}
+ 0: `Trainer.fit` stopped: `max_steps=6000` reached.
+ 0: [rank0]:[W501 18:30:43.638605941 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 8: [rank8]:[W501 18:30:43.008219321 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+16: [rank16]:[W501 18:30:43.396895602 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+20: [rank20]:[W501 18:30:43.414680185 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+24: [rank24]:[W501 18:30:43.756882003 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+12: [rank12]:[W501 18:30:43.882654274 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+32: [rank32]:[W501 18:30:43.318946707 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+28: [rank28]:[W501 18:30:43.440933859 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+36: [rank36]:[W501 18:30:43.705171318 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+40: [rank40]:[W501 18:30:43.180371769 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+44: [rank44]:[W501 18:30:43.274714755 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+48: [rank48]:[W501 18:30:43.338256801 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+60: [rank60]:[W501 18:30:43.301677080 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+56: [rank56]:[W501 18:30:43.788508590 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+64: [rank64]:[W501 18:30:43.109316506 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+68: [rank68]:[W501 18:30:43.437655686 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 1: [rank1]:[W501 18:30:43.027728514 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 2: [rank2]:[W501 18:30:43.037757986 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 3: [rank3]:[W501 18:30:43.047810563 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 5: [rank5]:[W501 18:30:43.796112030 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 4: [rank4]:[W501 18:30:43.802341983 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 6: [rank6]:[W501 18:30:43.806190835 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+52: [rank52]:[W501 18:30:43.818745382 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 7: [rank7]:[W501 18:30:43.816225991 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 9: [rank9]:[W501 18:30:43.454719134 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+10: [rank10]:[W501 18:30:43.464776375 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+11: [rank11]:[W501 18:30:43.474965649 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+13: [rank13]:[W501 18:30:43.335739161 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+14: [rank14]:[W501 18:30:43.345805274 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+15: [rank15]:[W501 18:30:43.355868826 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+17: [rank17]:[W501 18:30:43.922384254 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+18: [rank18]:[W501 18:30:44.932481301 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+19: [rank19]:[W501 18:30:44.942549899 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+21: [rank21]:[W501 18:30:44.957833564 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+22: [rank22]:[W501 18:30:44.967759676 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+23: [rank23]:[W501 18:30:44.977933692 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+25: [rank25]:[W501 18:30:44.334293106 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+26: [rank26]:[W501 18:30:44.344350142 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+27: [rank27]:[W501 18:30:44.354404457 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+29: [rank29]:[W501 18:30:44.038570535 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+30: [rank30]:[W501 18:30:44.048635252 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+31: [rank31]:[W501 18:30:44.058681025 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+33: [rank33]:[W501 18:30:44.961333409 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+34: [rank34]:[W501 18:30:44.973167839 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+35: [rank35]:[W501 18:30:44.973217888 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+37: [rank37]:[W501 18:30:44.359570337 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+38: [rank38]:[W501 18:30:44.369466074 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+39: [rank39]:[W501 18:30:44.369592538 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+43: [rank43]:[W501 18:30:44.831961271 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+42: [rank42]:[W501 18:30:44.831982551 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+41: [rank41]:[W501 18:30:44.832062039 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+46: [rank46]:[W501 18:30:44.909070785 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+47: [rank47]:[W501 18:30:44.918857831 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+49: [rank49]:[W501 18:30:44.952214142 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+50: [rank50]:[W501 18:30:44.952209662 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+53: [rank53]:[W501 18:30:44.204525422 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+51: [rank51]:[W501 18:30:44.962381881 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+54: [rank54]:[W501 18:30:44.214630197 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+55: [rank55]:[W501 18:30:44.224626747 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+58: [rank58]:[W501 18:30:44.375272830 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+57: [rank57]:[W501 18:30:44.375305310 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+59: [rank59]:[W501 18:30:44.375404575 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+61: [rank61]:[W501 18:30:44.908720616 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+62: [rank62]:[W501 18:30:44.908855753 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+63: [rank63]:[W501 18:30:44.921025904 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+65: [rank65]:[W501 18:30:44.718491807 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+66: [rank66]:[W501 18:30:44.728497400 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+67: [rank67]:[W501 18:30:44.728610712 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+69: [rank69]:[W501 18:30:44.996746321 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+70: [rank70]:[W501 18:30:44.006790618 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+71: [rank71]:[W501 18:30:44.006844410 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+45: [rank45]:[W501 18:30:44.090255049 ProcessGroupNCCL.cpp:1477] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ 0: CKPT_PATH=/tmp/nemologs/stable-diffusion2-train-250501170821306610851-07/checkpoints/
+ 0: Using 16bit Automatic Mixed Precision (AMP)
+ 0: GPU available: True (cuda), used: True
+ 0: TPU available: False, using: 0 TPU cores
+ 0: HPU available: False, using: 0 HPUs
+ 0: setting number of microbatches to constant 1
+50: Initializing distributed: GLOBAL_RANK: 50, MEMBER: 51/72
+55: Initializing distributed: GLOBAL_RANK: 55, MEMBER: 56/72
+ 6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/72
+54: Initializing distributed: GLOBAL_RANK: 54, MEMBER: 55/72
+53: Initializing distributed: GLOBAL_RANK: 53, MEMBER: 54/72
+52: Initializing distributed: GLOBAL_RANK: 52, MEMBER: 53/72
+ 4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/72
+ 7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/72
+ 5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/72
+21: Initializing distributed: GLOBAL_RANK: 21, MEMBER: 22/72
+29: Initializing distributed: GLOBAL_RANK: 29, MEMBER: 30/72
+12: Initializing distributed: GLOBAL_RANK: 12, MEMBER: 13/72
+20: Initializing distributed: GLOBAL_RANK: 20, MEMBER: 21/72
+23: Initializing distributed: GLOBAL_RANK: 23, MEMBER: 24/72
+18: Initializing distributed: GLOBAL_RANK: 18, MEMBER: 19/72
+42: Initializing distributed: GLOBAL_RANK: 42, MEMBER: 43/72
+15: Initializing distributed: GLOBAL_RANK: 15, MEMBER: 16/72
+22: Initializing distributed: GLOBAL_RANK: 22, MEMBER: 23/72
+30: Initializing distributed: GLOBAL_RANK: 30, MEMBER: 31/72
+19: Initializing distributed: GLOBAL_RANK: 19, MEMBER: 20/72
+31: Initializing distributed: GLOBAL_RANK: 31, MEMBER: 32/72
+16: Initializing distributed: GLOBAL_RANK: 16, MEMBER: 17/72
+28: Initializing distributed: GLOBAL_RANK: 28, MEMBER: 29/72
+14: Initializing distributed: GLOBAL_RANK: 14, MEMBER: 15/72
+11: Initializing distributed: GLOBAL_RANK: 11, MEMBER: 12/72
+ 8: Initializing distributed: GLOBAL_RANK: 8, MEMBER: 9/72
+48: Initializing distributed: GLOBAL_RANK: 48, MEMBER: 49/72
+13: Initializing distributed: GLOBAL_RANK: 13, MEMBER: 14/72
+ 9: Initializing distributed: GLOBAL_RANK: 9, MEMBER: 10/72
+ 0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/72
+27: Initializing distributed: GLOBAL_RANK: 27, MEMBER: 28/72
+71: Initializing distributed: GLOBAL_RANK: 71, MEMBER: 72/72
+ 1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/72
+70: Initializing distributed: GLOBAL_RANK: 70, MEMBER: 71/72
+40: Initializing distributed: GLOBAL_RANK: 40, MEMBER: 41/72
+46: Initializing distributed: GLOBAL_RANK: 46, MEMBER: 47/72
+44: Initializing distributed: GLOBAL_RANK: 44, MEMBER: 45/72
+68: Initializing distributed: GLOBAL_RANK: 68, MEMBER: 69/72
+47: Initializing distributed: GLOBAL_RANK: 47, MEMBER: 48/72
+ 2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/72
+ 3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/72
+33: Initializing distributed: GLOBAL_RANK: 33, MEMBER: 34/72
+32: Initializing distributed: GLOBAL_RANK: 32, MEMBER: 33/72
+45: Initializing distributed: GLOBAL_RANK: 45, MEMBER: 46/72
+38: Initializing distributed: GLOBAL_RANK: 38, MEMBER: 39/72
+56: Initializing distributed: GLOBAL_RANK: 56, MEMBER: 57/72
+10: Initializing distributed: GLOBAL_RANK: 10, MEMBER: 11/72
+36: Initializing distributed: GLOBAL_RANK: 36, MEMBER: 37/72
+34: Initializing distributed: GLOBAL_RANK: 34, MEMBER: 35/72
+51: Initializing distributed: GLOBAL_RANK: 51, MEMBER: 52/72
+35: Initializing distributed: GLOBAL_RANK: 35, MEMBER: 36/72
+59: Initializing distributed: GLOBAL_RANK: 59, MEMBER: 60/72
+26: Initializing distributed: GLOBAL_RANK: 26, MEMBER: 27/72
+37: Initializing distributed: GLOBAL_RANK: 37, MEMBER: 38/72
+60: Initializing distributed: GLOBAL_RANK: 60, MEMBER: 61/72
+49: Initializing distributed: GLOBAL_RANK: 49, MEMBER: 50/72
+24: Initializing distributed: GLOBAL_RANK: 24, MEMBER: 25/72
+43: Initializing distributed: GLOBAL_RANK: 43, MEMBER: 44/72
+41: Initializing distributed: GLOBAL_RANK: 41, MEMBER: 42/72
+25: Initializing distributed: GLOBAL_RANK: 25, MEMBER: 26/72
+58: Initializing distributed: GLOBAL_RANK: 58, MEMBER: 59/72
+39: Initializing distributed: GLOBAL_RANK: 39, MEMBER: 40/72
+57: Initializing distributed: GLOBAL_RANK: 57, MEMBER: 58/72
+61: Initializing distributed: GLOBAL_RANK: 61, MEMBER: 62/72
+62: Initializing distributed: GLOBAL_RANK: 62, MEMBER: 63/72
+17: Initializing distributed: GLOBAL_RANK: 17, MEMBER: 18/72
+63: Initializing distributed: GLOBAL_RANK: 63, MEMBER: 64/72
+66: Initializing distributed: GLOBAL_RANK: 66, MEMBER: 67/72
+69: Initializing distributed: GLOBAL_RANK: 69, MEMBER: 70/72
+67: Initializing distributed: GLOBAL_RANK: 67, MEMBER: 68/72
+64: Initializing distributed: GLOBAL_RANK: 64, MEMBER: 65/72
+65: Initializing distributed: GLOBAL_RANK: 65, MEMBER: 66/72
+ 0: ----------------------------------------------------------------------------------------------------
+ 0: distributed_backend=nccl
+ 0: All distributed processes registered. Starting with 72 processes
+ 0: ----------------------------------------------------------------------------------------------------
+ 0: 
+18: [rank18]:[W501 18:31:23.978175121 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 18]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+19: [rank19]:[W501 18:31:23.978175025 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 19]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+17: [rank17]:[W501 18:31:23.985825089 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 17]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+16: [rank16]:[W501 18:31:23.985857313 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 16]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+56: [rank56]:[W501 18:31:23.153884942 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 56]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+67: [rank67]:[W501 18:31:23.520818314 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 67]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 9: [rank9]:[W501 18:31:23.692918209 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 9]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+41: [rank41]:[W501 18:31:23.749546992 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 41]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+64: [rank64]:[W501 18:31:23.542459515 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 64]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+54: [rank54]:[W501 18:31:23.097657119 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 54]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+36: [rank36]:[W501 18:31:23.337136745 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 36]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+32: [rank32]:[W501 18:31:23.981123747 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 32]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+20: [rank20]:[W501 18:31:23.098659301 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 20]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+21: [rank21]:[W501 18:31:23.098720005 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 21]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+28: [rank28]:[W501 18:31:23.101313756 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 28]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 1: [rank1]:[W501 18:31:23.372525623 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 1]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+70: [rank70]:[W501 18:31:23.828205505 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 70]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+71: [rank71]:[W501 18:31:23.828209729 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 71]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+68: [rank68]:[W501 18:31:23.828281218 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 68]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+33: [rank33]:[W501 18:31:23.987898901 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 33]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+29: [rank29]:[W501 18:31:23.108145839 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 29]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+61: [rank61]:[W501 18:31:23.779805694 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 61]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+48: [rank48]:[W501 18:31:23.878424172 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 48]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+50: [rank50]:[W501 18:31:23.878409836 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 50]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+60: [rank60]:[W501 18:31:23.786320276 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 60]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+51: [rank51]:[W501 18:31:23.884227820 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 51]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+12: [rank12]:[W501 18:31:23.588262690 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 12]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+14: [rank14]:[W501 18:31:23.588313955 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 14]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+26: [rank26]:[W501 18:31:23.467602078 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 26]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+27: [rank27]:[W501 18:31:23.467602046 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 27]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+25: [rank25]:[W501 18:31:23.467676445 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 25]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 0: [rank0]:[W501 18:31:23.404591879 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 3: [rank3]:[W501 18:31:23.404744457 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 3]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+13: [rank13]:[W501 18:31:23.596199324 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 13]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+15: [rank15]:[W501 18:31:23.596205532 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 15]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+24: [rank24]:[W501 18:31:23.475147278 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 24]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+66: [rank66]:[W501 18:31:23.596906901 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 66]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+11: [rank11]:[W501 18:31:23.758086822 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 11]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+44: [rank44]:[W501 18:31:23.871411360 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 44]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+45: [rank45]:[W501 18:31:23.871416384 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 45]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+46: [rank46]:[W501 18:31:23.871513537 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 46]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 7: [rank7]:[W501 18:31:23.140893144 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 7]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 6: [rank6]:[W501 18:31:23.140932920 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 6]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 4: [rank4]:[W501 18:31:23.140991256 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 4]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 5: [rank5]:[W501 18:31:23.140991352 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 5]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+42: [rank42]:[W501 18:31:23.857873151 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 42]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 2: [rank2]:[W501 18:31:23.456325612 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 2]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+40: [rank40]:[W501 18:31:23.863479746 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 40]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+59: [rank59]:[W501 18:31:23.337010994 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 59]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+57: [rank57]:[W501 18:31:23.337115571 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 57]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+58: [rank58]:[W501 18:31:23.343823293 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 58]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+55: [rank55]:[W501 18:31:23.221427173 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 55]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+52: [rank52]:[W501 18:31:23.221747301 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 52]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+53: [rank53]:[W501 18:31:23.228287508 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 53]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+10: [rank10]:[W501 18:31:23.840523019 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 10]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 8: [rank8]:[W501 18:31:23.840761324 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 8]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+37: [rank37]:[W501 18:31:23.471404060 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 37]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+39: [rank39]:[W501 18:31:23.471393276 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 39]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+38: [rank38]:[W501 18:31:23.471438332 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 38]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+62: [rank62]:[W501 18:31:23.918510561 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 62]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+23: [rank23]:[W501 18:31:23.258677352 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 23]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+22: [rank22]:[W501 18:31:23.258759656 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 22]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+35: [rank35]:[W501 18:31:23.142164997 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 35]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+34: [rank34]:[W501 18:31:23.148555221 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 34]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+31: [rank31]:[W501 18:31:23.270192915 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 31]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+30: [rank30]:[W501 18:31:23.276708231 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 30]  using GPU 2 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+65: [rank65]:[W501 18:31:23.769608766 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 65]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+69: [rank69]:[W501 18:31:23.039461637 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 69]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+43: [rank43]:[W501 18:31:23.016204292 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 43]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+47: [rank47]:[W501 18:31:23.077784948 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 47]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+63: [rank63]:[W501 18:31:23.032435830 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 63]  using GPU 3 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+49: [rank49]:[W501 18:31:23.142352236 ProcessGroupNCCL.cpp:4751] [PG ID 0 PG GUID 0 Rank 49]  using GPU 1 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149486925, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1022976}}
+44: ninja: no work to do.
+40: ninja: no work to do.
+21: ninja: no work to do.
+ 1: ninja: no work to do.
+71: ninja: no work to do.
+10: ninja: no work to do.
+19: ninja: no work to do.
+55: ninja: no work to do.
+ 3: ninja: no work to do.
+70: ninja: no work to do.
+32: ninja: no work to do.
+60: ninja: no work to do.
+31: ninja: no work to do.
+48: ninja: no work to do.
+64: ninja: no work to do.
+18: ninja: no work to do.
+53: ninja: no work to do.
+11: ninja: no work to do.
+27: ninja: no work to do.
+ 0: ninja: no work to do.
+68: ninja: no work to do.
+34: ninja: no work to do.
+30: ninja: no work to do.
+13: ninja: no work to do.
+16: ninja: no work to do.
+37: ninja: no work to do.
+56: ninja: no work to do.
+ 7: ninja: no work to do.
+65: ninja: no work to do.
+41: ninja: no work to do.
+46: ninja: no work to do.
+23: ninja: no work to do.
+62: ninja: no work to do.
+54: ninja: no work to do.
+69: ninja: no work to do.
+24: ninja: no work to do.
+33: ninja: no work to do.
+ 8: ninja: no work to do.
+28: ninja: no work to do.
+49: ninja: no work to do.
+ 2: ninja: no work to do.
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149579043, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 154.1672731684173, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 194, "samples_count": 1022976, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149593095, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.10865719616413116, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 224, "samples_count": 1022976, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149593096, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 235, "samples_count": 1022976}}
+ 0: Using 16bit Automatic Mixed Precision (AMP)
+ 0: GPU available: True (cuda), used: True
+ 0: TPU available: False, using: 0 TPU cores
+ 0: HPU available: False, using: 0 HPUs
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149606549, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1534464}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149687805, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 128.7502159657376, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 194, "samples_count": 1534464, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149701588, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.12999773025512695, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 224, "samples_count": 1534464, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149701588, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 235, "samples_count": 1534464}}
+ 0: Using 16bit Automatic Mixed Precision (AMP)
+ 0: GPU available: True (cuda), used: True
+ 0: TPU available: False, using: 0 TPU cores
+ 0: HPU available: False, using: 0 HPUs
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149714117, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 2045952}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149795890, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 102.4661475960018, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 194, "samples_count": 2045952, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149809822, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.15470752120018005, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 224, "samples_count": 2045952, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149809823, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 235, "samples_count": 2045952}}
+ 0: Using 16bit Automatic Mixed Precision (AMP)
+ 0: GPU available: True (cuda), used: True
+ 0: TPU available: False, using: 0 TPU cores
+ 0: HPU available: False, using: 0 HPUs
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149822365, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 2557440}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149903871, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 74.070776036974, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 194, "samples_count": 2557440, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149917152, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1816958636045456, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 224, "samples_count": 2557440, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149917153, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 235, "samples_count": 2557440}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1746149371207, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/hydra/core/utils.py", "lineno": 186, "status": "success", "step_num": 4440}}
+++ date +%s
++ echo 'RUNANDTIME_STOP 1746149922'
+RUNANDTIME_STOP 1746149922
++ set -e

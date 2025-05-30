@@ -1,0 +1,74 @@
+INFO -  Checking System Description Files
+INFO -   System description checker passed for nebius_soperator_8xH200_n128
+INFO -   System description checker passed for nebius_soperator_8xH200_n64
+INFO - ------------------------------
+INFO -  Running compliance checks in dir /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n64_ngc25.01_nemo/llama31_405b
+INFO -  System nebius_soperator_8xH200_n64_ngc25.01_nemo
+INFO -  Benchmark llama31_405b
+INFO - ------------------------------
+INFO - ------------------------------
+INFO - Run 1/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n64_ngc25.01_nemo/llama31_405b/result_1.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO - Run 2/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n64_ngc25.01_nemo/llama31_405b/result_2.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO - Run 3/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n64_ngc25.01_nemo/llama31_405b/result_3.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO -  Running Seed Checker
+INFO - ------------------------------
+INFO -  Running RCP Checker, pass: pruned_rcps
+INFO - ------------------------------
+INFO -  RCP Record: {'Benchmark': 'llama31_405b', 'BS': 1152, 'Hyperparams': {'opt_base_learning_rate': 8e-05, 'opt_learning_rate_warmup_steps': 8000, 'gradient_accumulation_steps': 144}, 'Epochs to converge': [322560, 322560, 322560, 322560, 322560, 322560], 'RCP Mean': np.float64(322560.0), 'RCP Stdev': np.float64(0.0), 'Max Speedup': np.float64(1.1666666666666667), 'Min Epochs': np.float64(322560.0)}
+INFO -  Submission mean epochs: 276480.0000
+INFO -  Submission mean epochs faster than RCP mean but within max speedup range. Score should be normalized by factor of 322560.0 / 276480.0 = 1.1666666666666667
+INFO -  Results scaling set to normalization factor of 1.1667
+INFO - RCP Test Passed: RCP found
+INFO - ------------------------------
+INFO - ------------------------------
+INFO -  Running compliance checks in dir /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n128_ngc25.01_nemo/llama31_405b
+INFO -  System nebius_soperator_8xH200_n128_ngc25.01_nemo
+INFO -  Benchmark llama31_405b
+INFO - ------------------------------
+INFO - ------------------------------
+INFO - Run 1/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n128_ngc25.01_nemo/llama31_405b/result_1.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO - Run 2/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n128_ngc25.01_nemo/llama31_405b/result_2.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO - Run 3/3
+INFO - Running compliance on file: /home/cyril-k/mlperf/Nebius/results/nebius_soperator_8xH200_n128_ngc25.01_nemo/llama31_405b/result_3.txt
+INFO -  Compliance checks: training_5.0.0/common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_common.yaml
+INFO -  Compliance checks: training_5.0.0/closed_llama31_405b.yaml
+INFO - ------------------------------
+INFO -  Running Seed Checker
+INFO - ------------------------------
+INFO -  Running RCP Checker, pass: pruned_rcps
+INFO - ------------------------------
+INFO -  RCP Record: {'Benchmark': 'llama31_405b', 'BS': 1152, 'Hyperparams': {'opt_base_learning_rate': 8e-05, 'opt_learning_rate_warmup_steps': 8000, 'gradient_accumulation_steps': 144}, 'Epochs to converge': [322560, 322560, 322560, 322560, 322560, 322560], 'RCP Mean': np.float64(322560.0), 'RCP Stdev': np.float64(0.0), 'Max Speedup': np.float64(1.1666666666666667), 'Min Epochs': np.float64(322560.0)}
+INFO -  Submission mean epochs: 276480.0000
+INFO -  Submission mean epochs faster than RCP mean but within max speedup range. Score should be normalized by factor of 322560.0 / 276480.0 = 1.1666666666666667
+INFO -  Results scaling set to normalization factor of 1.1667
+INFO - RCP Test Passed: RCP found
+INFO - ------------------------------
+INFO - ------------------------------
+INFO - PACKAGE CHECKER FOUND NO ERRORS, SUCCESS !
+INFO - ------------------------------

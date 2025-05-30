@@ -1,0 +1,342 @@
++ echo 'Beginning trial 1 of 1'
+Beginning trial 1 of 1
++ echo ':::DLPAL /mnt/resource_nvme/lora_data/lora_v50.sqsh 63 8 gpu-[733,999,153,740,959,383,928,335] '\''unknown'\'' DGXB200_8x8x1xtp1pp1cp8'
+:::DLPAL /mnt/resource_nvme/lora_data/lora_v50.sqsh 63 8 gpu-[733,999,153,740,959,383,928,335] 'unknown' DGXB200_8x8x1xtp1pp1cp8
+++ srun -N1 -n1 --container-name=llama2_70b_lora_63 --no-container-mount-home --container-remap-root --container-writable mlperf-sysjson.sh
++ echo ':::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"8","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8592+","host_processor_core_count":"64","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"3.9 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"1","accelerator_model_name":"No devices were found","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"No devices were found","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 5.15.0-1074-oracle","nvidia_kernel_driver":"No devices were found"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}'
+:::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"8","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8592+","host_processor_core_count":"64","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"3.9 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"1","accelerator_model_name":"No devices were found","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"No devices were found","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 5.15.0-1074-oracle","nvidia_kernel_driver":"No devices were found"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}
++ srun -N1 -n1 --container-name=llama2_70b_lora_63 --no-container-mount-home --container-remap-root --container-writable bash -c 'echo ":::GITCOMMITID ${GIT_COMMIT_ID} ${LAUNCHER_GIT_COMMIT_ID}"'
+:::GITCOMMITID 8c262b08b227bd43cefaeedd061fe71d67271031 
++ '[' 1 -eq 1 ']'
++ srun --ntasks-per-node=1 --mpi=pmix bash -c 'echo -n '\''Clearing cache on '\'' && hostname && sync && sudo /sbin/sysctl vm.drop_caches=3'
+Clearing cache on gpu-959
+Clearing cache on gpu-740
+Clearing cache on gpu-928
+Clearing cache on gpu-153
+Clearing cache on gpu-383
+Clearing cache on gpu-335
+Clearing cache on gpu-999
+Clearing cache on gpu-733
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
+vm.drop_caches = 3
++ srun --ntasks-per-node=1 --mpi=pmix --container-name=llama2_70b_lora_63 --no-container-mount-home --container-remap-root --container-writable python -c '
+from mlperf_common.callbacks import mllogger
+mllogger.event(key=mllogger.constants.CACHE_CLEAR, value=True)'
+srun: Step created for StepId=63.13
+:::MLLOG {"namespace": "", "time_ms": 1745688850979, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851010, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851043, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851064, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851080, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851100, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851130, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
+:::MLLOG {"namespace": "", "time_ms": 1745688851411, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
++ export SEED=29597
++ SEED=29597
++ set +e
+++ date +%s
++ echo 'RUNANDTIME_START 1745688852'
+RUNANDTIME_START 1745688852
++ srun -l --mpi=pmix --ntasks-per-node=8 --gpus-per-node=8 --time=23 --container-name=llama2_70b_lora_63 --no-container-mount-home --container-remap-root --container-writable --container-mounts=/mnt/resource_nvme/lora_data/gov_report:/data:ro,/mnt/resource_nvme/lora_data/model:/ckpt:ro,/mnt/resource_nvme/lora_data/logs:/results:rw --container-workdir=/workspace/ft-llm --container-env=MASTER_PORT,MASTER_ADDR slurm2pytorch ./run_and_time.sh
+26: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+28: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+24: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+27: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+29: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+30: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+31: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+25: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+24: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+27: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+29: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+26: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+28: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+30: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+25: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+31: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+41: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+42: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+46: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+40: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+45: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+43: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+47: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+44: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+40: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+41: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+42: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+45: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+46: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+43: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+44: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+47: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+32: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+35: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+37: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+34: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+32: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+35: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+37: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+34: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+39: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+39: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+38: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+38: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+33: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+36: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+33: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+36: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+50: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+53: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+55: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+52: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+48: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+49: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+54: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+51: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+48: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+50: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+52: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+53: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+55: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+49: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+51: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+54: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+12: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+13: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 8: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 9: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+10: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+14: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+15: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+11: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+10: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+12: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+13: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 8: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+15: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 9: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+11: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+14: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+16: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+19: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+20: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+17: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+18: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+21: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+22: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+23: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+19: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+21: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+22: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+23: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+16: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+17: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+18: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+20: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+60: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+61: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+63: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+56: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+57: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+58: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+62: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+59: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+58: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+59: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+61: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+63: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+56: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+57: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+60: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+62: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 0: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 2: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 6: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 7: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 1: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 4: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 0: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 2: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 7: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 1: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 4: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 6: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 3: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 5: Could not find the bitsandbytes CUDA binary at PosixPath('/usr/local/lib/python3.12/dist-packages/bitsandbytes/libbitsandbytes_cuda129.so')
+ 3: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 5: The installed version of bitsandbytes was compiled without GPU support. 8-bit optimizers, 8-bit multiplication, and GPU quantization are unavailable.
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877380, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 327}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877381, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "llama2_70b_lora", "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877381, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "SUBMISSION_ORG_PLACEHOLDER", "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877381, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877381, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688877381, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "8xSUBMISSION_PLATFORM_PLACEHOLDER", "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878165, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 0.0004, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 162}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878165, "event_type": "POINT_IN_TIME", "key": "opt_adamw_weight_decay", "value": 0.0001, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 163}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878165, "event_type": "POINT_IN_TIME", "key": "opt_gradient_clip_norm", "value": 0.3, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 164}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878165, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_factor", "value": 0.0, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 189}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878167, "event_type": "POINT_IN_TIME", "key": "lora_rank", "value": 16, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 198}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878167, "event_type": "POINT_IN_TIME", "key": "lora_alpha", "value": 32, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 199}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878171, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_training_steps", "value": 700, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 350}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878883, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 8, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878923, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 3901, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878923, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 173, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878923, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 328}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688878925, "event_type": "POINT_IN_TIME", "key": "seed", "value": 29597, "metadata": {"file": "/workspace/ft-llm/train.py", "lineno": 393}}
+ 0: The number of process groups to use SHARP with depends on the type of the network switch. Nvidia QM1 switch supports SAHRP up to 8 process groups and QM2 supports up to 256 process groups. We apply SHARP to the communications of the data-parallel domain. If the number of data-parallel process groups is larger than the max process groups that the network switch supports, the communication will fall back to non-SHARP operators. To enable SHARP, `#SBATCH_NETWORK=sharp` should be set in the sbatch script.
+ 0: NCCL version 2.26.3+cuda12.9
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688888364, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"before_model_init": 10.192859081085771}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 168, "step": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745688888915, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"after_model_init": 0.5511224159272388}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 168, "step": 0}}
+ 0: Loading distributed checkpoint with TensorStoreLoadShardedStrategy
+16: NCCL version 2.26.3+cuda12.9
+56: NCCL version 2.26.3+cuda12.9
+ 8: NCCL version 2.26.3+cuda12.9
+32: NCCL version 2.26.3+cuda12.9
+48: NCCL version 2.26.3+cuda12.9
+24: NCCL version 2.26.3+cuda12.9
+40: NCCL version 2.26.3+cuda12.9
+37: NCCL version 2.26.3+cuda12.9
+60: NCCL version 2.26.3+cuda12.9
+33: NCCL version 2.26.3+cuda12.9
+34: NCCL version 2.26.3+cuda12.9
+35: NCCL version 2.26.3+cuda12.9
+38: NCCL version 2.26.3+cuda12.9
+36: NCCL version 2.26.3+cuda12.9
+39: NCCL version 2.26.3+cuda12.9
+58: NCCL version 2.26.3+cuda12.9
+57: NCCL version 2.26.3+cuda12.9
+59: NCCL version 2.26.3+cuda12.9
+61: NCCL version 2.26.3+cuda12.9
+62: NCCL version 2.26.3+cuda12.9
+63: NCCL version 2.26.3+cuda12.9
+52: NCCL version 2.26.3+cuda12.9
+51: NCCL version 2.26.3+cuda12.9
+41: NCCL version 2.26.3+cuda12.9
+43: NCCL version 2.26.3+cuda12.9
+42: NCCL version 2.26.3+cuda12.9
+45: NCCL version 2.26.3+cuda12.9
+54: NCCL version 2.26.3+cuda12.9
+49: NCCL version 2.26.3+cuda12.9
+46: NCCL version 2.26.3+cuda12.9
+50: NCCL version 2.26.3+cuda12.9
+53: NCCL version 2.26.3+cuda12.9
+55: NCCL version 2.26.3+cuda12.9
+18: NCCL version 2.26.3+cuda12.9
+23: NCCL version 2.26.3+cuda12.9
+17: NCCL version 2.26.3+cuda12.9
+19: NCCL version 2.26.3+cuda12.9
+22: NCCL version 2.26.3+cuda12.9
+20: NCCL version 2.26.3+cuda12.9
+21: NCCL version 2.26.3+cuda12.9
+ 1: NCCL version 2.26.3+cuda12.9
+ 3: NCCL version 2.26.3+cuda12.9
+ 6: NCCL version 2.26.3+cuda12.9
+ 7: NCCL version 2.26.3+cuda12.9
+ 5: NCCL version 2.26.3+cuda12.9
+ 4: NCCL version 2.26.3+cuda12.9
+11: NCCL version 2.26.3+cuda12.9
+12: NCCL version 2.26.3+cuda12.9
+10: NCCL version 2.26.3+cuda12.9
+15: NCCL version 2.26.3+cuda12.9
+ 2: NCCL version 2.26.3+cuda12.9
+ 9: NCCL version 2.26.3+cuda12.9
+13: NCCL version 2.26.3+cuda12.9
+14: NCCL version 2.26.3+cuda12.9
+27: NCCL version 2.26.3+cuda12.9
+25: NCCL version 2.26.3+cuda12.9
+26: NCCL version 2.26.3+cuda12.9
+28: NCCL version 2.26.3+cuda12.9
+29: NCCL version 2.26.3+cuda12.9
+30: NCCL version 2.26.3+cuda12.9
+31: NCCL version 2.26.3+cuda12.9
+47: NCCL version 2.26.3+cuda12.9
+44: NCCL version 2.26.3+cuda12.9
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689255581, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"warmup_time": 366.6658993540332}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 168, "step": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689255581, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"init_finished": 0.00028403906617313623}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 168, "step": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689255582, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 83}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689255582, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 83}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689255582, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 199, "samples_count": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689258151, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 2.063563108444214, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 80, "lr": 0.00039979861330826294}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689260686, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.448270559310913, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 160, "lr": 0.00039919485879904784}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689263207, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3186843395233154, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 240, "lr": 0.00039818995235358696}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689265725, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3677860498428345, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 320, "lr": 0.0003967859177197259}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689268262, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3788435459136963, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 400, "lr": 0.0003949855824363647}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689270791, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.396866798400879, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 480, "lr": 0.00039279257213917066}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689273317, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3480278253555298, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 560, "lr": 0.00039021130325903074}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689275835, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.347365379333496, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 640, "lr": 0.00038724697412794747}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689278371, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3146815299987793, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 720, "lr": 0.0003839055545102902}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689280917, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3790507316589355, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 800, "lr": 0.0003801937735804838}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689283452, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.333607792854309, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 880, "lr": 0.0003761191063713476}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689285978, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2137339115142822, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 960, "lr": 0.00037168975872037323}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689288524, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3075803518295288, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1040, "lr": 0.00036691465074426054}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689291058, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2052181959152222, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1120, "lr": 0.0003618033988749895}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689293592, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.238347053527832, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1200, "lr": 0.000356366296493606}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689296130, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3023052215576172, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1280, "lr": 0.00035061429320072223}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689298671, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3015415668487549, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1360, "lr": 0.0003445589727654783}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689301212, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2771337032318115, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1440, "lr": 0.00033821252979737297}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689303741, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3273972272872925, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1520, "lr": 0.0003315877451879425}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689304739, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 31.246864711036977, "train_step_time": 0.25602568686432886, "max_memory_usage": 82.319}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 225, "step": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689304739, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 208, "samples_count": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689304740, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 130, "samples_count": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689309000, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.941636013846866, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 303, "samples_count": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689309000, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"validation_throughput": 41.29379097862633}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 245, "step": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689309000, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 153, "samples_count": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689309001, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 199, "samples_count": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689311027, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.323345422744751, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1600, "lr": 0.00032469796037174674}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689313554, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3226618766784668, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1680, "lr": 0.00031755705045849464}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689316081, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3531804084777832, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1760, "lr": 0.0003101793962904205}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689318617, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3314857482910156, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1840, "lr": 0.00030257985548118126}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689321153, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3687007427215576, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 1920, "lr": 0.0002947737324945997}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689321170, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 31.55443820052018, "train_step_time": 0.25353010404311743, "max_memory_usage": 82.319}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 225, "step": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689321170, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 208, "samples_count": 1536}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689321170, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 130, "samples_count": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689324615, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9391647956274838, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 303, "samples_count": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689324615, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"validation_throughput": 51.078740749107894}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 245, "step": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689324616, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 153, "samples_count": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689324616, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 199, "samples_count": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689327160, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.1718469858169556, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2000, "lr": 0.00028677674782351165}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689329705, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2680737972259521, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2080, "lr": 0.00027860500633078477}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689332256, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.21358060836792, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2160, "lr": 0.0002702749648162686}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689334801, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.234339714050293, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2240, "lr": 0.00026180339887498953}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689336854, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 31.377667729713185, "train_step_time": 0.2549584012716271, "max_memory_usage": 82.319}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 225, "step": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689336854, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 208, "samples_count": 1920}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689336854, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 130, "samples_count": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689340328, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9297517103955925, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 303, "samples_count": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689340329, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"validation_throughput": 50.64710753182666}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 245, "step": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689340329, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 153, "samples_count": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689340329, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 199, "samples_count": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689340844, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3147051334381104, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2320, "lr": 0.00025320736911333503}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689343388, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2927402257919312, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2400, "lr": 0.0002445041867912629}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689345943, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3358153104782104, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2480, "lr": 0.00023571137895972733}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689348509, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3368349075317383, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2560, "lr": 0.0002268466531635311}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689351068, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3410661220550537, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2640, "lr": 0.00021792786178068677}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689352611, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 31.265608378150194, "train_step_time": 0.2558721999982178, "max_memory_usage": 82.319}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 225, "step": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689352611, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 208, "samples_count": 2304}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689352611, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 130, "samples_count": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689356244, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9276229770197345, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 303, "samples_count": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689356245, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"validation_throughput": 48.42895966339696}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 245, "step": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689356245, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 153, "samples_count": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689356245, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 199, "samples_count": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689357272, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2973384857177734, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2720, "lr": 0.00020897296607010301}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689359825, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3383382558822632, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2800, "lr": 0.00020000000000000006}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689362382, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.354792594909668, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2880, "lr": 0.00019102703392989706}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689364931, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.218083143234253, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 2960, "lr": 0.00018207213821931338}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689367476, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3339264392852783, "metadata": {"file": "/workspace/ft-llm/custom_callbacks.py", "lineno": 71, "samples_count": 3040, "lr": 0.00017315334683646894}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689368511, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 31.30533300934441, "train_step_time": 0.2555475131860779, "max_memory_usage": 82.319}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 225, "step": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689368512, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 208, "samples_count": 2688}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689368512, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 130, "samples_count": 3072}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689372312, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.92277844379403, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 303, "samples_count": 3072}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689372313, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"validation_throughput": 46.29460487962513}, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 245, "step": 3072}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689372313, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 153, "samples_count": 3072}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745689372320, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.12/dist-packages/mlperf_common/callbacks/logging.py", "lineno": 106, "samples_count": 3072, "status": "success"}}
+++ date +%s
++ echo 'RUNANDTIME_STOP 1745689484'
+RUNANDTIME_STOP 1745689484
++ set -e

@@ -1,0 +1,701 @@
+++ date +%s
++ echo 'PROLOG_START 1745981579'
+PROLOG_START 1745981579
++ : DGXH200_01x08x32
++ : /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh
++ : 200
++ : 4.1.0
++ : ''\''unknown'\'''
++ : ''\''unknown'\'''
++ : ''\''unknown'\'''
++ : 1
+++ date +%y%m%d%H%M%S%N
++ : 250430025259148858329
++ : 1
++ : 1
++ : /workspace/sd
++ : /home/justinpan_google_com/private-sd/logdir/
++ : ./api_logs
++ : /home/justinpan_google_com/private-sd/results
++ : ''\'' '\'''
++ : 'echo '\''here'\'''
++ : 0
++ : 0
++ : 29500
++ export MASTER_PORT
+++ scontrol show hostnames a3u5702-a3ultranodeset-4
+++ head -n1
++ export MASTER_ADDR=a3u5702-a3ultranodeset-4
++ MASTER_ADDR=a3u5702-a3ultranodeset-4
++ echo 'using MASTER_ADDR "a3u5702-a3ultranodeset-4" of list "a3u5702-a3ultranodeset-4"'
+using MASTER_ADDR "a3u5702-a3ultranodeset-4" of list "a3u5702-a3ultranodeset-4"
++ trap cleanup_pyxis TERM EXIT
++ cleanup_pyxis
++ srun --ntasks=1 /bin/bash -c 'if [[ "$(enroot list)" ]]; then enroot remove -f $(enroot list); fi'
++ TIME_TAGS=0
++ NVTX_FLAG=0
++ NCCL_TEST=1
++ SYNTH_DATA=0
++ EPOCH_PROF=0
++ DISABLE_CG=0
++ export MODEL_NAME=stable_diffusion
++ MODEL_NAME=stable_diffusion
++ export MODEL_FRAMEWORK=pytorch
++ MODEL_FRAMEWORK=pytorch
++ LOGBASE=250430025259148858329
++ SPREFIX=stable_diffusion_pytorch_1x8x32_250430025259148858329
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ readonly _logfile_base=/home/justinpan_google_com/private-sd/logdir//250430025259148858329
++ _logfile_base=/home/justinpan_google_com/private-sd/logdir//250430025259148858329
++ readonly _cont_name=stable_diffusion_200
++ _cont_name=stable_diffusion_200
++ _cont_mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home
++ mkdir -p /home/justinpan_google_com/private-sd/nemologs/
++ cont_mounts_to_verify=''\''/datasets'\'', '\''/checkpoints'\'''
++ '[' '' -eq 1 ']'
+/var/spool/slurmd/job00200/slurm_script: line 122: [: : integer expression expected
+++ srun -N1 -n1 bash
+/usr/bin/bash: line 2: /etc/dgx-release: No such file or directory
++ MLPERF_HOST_OS='Ubuntu 22.04.5 LTS / ??? ???'
++ export MLPERF_HOST_OS
++ umask 0002
++ mkdir -p /home/justinpan_google_com/private-sd/logdir/
++ srun --ntasks=1 mkdir -p /home/justinpan_google_com/private-sd/logdir/
++ echo MELLANOX_VISIBLE_DEVICES=
+MELLANOX_VISIBLE_DEVICES=
++ srun --ntasks=1 --container-image=/home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh --container-name=stable_diffusion_200 true
++ srun -N1 -n1 --container-name=stable_diffusion_200 ibv_devinfo --list
+8 HCAs found:
+	rocep145s0
+	rocep146s0
+	rocep152s0
+	rocep153s0
+	rocep198s0
+	rocep199s0
+	rocep205s0
+	rocep206s0
+
++ srun -N1 -n1 --container-name=stable_diffusion_200 nvidia-smi topo -m
+	[4mGPU0	GPU1	GPU2	GPU3	GPU4	GPU5	GPU6	GPU7	NIC0	NIC1	NIC2	NIC3	NIC4	NIC5	NIC6	NIC7	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	NV18	NV18	NV18	NV18	NV18	NV18	NV18	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU1	NV18	 X 	NV18	NV18	NV18	NV18	NV18	NV18	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU2	NV18	NV18	 X 	NV18	NV18	NV18	NV18	NV18	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU3	NV18	NV18	NV18	 X 	NV18	NV18	NV18	NV18	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU4	NV18	NV18	NV18	NV18	 X 	NV18	NV18	NV18	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	56-111,168-223	1		N/A
+GPU5	NV18	NV18	NV18	NV18	NV18	 X 	NV18	NV18	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	56-111,168-223	1		N/A
+GPU6	NV18	NV18	NV18	NV18	NV18	NV18	 X 	NV18	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	56-111,168-223	1		N/A
+GPU7	NV18	NV18	NV18	NV18	NV18	NV18	NV18	 X 	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	56-111,168-223	1		N/A
+NIC0	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	 X 	PIX	NODE	NODE	SYS	SYS	SYS	SYS				
+NIC1	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	PIX	 X 	NODE	NODE	SYS	SYS	SYS	SYS				
+NIC2	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	 X 	PIX	SYS	SYS	SYS	SYS				
+NIC3	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	PIX	 X 	SYS	SYS	SYS	SYS				
+NIC4	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	 X 	PIX	NODE	NODE				
+NIC5	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	PIX	 X 	NODE	NODE				
+NIC6	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	 X 	PIX				
+NIC7	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: rocep145s0
+  NIC1: rocep146s0
+  NIC2: rocep152s0
+  NIC3: rocep153s0
+  NIC4: rocep198s0
+  NIC5: rocep199s0
+  NIC6: rocep205s0
+  NIC7: rocep206s0
+
++ [[ 0 -eq 1 ]]
++ [[ 1 -eq 1 ]]
++ tee /home/justinpan_google_com/private-sd/logdir//stable_diffusion_pytorch_1x8x32_250430025259148858329_mountcheck.log
++ srun --ntasks=1 --ntasks-per-node=1 --container-name=stable_diffusion_200 --container-mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home python3 -c 'from mlperf_common.mountcheck import main; main('\''cont-mount-info.json'\'', check=True)'
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
++ echo 'NCCL_TEST = 1'
+NCCL_TEST = 1
++ [[ 1 -eq 1 ]]
++ tee /home/justinpan_google_com/private-sd/logdir//stable_diffusion_pytorch_1x8x32_250430025259148858329_nccl.log
++ srun --mpi=pmix --ntasks=8 --ntasks-per-node=8 --container-name=stable_diffusion_200 all_reduce_perf_mpi -b 1731821448 -e 1731821448 -d half -G 1 -f 2
+[a3u5702-a3ultranodeset-4:367482] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367483] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367478] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367477] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367479] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367480] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367484] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:367481] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+# nThread 1 nGpus 1 minBytes 1731821448 maxBytes 1731821448 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 1
+#
+# Using devices
+#  Rank  0 Group  0 Pid 367477 on a3u5702-a3ultranodeset-4 device  0 [0x8f] NVIDIA H200
+#  Rank  1 Group  0 Pid 367478 on a3u5702-a3ultranodeset-4 device  1 [0x90] NVIDIA H200
+#  Rank  2 Group  0 Pid 367479 on a3u5702-a3ultranodeset-4 device  2 [0x96] NVIDIA H200
+#  Rank  3 Group  0 Pid 367480 on a3u5702-a3ultranodeset-4 device  3 [0x97] NVIDIA H200
+#  Rank  4 Group  0 Pid 367481 on a3u5702-a3ultranodeset-4 device  4 [0xc4] NVIDIA H200
+#  Rank  5 Group  0 Pid 367482 on a3u5702-a3ultranodeset-4 device  5 [0xc5] NVIDIA H200
+#  Rank  6 Group  0 Pid 367483 on a3u5702-a3ultranodeset-4 device  6 [0xcb] NVIDIA H200
+#  Rank  7 Group  0 Pid 367484 on a3u5702-a3ultranodeset-4 device  7 [0xcc] NVIDIA H200
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+  1731821448     865910724      half     sum      -1   6495.0  266.64  466.62      0   6504.6  266.25  465.93      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 466.275 
+#
+
++ '[' -f ''\'' '\''/power_monitor.sh' ']'
++ [[ 0 == \1 ]]
++ [[ 0 == \1 ]]
+++ date +%s
++ echo 'PROLOG_STOP 1745982049'
+PROLOG_STOP 1745982049
+++ seq -w 1 1
++ for _experiment_index in $(seq -w 1 "${NEXP}")
+++ date +%s
++ echo 'EXPERIMENT_START 1745982049'
+EXPERIMENT_START 1745982049
++ tee /home/justinpan_google_com/private-sd/logdir//250430025259148858329_1.log
++ echo 'Beginning trial 1 of 1'
+Beginning trial 1 of 1
++ echo ':::DLPAL /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh 200 1 a3u5702-a3ultranodeset-4 '\''unknown'\'' DGXH200_01x08x32'
+:::DLPAL /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh 200 1 a3u5702-a3ultranodeset-4 'unknown' DGXH200_01x08x32
+++ srun --ntasks=1 --container-name=stable_diffusion_200 mlperf-sysjson.sh
++ echo ':::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"1","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz","host_processor_core_count":"56","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"2.8 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA H200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"143771 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 24.09","framework_name":"","other_software_stack":{"cuda_version":"12.6.1.006","cuda_driver_version":"560.35.03","nccl_version":"2.22.3","cublas_version":"12.6.3.1002","cudnn_version":"9.4.0.58","trt_version":"10.4.0.26","dali_version":"1.41.0","mofed_version":"5.4-rdmacore39.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-gcp","nvidia_kernel_driver":"570.86.15"},"operating_system":"Ubuntu 22.04.4 LTS","sw_notes":""}'
+:::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"1","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz","host_processor_core_count":"56","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"2.8 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA H200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"143771 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 24.09","framework_name":"","other_software_stack":{"cuda_version":"12.6.1.006","cuda_driver_version":"560.35.03","nccl_version":"2.22.3","cublas_version":"12.6.3.1002","cudnn_version":"9.4.0.58","trt_version":"10.4.0.26","dali_version":"1.41.0","mofed_version":"5.4-rdmacore39.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-gcp","nvidia_kernel_driver":"570.86.15"},"operating_system":"Ubuntu 22.04.4 LTS","sw_notes":""}
++ srun --ntasks=1 --container-name=stable_diffusion_200 bash -c 'echo ":::GITCOMMITID ${GIT_COMMIT_ID} ${LAUNCHER_GIT_COMMIT_ID}"'
+:::GITCOMMITID  
++ '[' 1 -eq 1 ']'
++ srun --ntasks=1 --mpi=pmix bash -c 'echo -n '\''Clearing cache on '\'' && hostname && sync && echo '\''here'\'''
+Clearing cache on a3u5702-a3ultranodeset-4
+here
++ srun --ntasks=1 --mpi=pmix --container-name=stable_diffusion_200 python -c '
+from mlperf_logging import mllog
+mllogger = mllog.get_mllogger()
+mllogger.event(key=mllog.constants.CACHE_CLEAR, value=True)'
+:::MLLOG {"namespace": "", "time_ms": 1745982076245, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
++ export RANDOM_SEED=1585
++ RANDOM_SEED=1585
++ export EXP_NAME=stable-diffusion2-train-250430025259148858329-1
++ EXP_NAME=stable-diffusion2-train-250430025259148858329-1
++ set +e
+++ date +%s
++ echo 'RUNANDTIME_START 1745982076'
+RUNANDTIME_START 1745982076
++ srun -l --mpi=pmix --ntasks=8 --ntasks-per-node=8 --time=200 --container-name=stable_diffusion_200 --container-mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home --container-workdir=/workspace/sd --container-env=MASTER_PORT,MASTER_ADDR --container-writable slurm2pytorch ./run_and_time.sh
+0: STARTING TIMING RUN AT 2025-04-30 03:01:30 AM
+0: RANDOM_SEED=1585
+7: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+6: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+2: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+0: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+1: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+5: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+3: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+4: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+0: :::MLLOG {"namespace": "", "time_ms": 1745982125286, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/sd/main.py", "lineno": 77}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982125676, "event_type": "POINT_IN_TIME", "key": "seed", "value": 1171516031, "metadata": {"file": "/workspace/sd/main.py", "lineno": 95}}
+0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/8
+3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/8
+2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/8
+7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/8
+1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/8
+4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/8
+6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/8
+5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/8
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156859, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 255}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156875, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 256, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 259}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156875, "event_type": "POINT_IN_TIME", "key": "opt_name", "value": "adamw", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 263}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156875, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_1", "value": 0.9, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 264}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156875, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_2", "value": 0.999, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 265}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "opt_adamw_epsilon", "value": 1e-08, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 266}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "opt_adamw_weight_decay", "value": 0.01, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 267}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 7.168e-05, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 269}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_steps", "value": 1000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 270}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 6513144, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 275}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 30000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 276}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "stable_diffusion", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "SUBMISSION_ORG_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982156876, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "1xSUBMISSION_PLATFORM_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982353860, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 405}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982353861, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 405}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982353862, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 0}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982383780, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 25600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982383780, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 855.6907815720855}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982383781, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 25600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982411475, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 51200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982411475, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 924.3786305101108}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982411476, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 51200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982437560, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 76800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982437561, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 981.4394897984624}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982437562, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 76800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982459918, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 102400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982459919, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1145.0648780889878}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982459920, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 102400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982482325, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 128000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982482325, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1142.5827433475088}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982484286, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 128000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982505394, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 153600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982505395, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1212.805915828462}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982505396, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 153600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982527852, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 179200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982527853, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1139.9951224520698}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982527854, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 179200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982550336, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 204800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982550337, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1138.6418971630007}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982550338, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 204800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982572841, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 230400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982572842, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1137.5938656575177}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982572843, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 230400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982595381, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 256000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982595381, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1135.8422433812862}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982597826, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 256000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982619039, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 281600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982619039, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1206.8123442220533}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982619041, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 281600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982641617, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 307200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982641618, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1133.9125487404337}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982641619, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 307200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982664209, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 332800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982664210, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1133.1967381478464}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982664211, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 332800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982686790, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 358400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982686791, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1133.7736943240027}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982686792, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 358400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982719510, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 384000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982719511, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 782.4273503432555}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982726085, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 384000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982787519, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 409600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982787520, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 416.7060511807983}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982787521, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 409600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982844855, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 435200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982844855, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 446.5019975624081}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982844857, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 435200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982872745, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 460800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982872745, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 917.940865443398}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982872747, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 460800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982895364, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 486400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982895364, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1131.875368577161}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982895365, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 486400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982933275, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 512000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982933276, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 675.2808086615112}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982935344, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 512000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982956622, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 537600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982956622, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1203.10948894431}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982956623, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 537600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982982910, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 563200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982982910, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 973.8909910795367}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745982982911, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 563200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983008797, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 588800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983008797, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 988.9539827158379}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983008798, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 588800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983033039, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 614400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983033040, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1056.0617809067767}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983033059, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 614400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983056619, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 640000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983056620, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1086.5588869982257}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983058754, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 640000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983084027, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 665600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983084027, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1012.9611301151516}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983084029, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 665600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983106681, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 691200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983106681, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.1130397372167}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983106683, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 691200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983129323, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 716800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983129323, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.7182242294462}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983129324, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 716800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983151959, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 742400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983151959, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.9958717229174}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983151960, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 742400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983174595, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 768000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983174595, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1131.0262283063034}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983176742, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 768000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983198005, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 793600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983198006, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1203.943974483505}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983198007, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 793600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983220664, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 819200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983220664, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.8811601770428}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983220665, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 819200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983243921, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 844800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983243922, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1100.7818238192726}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983243923, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 844800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983266570, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 870400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983266571, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.3572161104257}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983266572, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 870400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983289229, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 896000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983289229, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.8768527080654}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983291341, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 896000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983312652, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 921600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983312652, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1201.2460569098653}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983312653, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 921600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983335323, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 947200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983335323, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.265359734909}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983335324, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 947200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983357977, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 972800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983357977, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.0789628591951}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983357979, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 972800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983380637, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 998400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983380638, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.823103609986}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983380639, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 998400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983403316, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1024000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983403316, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.9154736067658}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983405446, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1024000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983426741, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1049600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983426741, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1202.151679951968}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983426742, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1049600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983449392, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1075200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983449392, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.2605470429983}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983449393, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1075200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983472068, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1100800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983472068, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.0049767741527}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983472069, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1100800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983494729, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1126400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983494729, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.749744314969}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983494731, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1126400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983517415, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1152000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983517415, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.5148808914012}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983519676, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1152000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983540994, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1177600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983540994, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.882955158006}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983540995, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1177600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983563680, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1203200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983563680, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.5260822322996}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983563681, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1203200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983586333, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1228800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983586334, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.1190222410798}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983586335, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1228800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983609440, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1254400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983609441, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1107.9447843301734}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983609442, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1254400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983631715, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1280000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983631715, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1149.3749296972253}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983634038, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1280000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983655346, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1305600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983655346, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1201.406411589189}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983655347, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1305600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983678017, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1331200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983678017, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.2580532547317}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983678018, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1331200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983700716, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1356800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983700716, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.8812204020435}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983700717, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1356800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983723382, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1382400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983723382, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.5022679167043}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983723383, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1382400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983746061, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1408000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983746061, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.8631972387511}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983748334, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1408000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983769650, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1433600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983769651, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.9549548328177}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983769652, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1433600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983792318, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1459200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983792319, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.404001546871}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983792320, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1459200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983814975, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1484800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983814975, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.9688517668221}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983814976, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1484800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983837629, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1510400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983837629, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1130.1178664020167}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983837630, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1510400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983860309, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1536000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983860309, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.8002697926695}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983862414, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1536000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983883741, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1561600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983883741, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.3371133675275}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983883742, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1561600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983906439, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1587200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983906439, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.9369729007094}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983906440, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1587200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983929110, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1612800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983929110, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.2483926656778}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983929111, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1612800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983951784, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1638400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983951785, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.0838097647238}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983951786, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1638400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983975070, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1664000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983975071, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1099.4309687046282}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983976672, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1664000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983997981, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1689600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983997982, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1201.3299299109915}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983997983, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1689600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984020668, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1715200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984020668, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.4665424937243}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984020670, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1715200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984043355, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1740800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984043355, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.4820285408264}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984043357, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1740800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984066052, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1766400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984066052, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.9718714242144}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984066054, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1766400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984088737, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1792000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984088737, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.570012449524}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984090846, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1792000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984112131, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1817600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984112132, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1202.6881008926152}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984112132, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1817600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984134810, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1843200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984134810, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.8646135422575}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984134812, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1843200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984157499, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1868800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984157499, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.387118461128}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984157500, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1868800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984180182, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1894400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984180182, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.668921263039}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984180183, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1894400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984202855, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1920000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984202855, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.1350260978104}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984204948, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1920000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984226278, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1945600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984226278, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.1764388962308}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984226279, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1945600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984248978, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1971200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984248978, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.8011880183064}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984248979, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1971200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984271651, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1996800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984271651, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.1644417582938}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984271652, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1996800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984294314, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2022400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984294314, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.650772442121}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984294315, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2022400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984317012, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2048000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984317012, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.9295133874493}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984319948, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2048000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984341281, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2073600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984341281, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.0347715101989}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984341282, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2073600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984363948, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2099200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984363948, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.452699195231}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984363949, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2099200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984386642, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2124800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984386642, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.1414339179726}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984386643, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2124800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984409330, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2150400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984409331, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.3701711139443}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984409332, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2150400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984431991, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2176000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984431991, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.7749025722526}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984434249, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2176000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984455574, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2201600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984455574, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1200.5008361555294}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984455575, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2201600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984478274, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2227200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984478274, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.8041013578352}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984478275, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2227200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984500958, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2252800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984500959, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.5910226755313}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984500959, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2252800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984523634, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2278400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984523634, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1129.0379141570802}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 8900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984523635, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2278400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984546312, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2304000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984546313, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.8671768473266}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984548575, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2304000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984569881, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2329600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984569881, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1201.5696380694678}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9100}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984569882, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2329600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984592568, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2355200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984592569, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.4340924266985}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984592570, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2355200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984615265, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2380800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984615265, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.9904061071052}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9300}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984615267, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2380800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984637953, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2406400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984637953, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.4412140074317}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984637954, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2406400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984660636, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2432000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984660636, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.6538279673507}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9500}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984662759, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2432000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984684067, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2457600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984684067, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1201.4193078496564}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984684068, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2457600}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984706771, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2483200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984706771, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1127.5978532766544}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9700}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984706773, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2483200}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984730378, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2508800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984730378, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1084.484444512463}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984730379, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2508800}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984753071, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2534400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984753071, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.1910543221497}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 9900}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984753072, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 2534400}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984775750, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 2560000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745984775751, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 1128.824280923853}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 10000}}
+1: [rank1]:[W430 03:46:29.765526656 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+2: [rank2]:[W430 03:46:29.775895759 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+0: [rank0]:[W430 03:46:29.782938268 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+3: [rank3]:[W430 03:46:29.785778970 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+4: [rank4]:[W430 03:46:29.786079339 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+5: [rank5]:[W430 03:46:29.795995960 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+6: [rank6]:[W430 03:46:29.805939547 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+7: [rank7]:[W430 03:46:29.815853252 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+5: [a3u5702-a3ultranodeset-4:435904] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+2: [a3u5702-a3ultranodeset-4:435909] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+3: [a3u5702-a3ultranodeset-4:435914] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+1: [a3u5702-a3ultranodeset-4:435919] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+0: Moving checkpoints to nemologs
+0: total 0
+0: drwxrwxr-x 5 justinpan_google_com justinpan_google_com 260 Apr 30 03:08 stable-diffusion2-train-250430025259148858329-1
+6: [a3u5702-a3ultranodeset-4:435926] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+7: [a3u5702-a3ultranodeset-4:435931] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+4: [a3u5702-a3ultranodeset-4:435936] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+0: [a3u5702-a3ultranodeset-4:436973] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+0: CKPT_PATH=/nemologs/stable-diffusion2-train-250430025259148858329-1/checkpoints/
+0: setting number of microbatches to constant 1
+2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/8
+2: [W430 03:55:52.995476677 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.995814121 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.996164486 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.996497670 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.996797768 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.997116296 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.997417477 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.997736317 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.998038859 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.998364222 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.998674173 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/8
+7: [W430 03:55:52.048669495 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.049015135 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.049341958 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.049665312 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.049973633 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.050297297 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.050599411 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.050920211 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.051231316 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.051540624 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:52.051850774 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/8
+3: [W430 03:55:52.275662871 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.275996381 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.276330747 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.276652047 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.276949527 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.277265198 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.277575716 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.277902704 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.278210715 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.278512097 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:52.278835341 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.397402765 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.397743130 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.398074245 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.398388204 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.398693065 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.398985260 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.399284157 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.399603986 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.399894012 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.400207013 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:52.400515990 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/8
+5: [W430 03:55:53.600393448 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.600736545 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.601064851 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.601377744 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.601693714 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.602012275 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.602309581 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.602619291 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.602908662 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.603229758 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+5: [W430 03:55:53.603536371 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.614240006 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.614566700 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.614874512 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.615196780 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.615504296 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.615817201 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.616121800 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.616444248 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.616745227 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.617045369 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+7: [W430 03:55:53.617359946 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.890571876 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.890891950 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.891240461 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.891548594 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.891859063 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.892162015 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.892461274 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.892777008 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.893073932 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.893383021 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+3: [W430 03:55:53.893693301 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.032859362 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.033208108 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.033528304 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.033841013 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.034149065 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.034446876 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.034743525 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.035064540 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.035358725 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.035659864 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+2: [W430 03:55:53.035962681 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-4]:29500 (errno: 22 - Invalid argument).
+0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/8
+6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/8
+1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/8
+4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/8
+0: :::MLLOG {"namespace": "", "time_ms": 1745985358052, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1024000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745986445206, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1024000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745986472005, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 105.55042542673783, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1024000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745986530136, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.14191940426826477, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1024000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745986560482, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1152000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745987644563, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1152000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745987670101, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 106.63367018451527, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1152000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745987728167, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.13936057686805725, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1152000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745987748027, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1280000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745988833087, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1280000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745988860184, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 109.48911925205005, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1280000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745988918603, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1320423185825348, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1280000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745988937546, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1408000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745990021865, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1408000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745990047679, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 88.7249622645736, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1408000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745990106157, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1497054100036621, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1408000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745990137427, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1536000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745991223873, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1536000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745991249429, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 91.00083948738518, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1536000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745991308108, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1564176380634308, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1536000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745991327114, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1664000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745992412728, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1664000}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745992439215, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 87.6204627311688, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1664000, "metric": "FID"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745992498959, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.15688766539096832, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1664000, "metric": "CLIP"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745983975069, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.10/dist-packages/hydra/core/utils.py", "lineno": 186, "status": "success", "step_num": 6500}}
+0: ENDING TIMING RUN AT 2025-04-30 05:55:05 AM
+0: RESULT,stable_diffusion,10415,justinpan_google_com,2025-04-30 03:01:30 AM
+++ date +%s
++ echo 'RUNANDTIME_STOP 1745992509'
+RUNANDTIME_STOP 1745992509
++ set -e
++ rm -rf /home/justinpan_google_com/private-sd/nemologs//stable-diffusion2-train-250428235304191124778/inference
++ '[' 1 -eq 1 ']'
+++ realpath /home/justinpan_google_com/private-sd/logdir/
++ srun --ntasks=1 --nodes=1 --container-name=stable_diffusion_200 --container-mounts=/home/justinpan_google_com/private-sd/logdir:/results --container-workdir=/results python3 -m mlperf_logging.compliance_checker --usage training --ruleset 4.1.0 --log_output /results/compliance_250430025259148858329.out /results/250430025259148858329_1.log
+INFO - Running compliance on file: /results/250430025259148858329_1.log
+INFO -  Compliance checks: training_4.1.0/common.yaml
+INFO -  Compliance checks: training_4.1.0/closed_common.yaml
+INFO -  Compliance checks: training_4.1.0/closed_stable_diffusion.yaml
+INFO - SUCCESS
+** Logging output also at /results/compliance_250430025259148858329.out
+++ date +%s
++ echo 'EXPERIMENT_STOP 1745992513'
+EXPERIMENT_STOP 1745992513
++ cleanup_pyxis
++ srun --ntasks=1 /bin/bash -c 'if [[ "$(enroot list)" ]]; then enroot remove -f $(enroot list); fi'

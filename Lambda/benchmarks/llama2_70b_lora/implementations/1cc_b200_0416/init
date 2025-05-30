@@ -1,0 +1,4 @@
+export DATADIR=/home/ubuntu/cluster-ml-b200-1cc/data/llama2_70b_lora/gov_report 
+export MODEL=/home/ubuntu/cluster-ml-b200-1cc/data/llama2_70b_lora/model 
+export LOGDIR=/home/ubuntu/cluster-ml-b200-1cc/mlcommon_training_5.0/Lambda/benchmarks/llama2_70b_lora/implementations/1cc_b200_0416/logs
+export CONT=nvcr.io/nvdlfwea/mlperftv50/llama2_70b_lora-amd:20250416

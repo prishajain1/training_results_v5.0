@@ -1,0 +1,535 @@
+time="2025-05-01T08:42:40Z" level=warning msg="Found orphan containers ([llmboost-training-llmboost-training-mlperf-5.0-dev-run-f957a1cc53bc llmboost-training-llmboost-training-mlperf-5.0-dev-run-217f09f86531 llmboost-training-llmboost-training-mlperf-5.0-dev-run-91e59e567f99 llmboost-training-llmboost-training-mlperf-5.0-dev-run-d1ce93cce096 llmboost-training-llmboost-training-mlperf-5.0-dev-run-2d851cf1a239 llmboost-training-llmboost-training-mlperf-5.0-prod-run-5da7c5990c16 llmboost-training-llmboost-training-mlperf-5.0-dev-run-7a6e1c9e6130 llmboost-training-llmboost-training-mlperf-5.0-dev-run-ce4c15a256ed llmboost-training-llmboost-training-mlperf-5.0-dev-run-5b071e5f8183 llmboost-training-llmboost-training-mlperf-5.0-dev-run-35fea8c514a8 llmboost-training-llmboost-training-mlperf-5.0-dev-run-15409a21a793 llmboost-training-llmboost-training-mlperf-5.0-prod-run-f0dc55211587 llmboost-training-llmboost-training-mlperf-5.0-dev-run-f86cf093b3fd llmboost-training-llmboost-training-mlperf-5.0-dev-run-577825b69118 llmboost-training-llmboost-training-mlperf-5.0-dev-run-7635fc7c822e llmboost-training-llmboost-training-mlperf-5.0-dev-run-b5d7f7b3c276 llmboost-training-llmboost-training-mlperf-5.0-dev-run-2fedfdfdb7d3]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up."
+#0 building with "default" instance using docker driver
+
+#1 [llmboost-training-mlperf-5.0-dev internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.36kB done
+#1 DONE 0.0s
+
+#2 [llmboost-training-mlperf-5.0-dev internal] load metadata for docker.io/rocm/mlperf-preview:llama2_70b_training_5.0
+#2 ...
+
+#3 [llmboost-training-mlperf-5.0-dev auth] rocm/mlperf-preview:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [llmboost-training-mlperf-5.0-dev internal] load metadata for docker.io/rocm/mlperf-preview:llama2_70b_training_5.0
+#2 DONE 1.6s
+
+#4 [llmboost-training-mlperf-5.0-dev internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [llmboost-training-mlperf-5.0-dev base 1/6] FROM docker.io/rocm/mlperf-preview:llama2_70b_training_5.0@sha256:e93fc49de52b3dac0593d0a988a91ee3cbe75f06e45f83e5e91f439dc1fbe85d
+#5 DONE 0.0s
+
+#6 [llmboost-training-mlperf-5.0-dev internal] load build context
+#6 transferring context: 109.36kB 0.1s done
+#6 DONE 0.1s
+
+#7 [llmboost-training-mlperf-5.0-dev base 5/6] COPY LICENSE /opt/mangoboost/LICENSE
+#7 CACHED
+
+#8 [llmboost-training-mlperf-5.0-dev base 2/6] WORKDIR /workspace
+#8 CACHED
+
+#9 [llmboost-training-mlperf-5.0-dev base 3/6] RUN python3 -m pip install --upgrade pip
+#9 CACHED
+
+#10 [llmboost-training-mlperf-5.0-dev base 4/6] RUN if [ "$PLATFORM" != "cuda" ]; then     git clone https://github.com/ROCm/rocm_bandwidth_test --depth 1 rocm_bandwidth_test     && cd rocm_bandwidth_test     && mkdir build     && cd build     && cmake -DCMAKE_MODULE_PATH="/workspace/rocm_bandwidth_test/cmake_modules" -DCMAKE_PREFIX_PATH="/opt/rocm/" ..     && make     && make install     && rm -rf /workspace/rocm_bandwidth_test;     fi
+#10 CACHED
+
+#11 [llmboost-training-mlperf-5.0-dev base 6/6] COPY docker/entrypoint.sh /opt/mangoboost/entrypoint.sh
+#11 CACHED
+
+#12 [llmboost-training-mlperf-5.0-dev dev 1/2] COPY . .
+#12 DONE 0.1s
+
+#13 [llmboost-training-mlperf-5.0-dev dev 2/2] RUN python3 -m pip install -e ".[dev]"
+#13 0.917 Obtaining file:///workspace
+#13 0.919   Installing build dependencies: started
+#13 2.705   Installing build dependencies: finished with status 'done'
+#13 2.706   Checking if build backend supports build_editable: started
+#13 2.927   Checking if build backend supports build_editable: finished with status 'done'
+#13 2.928   Getting requirements to build editable: started
+#13 3.105   Getting requirements to build editable: finished with status 'done'
+#13 3.106   Preparing editable metadata (pyproject.toml): started
+#13 3.268   Preparing editable metadata (pyproject.toml): finished with status 'done'
+#13 3.373 Collecting licensing (from llmboost==1.0.0)
+#13 3.405   Downloading licensing-0.51.tar.gz (14 kB)
+#13 3.411   Preparing metadata (setup.py): started
+#13 3.612   Preparing metadata (setup.py): finished with status 'done'
+#13 3.613 Requirement already satisfied: jinja2>=3.1.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from llmboost==1.0.0) (3.1.4)
+#13 3.630 Collecting prettytable (from llmboost==1.0.0)
+#13 3.635   Downloading prettytable-3.16.0-py3-none-any.whl.metadata (33 kB)
+#13 3.643 Requirement already satisfied: filelock in /opt/conda/envs/py_3.10/lib/python3.10/site-packages/filelock-3.18.0-py3.10.egg (from llmboost==1.0.0) (3.18.0)
+#13 3.695 Collecting fastapi (from llmboost==1.0.0)
+#13 3.701   Downloading fastapi-0.115.12-py3-none-any.whl.metadata (27 kB)
+#13 3.710 Requirement already satisfied: absl-py in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from llmboost==1.0.0) (2.2.2)
+#13 3.711 Requirement already satisfied: nltk in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from llmboost==1.0.0) (3.9.1)
+#13 3.711 Requirement already satisfied: rouge_score in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from llmboost==1.0.0) (0.1.2)
+#13 3.721 Collecting py-libnuma (from llmboost==1.0.0)
+#13 3.726   Downloading py_libnuma-1.2-py3-none-any.whl.metadata (3.0 kB)
+#13 3.823 Collecting websockets (from llmboost==1.0.0)
+#13 3.828   Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#13 3.842 Collecting faster-fifo (from llmboost==1.0.0)
+#13 3.847   Downloading faster_fifo-1.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.9 kB)
+#13 3.865 Collecting gunicorn (from llmboost==1.0.0)
+#13 3.870   Downloading gunicorn-23.0.0-py3-none-any.whl.metadata (4.4 kB)
+#13 3.910 Collecting uvloop (from llmboost==1.0.0)
+#13 3.916   Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#13 3.920 Requirement already satisfied: pydantic in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from llmboost==1.0.0) (2.11.3)
+#13 3.921 WARNING: llmboost 1.0.0 does not provide the extra 'dev'
+#13 3.922 Requirement already satisfied: MarkupSafe>=2.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from jinja2>=3.1.0->llmboost==1.0.0) (3.0.2)
+#13 3.951 Collecting starlette<0.47.0,>=0.40.0 (from fastapi->llmboost==1.0.0)
+#13 3.956   Downloading starlette-0.46.2-py3-none-any.whl.metadata (6.2 kB)
+#13 3.960 Requirement already satisfied: typing-extensions>=4.8.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from fastapi->llmboost==1.0.0) (4.13.2)
+#13 3.961 Requirement already satisfied: annotated-types>=0.6.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from pydantic->llmboost==1.0.0) (0.7.0)
+#13 3.961 Requirement already satisfied: pydantic-core==2.33.1 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from pydantic->llmboost==1.0.0) (2.33.1)
+#13 3.962 Requirement already satisfied: typing-inspection>=0.4.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from pydantic->llmboost==1.0.0) (0.4.0)
+#13 3.982 Collecting anyio<5,>=3.6.2 (from starlette<0.47.0,>=0.40.0->fastapi->llmboost==1.0.0)
+#13 3.987   Downloading anyio-4.9.0-py3-none-any.whl.metadata (4.7 kB)
+#13 3.993 Requirement already satisfied: exceptiongroup>=1.0.2 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi->llmboost==1.0.0) (1.2.2)
+#13 3.994 Requirement already satisfied: idna>=2.8 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi->llmboost==1.0.0) (3.10)
+#13 4.002 Collecting sniffio>=1.1 (from anyio<5,>=3.6.2->starlette<0.47.0,>=0.40.0->fastapi->llmboost==1.0.0)
+#13 4.006   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#13 4.016 Requirement already satisfied: packaging in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from gunicorn->llmboost==1.0.0) (24.2)
+#13 4.021 Requirement already satisfied: click in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from nltk->llmboost==1.0.0) (8.1.8)
+#13 4.021 Requirement already satisfied: joblib in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from nltk->llmboost==1.0.0) (1.4.2)
+#13 4.022 Requirement already satisfied: regex>=2021.8.3 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from nltk->llmboost==1.0.0) (2024.11.6)
+#13 4.022 Requirement already satisfied: tqdm in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from nltk->llmboost==1.0.0) (4.67.1)
+#13 4.026 Requirement already satisfied: wcwidth in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from prettytable->llmboost==1.0.0) (0.2.13)
+#13 4.028 Requirement already satisfied: numpy in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from rouge_score->llmboost==1.0.0) (1.26.4)
+#13 4.029 Requirement already satisfied: six>=1.14.0 in /opt/conda/envs/py_3.10/lib/python3.10/site-packages (from rouge_score->llmboost==1.0.0) (1.17.0)
+#13 4.043 Downloading fastapi-0.115.12-py3-none-any.whl (95 kB)
+#13 4.053 Downloading starlette-0.46.2-py3-none-any.whl (72 kB)
+#13 4.061 Downloading anyio-4.9.0-py3-none-any.whl (100 kB)
+#13 4.068 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#13 4.075 Downloading faster_fifo-1.5.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (388 kB)
+#13 4.094 Downloading gunicorn-23.0.0-py3-none-any.whl (85 kB)
+#13 4.101 Downloading prettytable-3.16.0-py3-none-any.whl (33 kB)
+#13 4.108 Downloading py_libnuma-1.2-py3-none-any.whl (7.7 kB)
+#13 4.114 Downloading uvloop-0.21.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.8 MB)
+#13 4.242    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 30.3 MB/s eta 0:00:00
+#13 4.248 Downloading websockets-15.0.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (181 kB)
+#13 4.268 Building wheels for collected packages: llmboost, licensing
+#13 4.269   Building editable for llmboost (pyproject.toml): started
+#13 4.452   Building editable for llmboost (pyproject.toml): finished with status 'done'
+#13 4.452   Created wheel for llmboost: filename=llmboost-1.0.0-0.editable-py3-none-any.whl size=4301 sha256=20e8927a9a322a8e12f0d07c04160740eb60cc975967409d633370fe21cef55a
+#13 4.452   Stored in directory: /tmp/pip-ephem-wheel-cache-804cvg6_/wheels/80/75/f6/d63789e3414f7f88206102fa596a8ddafc889f48984e8712b3
+#13 4.455   DEPRECATION: Building 'licensing' using the legacy setup.py bdist_wheel mechanism, which will be removed in a future version. pip 25.3 will enforce this behaviour change. A possible replacement is to use the standardized build interface by setting the `--use-pep517` option, (possibly combined with `--no-build-isolation`), or adding a `pyproject.toml` file to the source tree of 'licensing'. Discussion can be found at https://github.com/pypa/pip/issues/6334
+#13 4.455   Building wheel for licensing (setup.py): started
+#13 4.783   Building wheel for licensing (setup.py): finished with status 'done'
+#13 4.783   Created wheel for licensing: filename=licensing-0.51-py3-none-any.whl size=15992 sha256=d5ae843332e032a4e5382498bd3defdc1eb85e64f3b6bf9236935deaf0240f21
+#13 4.784   Stored in directory: /root/.cache/pip/wheels/a7/e6/d4/ecbe18f1ee061933785274ee41d129484eb8c409d0a358bf5a
+#13 4.785 Successfully built llmboost licensing
+#13 5.653 Installing collected packages: py-libnuma, licensing, websockets, uvloop, sniffio, prettytable, gunicorn, faster-fifo, anyio, starlette, fastapi, llmboost
+#13 6.054 
+#13 6.084 Successfully installed anyio-4.9.0 fastapi-0.115.12 faster-fifo-1.5.2 gunicorn-23.0.0 licensing-0.51 llmboost-1.0.0 prettytable-3.16.0 py-libnuma-1.2 sniffio-1.3.1 starlette-0.46.2 uvloop-0.21.0 websockets-15.0.1
+#13 6.084 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#13 DONE 6.3s
+
+#14 [llmboost-training-mlperf-5.0-dev] exporting to image
+#14 exporting layers 0.1s done
+#14 writing image sha256:3336c61ef544e464577a80533cfa51acd8990740e40ca0daf71d96f810e2cb46 done
+#14 naming to docker.io/library/mb-llmboost-training:mlperf-5.0-dev done
+#14 DONE 0.1s
+
+#15 [llmboost-training-mlperf-5.0-dev] resolving provenance for metadata file
+#15 DONE 0.0s
+
+        ========================================
+              MangoBoost, Inc. LLMBoost
+        ========================================
+
+Copyright 2025, MangoBoost, Inc. All rights reserved.
+
+Redistribution and modification in source and binary forms is 
+strictly prohibited.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+STARTING TIMING RUN AT 2025-05-01 08:42:57 AM
+W0501 08:43:05.904000 80 site-packages/torch/distributed/run.py:792] 
+W0501 08:43:05.904000 80 site-packages/torch/distributed/run.py:792] *****************************************
+W0501 08:43:05.904000 80 site-packages/torch/distributed/run.py:792] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+W0501 08:43:05.904000 80 site-packages/torch/distributed/run.py:792] *****************************************
+[W501 08:43:06.904732267 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+`Trainer(limit_train_batches=1.0)` was configured so 100% of the batches per epoch will be used..
+`Trainer(limit_val_batches=1.0)` was configured so 100% of the batches will be used..
+25-05-01 08:43:42 - PID:146 - rank:(0, 0, 0, 0) - microbatches.py:39 - INFO - setting number of micro-batches to constant 1
+Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/32
+[W501 08:43:42.752988094 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/32
+[W501 08:43:42.757720086 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/32
+[W501 08:43:42.865807165 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/32
+[W501 08:43:43.004648639 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+You are using a CUDA device ('AMD Instinct MI300X') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/32
+[W501 08:43:43.006997945 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+----------------------------------------------------------------------------------------------------
+distributed_backend=nccl
+All distributed processes registered. Starting with 32 processes
+----------------------------------------------------------------------------------------------------
+
+Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/32
+[W501 08:43:43.143846144 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/32
+[W501 08:43:43.192148918 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/32
+[W501 08:43:43.213075656 socket.cpp:757] [c10d] The client socket cannot be initialized to connect to [ai1.mbk.ifra]:23456 (errno: 97 - Address family not supported by protocol).
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+
+ai1:147:1438 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:1437 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:1434 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:1439 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:1432 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:1436 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:1435 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:1433 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+Loading distributed checkpoint with TensorStoreLoadShardedStrategy
+make: Entering directory '/workspace/deps/nemo/nemo/collections/nlp/data/language_modeling/megatron'
+g++ -O3 -Wall -shared -std=c++11 -fPIC -fdiagnostics-color -I/opt/conda/envs/py_3.10/include/python3.10 -I/opt/conda/envs/py_3.10/lib/python3.10/site-packages/pybind11/include helpers.cpp -o helpers.cpython-310-x86_64-linux-gnu.so
+make: Leaving directory '/workspace/deps/nemo/nemo/collections/nlp/data/language_modeling/megatron'
+> building indices for blendable datasets ...
+ > sample ratios:
+   dataset 0, input: 1, achieved: 1
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 4 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 6 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 7 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+LOCAL_RANK: 5 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+
+  | Name  | Type          | Params | Mode 
+------------------------------------------------
+0 | model | Float16Module | 69.0 B | train
+------------------------------------------------
+44.6 M    Trainable params
+69.0 B    Non-trainable params
+69.0 B    Total params
+276,084.851Total estimated model params size (MB)
+2490      Modules in train mode
+0         Modules in eval mode
+:::MLLOG {"namespace": "", "time_ms": 1746089490038, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 244}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 245}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "llama2_70b_lora", "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 246}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "MangoBoost", "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 246}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 246}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 246}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "4xMI300X", "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 246}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "seed", "value": 4958, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 247}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490039, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 8, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 253}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490509, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 3901, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 258}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490523, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 173, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 262}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490523, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_factor", "value": 0.0, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 266}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "opt_adamw_weight_decay", "value": 0.0001, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 270}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "opt_gradient_clip_norm", "value": 0.3, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 274}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 279}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_training_steps", "value": 600, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 280}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 0.0005, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 281}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "lora_rank", "value": 16, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 282}}
+:::MLLOG {"namespace": "", "time_ms": 1746089490524, "event_type": "POINT_IN_TIME", "key": "lora_alpha", "value": 32, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 283}}
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+
+ai1:150:3654 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:3655 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+
+ai1:148:3652 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:3656 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:3658 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:3659 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:3661 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:3662 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+
+ai1:151:3685 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:3696 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:3695 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:3686 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:3706 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:3704 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:3703 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:3705 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:5609 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:5604 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:5602 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:5606 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:5605 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:5607 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:5603 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:5608 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+RCCL version : 2.22.3-HEAD:271856d
+HIP version  : 6.4.43482-0f2d60242
+ROCm version : 6.4.0.0-47-73dae9c
+Hostname     : ai1
+Librccl path : /opt/rocm/lib/librccl.so.1
+
+ai1:151:5635 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:5637 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:5639 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:5641 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:5645 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:5644 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:5647 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:5649 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:5682 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:5681 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:5680 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:5683 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:5678 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:5677 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:5675 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:5676 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:5712 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:5718 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:5714 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:5715 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:5719 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:5716 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:5713 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:5717 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:7315 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:7319 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:7320 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:7314 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:7316 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:7317 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:146:7313 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:7318 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+:::MLLOG {"namespace": "", "time_ms": 1746089580633, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 190}}
+:::MLLOG {"namespace": "", "time_ms": 1746089580633, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 190}}
+:::MLLOG {"namespace": "", "time_ms": 1746089580634, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 191, "samples_count": 0}}
+
+ai1:146:7364 [0] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:153:7376 [7] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:147:7369 [1] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:151:7366 [5] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:149:7368 [3] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:152:7375 [6] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:148:7371 [2] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+
+ai1:150:7374 [4] /longer_pathname_so_that_rpms_can_support_packaging_the_debug_info_for_all_os_profiles/src/out/ubuntu-22.04/22.04/build/rccl/hipify/src/init.cc:1954 NCCL WARN MSCCL++: Cannot enable MSCCL++; environment is not MSCCL compatible
+:::MLLOG {"namespace": "", "time_ms": 1746089594768, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 2.0307188034057617, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 80, "lr": 0.0004996573836886434}}
+:::MLLOG {"namespace": "", "time_ms": 1746089608653, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3619436025619507, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 160, "lr": 0.0004986304738420684}}
+:::MLLOG {"namespace": "", "time_ms": 1746089622577, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3206508159637451, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 240, "lr": 0.0004969220851487844}}
+:::MLLOG {"namespace": "", "time_ms": 1746089636551, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3811345100402832, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 320, "lr": 0.0004945369001834514}}
+:::MLLOG {"namespace": "", "time_ms": 1746089650551, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3792731761932373, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 400, "lr": 0.0004914814565722671}}
+:::MLLOG {"namespace": "", "time_ms": 1746089664552, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2994837760925293, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 480, "lr": 0.0004877641290737884}}
+:::MLLOG {"namespace": "", "time_ms": 1746089678581, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2459208965301514, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 560, "lr": 0.00048339510662430044}}
+:::MLLOG {"namespace": "", "time_ms": 1746089692607, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3380507230758667, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 640, "lr": 0.0004783863644106502}}
+:::MLLOG {"namespace": "", "time_ms": 1746089706630, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3446043729782104, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 720, "lr": 0.00047275163104709196}}
+:::MLLOG {"namespace": "", "time_ms": 1746089720661, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3496334552764893, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 800, "lr": 0.0004665063509461097}}
+:::MLLOG {"namespace": "", "time_ms": 1746089734678, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3841564655303955, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 880, "lr": 0.00045966764198635603}}
+:::MLLOG {"namespace": "", "time_ms": 1746089748685, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3406565189361572, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 960, "lr": 0.0004522542485937369}}
+:::MLLOG {"namespace": "", "time_ms": 1746089762674, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3508049249649048, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1040, "lr": 0.0004442864903642427}}
+:::MLLOG {"namespace": "", "time_ms": 1746089776685, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.283244252204895, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1120, "lr": 0.0004357862063693486}}
+:::MLLOG {"namespace": "", "time_ms": 1746089790839, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2415575981140137, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1200, "lr": 0.00042677669529663686}}
+:::MLLOG {"namespace": "", "time_ms": 1746089804844, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3280662298202515, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1280, "lr": 0.0004172826515897146}}
+:::MLLOG {"namespace": "", "time_ms": 1746089818853, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2727010250091553, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1360, "lr": 0.0004073300977624594}}
+:::MLLOG {"namespace": "", "time_ms": 1746089832866, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.252800703048706, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1440, "lr": 0.0003969463130731183}}
+:::MLLOG {"namespace": "", "time_ms": 1746089846887, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3956899642944336, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1520, "lr": 0.0003861597587537568}}
+:::MLLOG {"namespace": "", "time_ms": 1746089879853, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.954911517951114}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 1536}}
+:::MLLOG {"namespace": "", "time_ms": 1746089879853, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 1536, "curr_global_step": 192, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746089879853, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 1536}}
+:::MLLOG {"namespace": "", "time_ms": 1746089892881, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.940760612487793, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 1536}}
+:::MLLOG {"namespace": "", "time_ms": 1746089892881, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 1536}}
+:::MLLOG {"namespace": "", "time_ms": 1746089892881, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 174, "samples_count": 1536}}
+:::MLLOG {"namespace": "", "time_ms": 1746089904038, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.258997917175293, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1600, "lr": 0.000375}}
+:::MLLOG {"namespace": "", "time_ms": 1746089918009, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3208400011062622, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1680, "lr": 0.00036349762493488667}}
+:::MLLOG {"namespace": "", "time_ms": 1746089931979, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.371313452720642, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1760, "lr": 0.00035168416076895}}
+:::MLLOG {"namespace": "", "time_ms": 1746089945984, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2883129119873047, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1840, "lr": 0.00033959198738632503}}
+:::MLLOG {"namespace": "", "time_ms": 1746089959964, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3507230281829834, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 1920, "lr": 0.00032725424859373687}}
+:::MLLOG {"namespace": "", "time_ms": 1746089959978, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.9832142189289135}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 1920}}
+:::MLLOG {"namespace": "", "time_ms": 1746089959978, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 1920, "curr_global_step": 240, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746089959978, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 1920}}
+:::MLLOG {"namespace": "", "time_ms": 1746089972077, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9333001971244812, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 1920}}
+:::MLLOG {"namespace": "", "time_ms": 1746089972077, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 1920}}
+:::MLLOG {"namespace": "", "time_ms": 1746089972077, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 174, "samples_count": 1920}}
+:::MLLOG {"namespace": "", "time_ms": 1746089986080, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2479557991027832, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2000, "lr": 0.0003147047612756302}}
+:::MLLOG {"namespace": "", "time_ms": 1746090000074, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.308227777481079, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2080, "lr": 0.00030197792270443986}}
+:::MLLOG {"namespace": "", "time_ms": 1746090014095, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2959237098693848, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2160, "lr": 0.00028910861626005774}}
+:::MLLOG {"namespace": "", "time_ms": 1746090028107, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.1721761226654053, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2240, "lr": 0.00027613211581691346}}
+:::MLLOG {"namespace": "", "time_ms": 1746090039352, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.965540442577523}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 2304}}
+:::MLLOG {"namespace": "", "time_ms": 1746090039352, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 2304, "curr_global_step": 288, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746090039352, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 2304}}
+:::MLLOG {"namespace": "", "time_ms": 1746090051446, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9310493469238281, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 2304}}
+:::MLLOG {"namespace": "", "time_ms": 1746090051446, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 2304}}
+:::MLLOG {"namespace": "", "time_ms": 1746090051446, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 174, "samples_count": 2304}}
+:::MLLOG {"namespace": "", "time_ms": 1746090054254, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3287336826324463, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2320, "lr": 0.000263083989060736}}
+:::MLLOG {"namespace": "", "time_ms": 1746090068279, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3383606672286987, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2400, "lr": 0.00025}}
+:::MLLOG {"namespace": "", "time_ms": 1746090082327, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.1595866680145264, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2480, "lr": 0.00023691601093926405}}
+:::MLLOG {"namespace": "", "time_ms": 1746090096384, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2885632514953613, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2560, "lr": 0.00022386788418308668}}
+:::MLLOG {"namespace": "", "time_ms": 1746090110482, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2592427730560303, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2640, "lr": 0.00021089138373994235}}
+:::MLLOG {"namespace": "", "time_ms": 1746090118997, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.948051870354294}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 2688}}
+:::MLLOG {"namespace": "", "time_ms": 1746090118997, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 2688, "curr_global_step": 336, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746090118997, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 2688}}
+:::MLLOG {"namespace": "", "time_ms": 1746090131155, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9282491207122803, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 2688}}
+:::MLLOG {"namespace": "", "time_ms": 1746090131155, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 2688}}
+:::MLLOG {"namespace": "", "time_ms": 1746090131155, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 174, "samples_count": 2688}}
+:::MLLOG {"namespace": "", "time_ms": 1746090136809, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.231926441192627, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2720, "lr": 0.00019802207729556015}}
+:::MLLOG {"namespace": "", "time_ms": 1746090150971, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2985886335372925, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2800, "lr": 0.00018529523872436984}}
+:::MLLOG {"namespace": "", "time_ms": 1746090165132, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3161425590515137, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2880, "lr": 0.00017274575140626317}}
+:::MLLOG {"namespace": "", "time_ms": 1746090179244, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3900636434555054, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 2960, "lr": 0.00016040801261367498}}
+:::MLLOG {"namespace": "", "time_ms": 1746090193364, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2524440288543701, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3040, "lr": 0.00014831583923104993}}
+:::MLLOG {"namespace": "", "time_ms": 1746090199001, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.942458280359961}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 3072}}
+:::MLLOG {"namespace": "", "time_ms": 1746090199001, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 3072, "curr_global_step": 384, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746090199001, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 3072}}
+:::MLLOG {"namespace": "", "time_ms": 1746090211125, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9273264408111572, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 3072}}
+:::MLLOG {"namespace": "", "time_ms": 1746090211126, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 3072}}
+:::MLLOG {"namespace": "", "time_ms": 1746090211126, "event_type": "INTERVAL_START", "key": "block_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 174, "samples_count": 3072}}
+:::MLLOG {"namespace": "", "time_ms": 1746090219606, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.3287956714630127, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3120, "lr": 0.00013650237506511331}}
+:::MLLOG {"namespace": "", "time_ms": 1746090233726, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2439570426940918, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3200, "lr": 0.00012499999999999995}}
+:::MLLOG {"namespace": "", "time_ms": 1746090247788, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.337270736694336, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3280, "lr": 0.00011384024124624331}}
+:::MLLOG {"namespace": "", "time_ms": 1746090261856, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.2878780364990234, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3360, "lr": 0.00010305368692688174}}
+:::MLLOG {"namespace": "", "time_ms": 1746090275932, "event_type": "POINT_IN_TIME", "key": "train_loss", "value": 1.316656470298767, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 138, "samples_count": 3440, "lr": 9.266990223754068e-05}}
+:::MLLOG {"namespace": "", "time_ms": 1746090278758, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5.952628458478522}, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 208, "step": 3456}}
+:::MLLOG {"namespace": "", "time_ms": 1746090278759, "event_type": "INTERVAL_END", "key": "block_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 151, "samples_count": 3456, "curr_global_step": 432, "self.gbs": 8}}
+:::MLLOG {"namespace": "", "time_ms": 1746090278759, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 160, "samples_count": 3456}}
+:::MLLOG {"namespace": "", "time_ms": 1746090290894, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.9227363467216492, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 228, "samples_count": 3456}}
+:::MLLOG {"namespace": "", "time_ms": 1746090290894, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 233, "samples_count": 3456}}
+:::MLLOG {"namespace": "", "time_ms": 1746090290901, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/workspace/mlperf_training/custom_callbacks.py", "lineno": 196, "samples_count": 3456, "status": "success", "duration": "710.2667238712311 sec -> 11.837778731187184 minutes"}}
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+FlashAttention Installed
+ENDING TIMING RUN AT 2025-05-01 09:06:28 AM
+RESULT,LLM_FINETUNING,,1411,AMD,2025-05-01 08:42:57 AM
+Config shell script: config_MI300X_4x8x1.sh
+Starting multi-node MLPerf training benchmark...
+Master address: 10.4.16.1
+Running in multi-node mode...
+MLPerf training benchmark completed.

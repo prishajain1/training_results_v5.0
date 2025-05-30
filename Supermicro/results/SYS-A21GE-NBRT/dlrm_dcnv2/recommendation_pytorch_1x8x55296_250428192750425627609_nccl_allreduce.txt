@@ -1,0 +1,21 @@
++ srun --mpi=pmix --ntasks-per-node=1 --time=10 --container-name=recommendation_36 --no-container-mount-home --container-remap-root --container-writable all_reduce_perf_mpi -b 38.3M -e 38.3M -t 8 -d half
+# nThread 8 nGpus 1 minBytes 40160460 maxBytes 40160460 step: 1048576(bytes) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 297822 on sys-a21ge-nbrt device  0 [0x1b] NVIDIA B200
+#  Rank  1 Group  0 Pid 297822 on sys-a21ge-nbrt device  1 [0x40] NVIDIA B200
+#  Rank  2 Group  0 Pid 297822 on sys-a21ge-nbrt device  2 [0x53] NVIDIA B200
+#  Rank  3 Group  0 Pid 297822 on sys-a21ge-nbrt device  3 [0x66] NVIDIA B200
+#  Rank  4 Group  0 Pid 297822 on sys-a21ge-nbrt device  4 [0x9c] NVIDIA B200
+#  Rank  5 Group  0 Pid 297822 on sys-a21ge-nbrt device  5 [0xc0] NVIDIA B200
+#  Rank  6 Group  0 Pid 297822 on sys-a21ge-nbrt device  6 [0xd1] NVIDIA B200
+#  Rank  7 Group  0 Pid 297822 on sys-a21ge-nbrt device  7 [0xe5] NVIDIA B200
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    40160460      20080230      half     sum      -1    180.6  222.42  389.23      0    173.0  232.17  406.30      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 397.767 
+#
+

@@ -1,0 +1,2227 @@
++ echo 'Beginning trial 01 of 12'
+Beginning trial 01 of 12
++ echo ':::DLPAL /mlptrn_50/ssd_0423.sqsh 82 1 as-a126gs-tnbr '\''unknown'\'' AS-A126GS-TNBR_001x08x032'
+:::DLPAL /mlptrn_50/ssd_0423.sqsh 82 1 as-a126gs-tnbr 'unknown' AS-A126GS-TNBR_001x08x032
+++ srun -N1 -n1 --container-name=single_stage_detector_82 --no-container-mount-home --container-writable mlperf-sysjson.sh
++ echo ':::SYSJSON {"submitter":"Supermicro_77","division":"closed","status":"Available on-premise","system_name":"AS-A126GS-TNBR","number_of_nodes":"1","host_processors_per_node":"2","host_processor_model_name":"AMD EPYC 9575F 64-Core Processor","host_processor_core_count":"64","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"3.0 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA B200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"183359 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3-fix-v2.25.1-1","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-58-generic","nvidia_kernel_driver":"570.133.20"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}'
+:::SYSJSON {"submitter":"Supermicro_77","division":"closed","status":"Available on-premise","system_name":"AS-A126GS-TNBR","number_of_nodes":"1","host_processors_per_node":"2","host_processor_model_name":"AMD EPYC 9575F 64-Core Processor","host_processor_core_count":"64","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"3.0 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA B200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"183359 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 25.04","framework_name":"","other_software_stack":{"cuda_version":"12.9.0.036","cuda_driver_version":"575.51.02","nccl_version":"2.26.3-fix-v2.25.1-1","cublas_version":"12.9.0.2","cudnn_version":"9.9.0.52","trt_version":"10.9.0.34+cuda12.8","dali_version":"1.48.0","mofed_version":"5.4-rdmacore50.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-58-generic","nvidia_kernel_driver":"570.133.20"},"operating_system":"Ubuntu 24.04.2 LTS","sw_notes":""}
++ srun -N1 -n1 --container-name=single_stage_detector_82 --no-container-mount-home --container-writable bash -c 'echo ":::GITCOMMITID ${GIT_COMMIT_ID} ${LAUNCHER_GIT_COMMIT_ID}"'
+:::GITCOMMITID 8c262b08b227bd43cefaeedd061fe71d67271031 
++ srun -N1 -n1 --container-name=single_stage_detector_82 --no-container-mount-home --container-writable python -c ''
++ '[' 1 -eq 1 ']'
++ srun --ntasks-per-node=1 bash -c 'echo -n '\''Clearing cache on '\'' && hostname && sync && sudo /sbin/sysctl vm.drop_caches=3'
+Clearing cache on as-a126gs-tnbr
+vm.drop_caches = 3
++ srun --ntasks-per-node=1 --container-name=single_stage_detector_82 --no-container-mount-home --container-writable python -c '
+from mlperf_logger import mllogger
+mllogger.event(key=mllogger.constants.CACHE_CLEAR, value=True)'
+:::MLLOG {"namespace": "", "time_ms": 1745493202216, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 3}}
++ sleep 10
++ set +e
+++ date +%s
++ echo 'RUNANDTIME_START 1745493212'
+RUNANDTIME_START 1745493212
++ srun -l --ntasks-per-node=8 --time=33 --container-name=single_stage_detector_82 --no-container-mount-home --container-writable --container-mounts=/mlptrn_data/openimages-v6-mlperf:/datasets/open-images-v6,./results:/results,/mlptrn_data/ssd:/root/.cache/torch --container-workdir=/workspace/ssd --container-env=MASTER_PORT,MASTER_ADDR slurm2pytorch ./run_and_time.sh
+7: RANK 7: LOCAL_RANK 7, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 7, SLURM_LOCALID 7, OMP_NUM_THREADS 1
+7: running benchmark
+6: RANK 6: LOCAL_RANK 6, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 6, SLURM_LOCALID 6, OMP_NUM_THREADS 1
+6: running benchmark
+4: RANK 4: LOCAL_RANK 4, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 4, SLURM_LOCALID 4, OMP_NUM_THREADS 1
+4: running benchmark
+3: RANK 3: LOCAL_RANK 3, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 3, SLURM_LOCALID 3, OMP_NUM_THREADS 1
+3: running benchmark
+2: RANK 2: LOCAL_RANK 2, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 2, SLURM_LOCALID 2, OMP_NUM_THREADS 1
+2: running benchmark
+5: RANK 5: LOCAL_RANK 5, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 5, SLURM_LOCALID 5, OMP_NUM_THREADS 1
+5: running benchmark
+1: RANK 1: LOCAL_RANK 1, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 1, SLURM_LOCALID 1, OMP_NUM_THREADS 1
+1: running benchmark
+0: RANK 0: LOCAL_RANK 0, MASTER_ADDR as-a126gs-tnbr, MASTER_PORT 29500, WORLD_SIZE 8, MLPERF_SLURM_FIRSTNODE , SLURM_JOB_ID 82, SLURM_NTASKS 8, SLURM_PROCID 0, SLURM_LOCALID 0, OMP_NUM_THREADS 1
+0: running benchmark
+0: | distributed init (rank 0): env://
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229645, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "retinanet", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 352}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229645, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "Supermicro", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 352}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229645, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 352}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229645, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 352}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229645, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "1xAS-A126GS-TNBR", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 352}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229646, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 353}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229669, "event_type": "POINT_IN_TIME", "key": "seed", "value": 1410697730, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 366}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229669, "event_type": "POINT_IN_TIME", "key": "local_batch_size", "value": 32, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 369}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229669, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 256, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 370}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229669, "event_type": "POINT_IN_TIME", "key": "epoch_count", "value": 8, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 371}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229669, "event_type": "POINT_IN_TIME", "key": "first_epoch_num", "value": 0, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 372}}
+0: Namespace(backbone='resnext50_32x4d', trainable_backbone_layers=3, sync_bn=False, data_layout='channels_last', amp=True, async_coco=True, async_coco_check_freq=20, num_eval_ranks=8, dataset='openimages-mlperf', dataset_path='/datasets/open-images-v6', num_classes=None, train_data_path=None, train_annotations_file=None, val_data_path=None, val_annotations_file=None, image_size=[800, 800], data_augmentation='hflip', epochs=8, max_iters_per_epoch=None, max_eval_iters_per_epoch=None, start_epoch=0, output_dir=None, target_map=0.34, resume='', pretrained=False, batch_size=32, eval_batch_size=32, lr=8.5e-05, warmup_epochs=0, warmup_factor=0.001, workers=4, print_freq=20, eval_print_freq=20, test_only=False, seed=1410697730, device='cuda', cocoeval='nvidia', coco_threads=8, world_size=8, dist_url='env://', frozen_bn_opt=True, frozen_bn_fp16=True, jit=True, cuda_graphs=True, cuda_graphs_eval=False, cls_head_pad=True, reg_head_pad=True, cuda_graphs_syn=True, model_warmup_epochs=16, master_weights=True, dali=True, dali
+0: _matched_idxs=True, dali_eval=True, dali_eval_cache=False, dali_prefetch_queue_depth=2, dali_cpu_decode=True, dali_pinned_memory_size=268435456, dali_cmn=0, dali_cmn_hint=0, dali_decoder_hint_height=7360, dali_decoder_hint_width=7360, dali_decoder_hw_load=0.65, dali_input_batch_multiplier=1, dali_eval_cmn_hint=0, dali_eval_decoder_hint_height=0, dali_eval_decoder_hint_width=0, dali_eval_decoder_hw_load=0.65, dali_eval_input_batch_multiplier=1, dali_sync=False, dali_resize_first=False, apex_adam=True, apex_focal_loss=True, apex_backbone_fusion=False, apex_head_fusion=True, broadcast_buffers=False, fp16_allreduce=False, ddp_bucket_sz=25, ddp_first_bucket_sz=None, no_gradient_as_bucket_view=False, max_boxes=1000, cudnn_bench=False, deterministic=False, not_graphed_prologues=False, metric_loss=False, syn_dataset=0, sync_after_graph_replay=False, allreduce_barrier=False, skip_eval=False, cuda_profiler=False, cuda_profiler_eval=False, cuda_profiler_start=-1, cuda_profiler_stop=-1, power_benchmark=False, power_susta
+0: in_time=600, rank=0, gpu=0, distributed=True, dist_backend='nccl', ranks=[0, 1, 2, 3, 4, 5, 6, 7], num_train_ranks=8, train_ranks=[0, 1, 2, 3, 4, 5, 6, 7], eval_ranks=[0, 1, 2, 3, 4, 5, 6, 7], train_rank=0, eval_rank=0)
+0: Getting dataset information
+0: Creating model
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229673, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 209, "tensor": "module.backbone.fpn.extra_blocks.p6.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229679, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 211, "tensor": "module.backbone.fpn.extra_blocks.p6.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229679, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 209, "tensor": "module.backbone.fpn.extra_blocks.p7.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229680, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 211, "tensor": "module.backbone.fpn.extra_blocks.p7.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229745, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.0.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.0.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.0.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.0.downsample.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.1.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229746, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.1.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.1.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.2.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.2.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer1.2.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.0.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.0.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229747, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.0.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229748, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.0.downsample.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229748, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.1.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229748, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.1.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229749, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.1.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229749, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.2.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229749, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.2.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229749, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.2.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229750, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.3.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229750, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.3.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229750, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer2.3.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229751, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.0.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229751, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.0.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229751, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.0.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229753, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.0.downsample.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229754, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.1.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229755, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.1.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229756, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.1.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229757, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.2.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229758, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.2.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229758, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.2.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229760, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.3.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229761, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.3.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229761, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.3.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229763, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.4.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229764, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.4.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229764, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.4.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229765, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.5.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229767, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.5.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229767, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer3.5.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229768, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.0.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229771, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.0.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229772, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.0.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229777, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.0.downsample.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229782, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.1.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229787, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.1.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229787, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.1.conv3.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229793, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.2.conv1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229798, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.2.conv2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493229798, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/resnet.py", "lineno": 286, "tensor": "module.backbone.body.layer4.2.conv3.weight"}}
+6: | distributed init (rank 6): env://
+6: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+5: | distributed init (rank 5): env://
+5: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+3: | distributed init (rank 3): env://
+3: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+7: | distributed init (rank 7): env://
+7: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+2: | distributed init (rank 2): env://
+2: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+1: | distributed init (rank 1): env://
+1: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+0: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+4: | distributed init (rank 4): env://
+4: Downloading: "https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth" to /.cache/torch/hub/checkpoints/resnext50_32x4d-7cdf4587.pth
+5: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  1%|          | 1.12M/95.8M [00:00<00:08, 11.6MB/s]
+  2%|▏         | 2.25M/95.8M [00:00<00:08, 11.7MB/s]
+  4%|▎         | 3.50M/95.8M [00:00<00:07, 12.2MB/s]
+  5%|▍         | 4.75M/95.8M [00:00<00:07, 12.2MB/s]
+  6%|▋         | 6.00M/95.8M [00:00<00:07, 12.3MB/s]
+  8%|▊         | 7.25M/95.8M [00:00<00:07, 12.5MB/s]
+  9%|▉         | 8.62M/95.8M [00:00<00:07, 12.8MB/s]
+ 10%|█         | 9.88M/95.8M [00:00<00:07, 12.7MB/s]
+ 12%|█▏        | 11.1M/95.8M [00:01<00:09, 9.72MB/s]
+ 13%|█▎        | 12.4M/95.8M [00:01<00:08, 10.2MB/s]
+ 14%|█▍        | 13.5M/95.8M [00:01<00:08, 9.68MB/s]
+ 15%|█▌        | 14.5M/95.8M [00:01<00:08, 9.57MB/s]
+ 16%|█▌        | 15.5M/95.8M [00:01<00:08, 9.56MB/s]
+ 17%|█▋        | 16.5M/95.8M [00:01<00:08, 9.70MB/s]
+ 18%|█▊        | 17.5M/95.8M [00:01<00:08, 9.81MB/s]
+ 19%|█▉        | 18.5M/95.8M [00:01<00:08, 9.99MB/s]
+ 20%|██        | 19.6M/95.8M [00:01<00:07, 10.4MB/s]
+ 22%|██▏       | 20.8M
+2: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  1%|          | 1.12M/95.8M [00:00<00:08, 11.8MB/s]
+  3%|▎         | 3.12M/95.8M [00:00<00:05, 16.5MB/s]
+  5%|▌         | 5.12M/95.8M [00:00<00:05, 18.0MB/s]
+  7%|▋         | 7.00M/95.8M [00:00<00:05, 17.6MB/s]
+ 10%|▉         | 9.25M/95.8M [00:00<00:04, 19.4MB/s]
+ 12%|█▏        | 11.2M/95.8M [00:00<00:04, 18.9MB/s]
+ 14%|█▍        | 13.5M/95.8M [00:00<00:04, 19.4MB/s]
+ 16%|█▌        | 15.4M/95.8M [00:00<00:04, 19.2MB/s]
+ 18%|█▊        | 17.2M/95.8M [00:01<00:04, 17.2MB/s]
+ 20%|█▉        | 19.0M/95.8M [00:01<00:04, 16.4MB/s]
+ 22%|██▏       | 20.6M/95.8M [00:01<00:05, 15.7MB/s]
+ 23%|██▎       | 22.2M/95.8M [00:01<00:05, 15.2MB/s]
+ 25%|██▍       | 23.8M/95.8M [00:01<00:05, 14.9MB/s]
+ 26%|██▋       | 25.2M/95.8M [00:01<00:05, 14.8MB/s]
+ 28%|██▊       | 26.8M/95.8M [00:01<00:04, 14.6MB/s]
+ 29%|██▉       | 28.2M/95.8M [00:01<00:04, 14.4MB/s]
+ 31%|███       | 29.8M/95.8M [00:01<00:04, 14.3MB/s]
+ 32%|█
+3: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  2%|▏         | 1.50M/95.8M [00:00<00:06, 15.3MB/s]
+  3%|▎         | 3.00M/95.8M [00:00<00:06, 14.7MB/s]
+  5%|▍         | 4.50M/95.8M [00:00<00:06, 14.8MB/s]
+  6%|▋         | 6.00M/95.8M [00:00<00:06, 14.9MB/s]
+  8%|▊         | 7.50M/95.8M [00:00<00:06, 14.6MB/s]
+  9%|▉         | 9.00M/95.8M [00:00<00:06, 14.9MB/s]
+ 11%|█         | 10.5M/95.8M [00:00<00:05, 14.9MB/s]
+ 13%|█▎        | 12.0M/95.8M [00:00<00:06, 14.2MB/s]
+ 14%|█▍        | 13.4M/95.8M [00:01<00:07, 12.2MB/s]
+ 15%|█▌        | 14.6M/95.8M [00:01<00:07, 11.3MB/s]
+ 16%|█▋        | 15.8M/95.8M [00:01<00:08, 10.5MB/s]
+ 18%|█▊        | 16.9M/95.8M [00:01<00:08, 9.95MB/s]
+ 19%|█▊        | 17.9M/95.8M [00:01<00:08, 9.58MB/s]
+ 20%|█▉        | 18.9M/95.8M [00:01<00:08, 9.39MB/s]
+ 21%|██        | 19.9M/95.8M [00:01<00:08, 9.16MB/s]
+ 22%|██▏       | 20.9M/95.8M [00:01<00:08, 8.94MB/s]
+ 23%|██▎       | 21.8M/95.8M [00:02<00:08, 8.86MB/s]
+ 24%|██▎      
+0: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  2%|▏         | 1.62M/95.8M [00:00<00:06, 15.9MB/s]
+  3%|▎         | 3.25M/95.8M [00:00<00:06, 15.9MB/s]
+  5%|▌         | 4.88M/95.8M [00:00<00:06, 15.1MB/s]
+  7%|▋         | 6.50M/95.8M [00:00<00:06, 14.6MB/s]
+  8%|▊         | 8.12M/95.8M [00:00<00:05, 15.4MB/s]
+ 10%|█         | 9.62M/95.8M [00:00<00:05, 15.3MB/s]
+ 12%|█▏        | 11.1M/95.8M [00:00<00:05, 14.9MB/s]
+ 13%|█▎        | 12.6M/95.8M [00:00<00:07, 12.3MB/s]
+ 14%|█▍        | 13.9M/95.8M [00:01<00:07, 12.0MB/s]
+ 16%|█▌        | 15.1M/95.8M [00:01<00:07, 11.1MB/s]
+ 17%|█▋        | 16.2M/95.8M [00:01<00:07, 10.7MB/s]
+ 18%|█▊        | 17.4M/95.8M [00:01<00:07, 10.3MB/s]
+ 19%|█▉        | 18.4M/95.8M [00:01<00:08, 10.0MB/s]
+ 20%|██        | 19.4M/95.8M [00:01<00:08, 9.72MB/s]
+ 21%|██▏       | 20.4M/95.8M [00:01<00:08, 9.52MB/s]
+ 22%|██▏       | 21.4M/95.8M [00:01<00:08, 9.22MB/s]
+ 23%|██▎       | 22.4M/95.8M [00:02<00:08, 8.94MB/s]
+ 24%|██▍  
+6: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  2%|▏         | 1.62M/95.8M [00:00<00:06, 16.2MB/s]
+  3%|▎         | 3.25M/95.8M [00:00<00:06, 15.8MB/s]
+  5%|▌         | 4.88M/95.8M [00:00<00:05, 16.1MB/s]
+  7%|▋         | 6.50M/95.8M [00:00<00:05, 15.9MB/s]
+  8%|▊         | 8.12M/95.8M [00:00<00:05, 16.2MB/s]
+ 10%|█         | 9.75M/95.8M [00:00<00:05, 16.4MB/s]
+ 12%|█▏        | 11.4M/95.8M [00:00<00:05, 16.2MB/s]
+ 14%|█▎        | 13.0M/95.8M [00:00<00:05, 15.4MB/s]
+ 15%|█▌        | 14.5M/95.8M [00:01<00:06, 12.6MB/s]
+ 17%|█▋        | 15.9M/95.8M [00:01<00:06, 12.0MB/s]
+ 18%|█▊        | 17.1M/95.8M [00:01<00:07, 11.0MB/s]
+ 19%|█▉        | 18.2M/95.8M [00:01<00:07, 10.3MB/s]
+ 20%|██        | 19.4M/95.8M [00:01<00:08, 9.86MB/s]
+ 21%|██▏       | 20.4M/95.8M [00:01<00:08, 9.57MB/s]
+ 22%|██▏       | 21.4M/95.8M [00:01<00:08, 9.38MB/s]
+ 23%|██▎       | 22.4M/95.8M [00:01<00:08, 9.22MB/s]
+ 24%|██▍       | 23.4M/95.8M [00:02<00:08, 9.14MB/s]
+ 25%|██▌
+4: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  1%|          | 1.00M/95.8M [00:00<00:10, 9.55MB/s]
+  2%|▏         | 2.00M/95.8M [00:00<00:10, 9.18MB/s]
+  3%|▎         | 3.00M/95.8M [00:00<00:10, 8.88MB/s]
+  4%|▍         | 3.88M/95.8M [00:00<00:11, 8.19MB/s]
+  5%|▍         | 4.75M/95.8M [00:00<00:11, 8.34MB/s]
+  6%|▌         | 5.62M/95.8M [00:00<00:11, 8.06MB/s]
+  7%|▋         | 6.50M/95.8M [00:00<00:11, 8.05MB/s]
+  8%|▊         | 7.38M/95.8M [00:01<00:13, 6.73MB/s]
+  8%|▊         | 8.12M/95.8M [00:01<00:14, 6.23MB/s]
+  9%|▉         | 8.75M/95.8M [00:01<00:14, 6.10MB/s]
+ 10%|▉         | 9.38M/95.8M [00:01<00:15, 5.95MB/s]
+ 10%|█         | 10.0M/95.8M [00:01<00:15, 5.84MB/s]
+ 11%|█         | 10.6M/95.8M [00:01<00:15, 5.71MB/s]
+ 12%|█▏        | 11.2M/95.8M [00:01<00:15, 5.69MB/s]
+ 12%|█▏        | 11.9M/95.8M [00:01<00:15, 5.73MB/s]
+ 13%|█▎        | 12.5M/95.8M [00:01<00:15, 5.78MB/s]
+ 14%|█▎        | 13.1M/95.8M [00:02<00:14, 5.84MB/s]
+ 14%|█▍        | 13.8M/95.8M [00:0
+7: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  2%|▏         | 1.75M/95.8M [00:00<00:05, 17.1MB/s]
+  4%|▎         | 3.50M/95.8M [00:00<00:05, 16.5MB/s]
+  5%|▌         | 5.12M/95.8M [00:00<00:06, 15.2MB/s]
+  7%|▋         | 6.62M/95.8M [00:00<00:06, 14.7MB/s]
+  8%|▊         | 8.12M/95.8M [00:00<00:06, 14.9MB/s]
+ 10%|█         | 9.75M/95.8M [00:00<00:06, 14.7MB/s]
+ 12%|█▏        | 11.4M/95.8M [00:00<00:05, 15.4MB/s]
+ 13%|█▎        | 12.9M/95.8M [00:00<00:07, 11.9MB/s]
+ 15%|█▍        | 14.1M/95.8M [00:01<00:07, 11.9MB/s]
+ 16%|█▌        | 15.4M/95.8M [00:01<00:07, 11.0MB/s]
+ 17%|█▋        | 16.5M/95.8M [00:01<00:08, 10.2MB/s]
+ 18%|█▊        | 17.6M/95.8M [00:01<00:08, 9.64MB/s]
+ 19%|█▉        | 18.6M/95.8M [00:01<00:08, 9.18MB/s]
+ 20%|██        | 19.6M/95.8M [00:01<00:09, 8.74MB/s]
+ 21%|██▏       | 20.5M/95.8M [00:01<00:09, 8.47MB/s]
+ 22%|██▏       | 21.4M/95.8M [00:02<00:09, 8.12MB/s]
+ 23%|██▎       | 22.2M/95.8M [00:02<00:10, 7.68MB/s]
+ 24%|██▍  
+1: 
+  0%|          | 0.00/95.8M [00:00<?, ?B/s]
+  2%|▏         | 1.62M/95.8M [00:00<00:06, 16.2MB/s]
+  3%|▎         | 3.25M/95.8M [00:00<00:06, 15.7MB/s]
+  5%|▌         | 4.88M/95.8M [00:00<00:06, 15.4MB/s]
+  7%|▋         | 6.38M/95.8M [00:00<00:06, 15.1MB/s]
+  8%|▊         | 7.88M/95.8M [00:00<00:06, 14.8MB/s]
+ 10%|▉         | 9.38M/95.8M [00:00<00:06, 14.5MB/s]
+ 11%|█▏        | 10.9M/95.8M [00:00<00:06, 13.7MB/s]
+ 13%|█▎        | 12.2M/95.8M [00:01<00:08, 10.1MB/s]
+ 14%|█▍        | 13.4M/95.8M [00:01<00:08, 10.1MB/s]
+ 15%|█▌        | 14.5M/95.8M [00:01<00:09, 9.16MB/s]
+ 16%|█▌        | 15.5M/95.8M [00:01<00:09, 8.53MB/s]
+ 17%|█▋        | 16.4M/95.8M [00:01<00:10, 8.07MB/s]
+ 18%|█▊        | 17.2M/95.8M [00:01<00:10, 7.77MB/s]
+ 19%|█▉        | 18.1M/95.8M [00:01<00:10, 7.62MB/s]
+ 20%|█▉        | 18.9M/95.8M [00:01<00:10, 7.48MB/s]
+ 20%|██        | 19.6M/95.8M [00:02<00:10, 7.41MB/s]
+ 21%|██▏       | 20.4M/95.8M [00:02<00:10, 7.28MB/s]
+ 22%|██▏      
+2: ██▏      | 31.1M/95.8M [00:02<00:04, 14.3MB/s]
+ 34%|███▍      | 32.6M/95.8M [00:02<00:04, 14.3MB/s]
+ 35%|███▌      | 34.0M/95.8M [00:02<00:04, 14.3MB/s]
+ 37%|███▋      | 35.4M/95.8M [00:02<00:04, 14.3MB/s]
+ 38%|███▊      | 36.8M/95.8M [00:02<00:04, 14.3MB/s]
+ 40%|███▉      | 38.1M/95.8M [00:02<00:04, 14.3MB/s]
+ 41%|████▏     | 39.6M/95.8M [00:02<00:04, 14.4MB/s]
+ 43%|████▎     | 41.0M/95.8M [00:02<00:03, 14.4MB/s]
+ 44%|████▍     | 42.5M/95.8M [00:02<00:03, 14.3MB/s]
+ 46%|████▌     | 43.9M/95.8M [00:02<00:03, 14.3MB/s]
+ 47%|████▋     | 45.4M/95.8M [00:03<00:03, 14.4MB/s]
+ 49%|████▉     | 46.8M/95.8M [00:03<00:03, 14.4MB/s]
+ 50%|█████     | 48.1M/95.8M [00:03<00:03, 14.3MB/s]
+ 52%|█████▏    | 49.5M/95.8M [00:03<00:03, 14.3MB/s]
+ 53%|█████▎    | 50.9M/95.8M [00:03<00:03, 14.2MB/s]
+ 55%|█████▍    | 52.2M/95.8M [00:03<00:03, 14.1MB/s]
+ 56%|█████▌    | 5
+5: /95.8M [00:02<00:07, 10.6MB/s]
+ 23%|██▎       | 21.9M/95.8M [00:02<00:07, 10.8MB/s]
+ 24%|██▍       | 23.0M/95.8M [00:02<00:06, 10.9MB/s]
+ 25%|██▌       | 24.1M/95.8M [00:02<00:06, 11.1MB/s]
+ 26%|██▋       | 25.2M/95.8M [00:02<00:06, 11.2MB/s]
+ 28%|██▊       | 26.4M/95.8M [00:02<00:06, 11.3MB/s]
+ 29%|██▊       | 27.5M/95.8M [00:02<00:06, 11.3MB/s]
+ 30%|██▉       | 28.6M/95.8M [00:02<00:06, 11.3MB/s]
+ 31%|███       | 29.8M/95.8M [00:02<00:06, 11.3MB/s]
+ 32%|███▏      | 30.9M/95.8M [00:02<00:05, 11.4MB/s]
+ 33%|███▎      | 32.0M/95.8M [00:03<00:05, 11.5MB/s]
+ 35%|███▍      | 33.2M/95.8M [00:03<00:05, 11.6MB/s]
+ 36%|███▌      | 34.5M/95.8M [00:03<00:05, 11.7MB/s]
+ 37%|███▋      | 35.8M/95.8M [00:03<00:05, 11.8MB/s]
+ 39%|███▊      | 37.0M/95.8M [00:03<00:05, 12.0MB/s]
+ 40%|███▉      | 38.2M/95.8M [00:03<00:04, 12.2MB/s]
+ 41%|████      | 39.5M/95.8M [00:03<00:04, 12.4MB/s]
+ 43%|████▎     | 40.8M/
+3:  | 22.6M/95.8M [00:02<00:08, 8.88MB/s]
+ 25%|██▍       | 23.5M/95.8M [00:02<00:08, 8.87MB/s]
+ 25%|██▌       | 24.4M/95.8M [00:02<00:08, 8.88MB/s]
+ 26%|██▋       | 25.2M/95.8M [00:02<00:08, 8.91MB/s]
+ 27%|██▋       | 26.2M/95.8M [00:02<00:08, 9.02MB/s]
+ 28%|██▊       | 27.2M/95.8M [00:02<00:07, 9.07MB/s]
+ 29%|██▉       | 28.1M/95.8M [00:02<00:07, 9.05MB/s]
+ 30%|███       | 29.0M/95.8M [00:02<00:07, 9.07MB/s]
+ 31%|███       | 29.9M/95.8M [00:02<00:07, 9.02MB/s]
+ 32%|███▏      | 30.9M/95.8M [00:03<00:07, 9.12MB/s]
+ 33%|███▎      | 31.8M/95.8M [00:03<00:07, 9.13MB/s]
+ 34%|███▍      | 32.8M/95.8M [00:03<00:07, 9.18MB/s]
+ 35%|███▌      | 33.8M/95.8M [00:03<00:07, 9.24MB/s]
+ 36%|███▋      | 34.8M/95.8M [00:03<00:06, 9.22MB/s]
+ 37%|███▋      | 35.8M/95.8M [00:03<00:06, 9.20MB/s]
+ 38%|███▊      | 36.8M/95.8M [00:03<00:06, 9.16MB/s]
+ 39%|███▉      | 37.6M/95.8M [00:03<00:06, 9.15MB/s]
+ 40%|████      | 
+6:        | 24.4M/95.8M [00:02<00:08, 9.16MB/s]
+ 26%|██▋       | 25.4M/95.8M [00:02<00:08, 9.18MB/s]
+ 28%|██▊       | 26.4M/95.8M [00:02<00:07, 9.22MB/s]
+ 29%|██▊       | 27.4M/95.8M [00:02<00:07, 9.20MB/s]
+ 30%|██▉       | 28.4M/95.8M [00:02<00:07, 9.12MB/s]
+ 31%|███       | 29.2M/95.8M [00:02<00:07, 9.00MB/s]
+ 31%|███▏      | 30.1M/95.8M [00:02<00:07, 9.02MB/s]
+ 32%|███▏      | 31.0M/95.8M [00:02<00:07, 9.04MB/s]
+ 33%|███▎      | 31.9M/95.8M [00:03<00:07, 9.02MB/s]
+ 34%|███▍      | 32.9M/95.8M [00:03<00:07, 9.13MB/s]
+ 35%|███▌      | 33.9M/95.8M [00:03<00:07, 9.23MB/s]
+ 36%|███▋      | 34.9M/95.8M [00:03<00:06, 9.27MB/s]
+ 37%|███▋      | 35.9M/95.8M [00:03<00:06, 9.31MB/s]
+ 38%|███▊      | 36.9M/95.8M [00:03<00:06, 9.30MB/s]
+ 40%|███▉      | 37.9M/95.8M [00:03<00:06, 9.20MB/s]
+ 41%|████      | 38.9M/95.8M [00:03<00:06, 9.16MB/s]
+ 41%|████▏     | 39.8M/95.8M [00:03<00:06, 9.08MB/s]
+ 42%|██
+0:      | 23.2M/95.8M [00:02<00:08, 8.85MB/s]
+ 25%|██▌       | 24.1M/95.8M [00:02<00:08, 8.73MB/s]
+ 26%|██▌       | 25.0M/95.8M [00:02<00:08, 8.62MB/s]
+ 27%|██▋       | 25.9M/95.8M [00:02<00:08, 8.56MB/s]
+ 28%|██▊       | 26.8M/95.8M [00:02<00:08, 8.59MB/s]
+ 29%|██▉       | 27.6M/95.8M [00:02<00:08, 8.54MB/s]
+ 30%|██▉       | 28.5M/95.8M [00:02<00:08, 8.45MB/s]
+ 31%|███       | 29.4M/95.8M [00:02<00:08, 8.32MB/s]
+ 32%|███▏      | 30.2M/95.8M [00:03<00:08, 8.10MB/s]
+ 32%|███▏      | 31.1M/95.8M [00:03<00:08, 7.89MB/s]
+ 33%|███▎      | 32.0M/95.8M [00:03<00:08, 7.68MB/s]
+ 34%|███▍      | 32.8M/95.8M [00:03<00:08, 7.54MB/s]
+ 35%|███▍      | 33.5M/95.8M [00:03<00:08, 7.40MB/s]
+ 36%|███▌      | 34.2M/95.8M [00:03<00:08, 7.25MB/s]
+ 37%|███▋      | 35.0M/95.8M [00:03<00:08, 7.20MB/s]
+ 37%|███▋      | 35.8M/95.8M [00:03<00:08, 7.17MB/s]
+ 38%|███▊      | 36.5M/95.8M [00:03<00:08, 7.14MB/s]
+ 39%|███▉  
+1:  | 21.1M/95.8M [00:02<00:10, 7.17MB/s]
+ 23%|██▎       | 21.9M/95.8M [00:02<00:10, 7.05MB/s]
+ 24%|██▎       | 22.6M/95.8M [00:02<00:10, 7.06MB/s]
+ 24%|██▍       | 23.4M/95.8M [00:02<00:10, 6.98MB/s]
+ 25%|██▌       | 24.1M/95.8M [00:02<00:10, 7.03MB/s]
+ 26%|██▌       | 24.9M/95.8M [00:02<00:10, 7.05MB/s]
+ 27%|██▋       | 25.6M/95.8M [00:02<00:10, 7.09MB/s]
+ 28%|██▊       | 26.4M/95.8M [00:03<00:10, 7.16MB/s]
+ 28%|██▊       | 27.1M/95.8M [00:03<00:10, 7.11MB/s]
+ 29%|██▉       | 27.9M/95.8M [00:03<00:10, 7.02MB/s]
+ 30%|██▉       | 28.6M/95.8M [00:03<00:10, 6.95MB/s]
+ 31%|███       | 29.4M/95.8M [00:03<00:10, 6.88MB/s]
+ 31%|███▏      | 30.1M/95.8M [00:03<00:09, 6.92MB/s]
+ 32%|███▏      | 30.9M/95.8M [00:03<00:09, 6.87MB/s]
+ 33%|███▎      | 31.6M/95.8M [00:03<00:09, 6.85MB/s]
+ 34%|███▍      | 32.4M/95.8M [00:03<00:09, 6.80MB/s]
+ 35%|███▍      | 33.1M/95.8M [00:04<00:09, 6.81MB/s]
+ 35%|███▌      | 33.9M/
+4: 2<00:14, 5.83MB/s]
+ 15%|█▌        | 14.4M/95.8M [00:02<00:14, 5.81MB/s]
+ 16%|█▌        | 15.0M/95.8M [00:02<00:14, 5.76MB/s]
+ 16%|█▋        | 15.6M/95.8M [00:02<00:14, 5.74MB/s]
+ 17%|█▋        | 16.2M/95.8M [00:02<00:14, 5.76MB/s]
+ 18%|█▊        | 16.9M/95.8M [00:02<00:14, 5.77MB/s]
+ 18%|█▊        | 17.5M/95.8M [00:02<00:14, 5.82MB/s]
+ 19%|█▉        | 18.1M/95.8M [00:02<00:13, 5.83MB/s]
+ 20%|█▉        | 18.8M/95.8M [00:03<00:13, 5.84MB/s]
+ 20%|██        | 19.4M/95.8M [00:03<00:13, 5.88MB/s]
+ 21%|██        | 20.0M/95.8M [00:03<00:13, 5.95MB/s]
+ 22%|██▏       | 20.6M/95.8M [00:03<00:13, 5.99MB/s]
+ 22%|██▏       | 21.2M/95.8M [00:03<00:13, 5.97MB/s]
+ 23%|██▎       | 21.9M/95.8M [00:03<00:12, 5.97MB/s]
+ 23%|██▎       | 22.5M/95.8M [00:03<00:12, 5.95MB/s]
+ 24%|██▍       | 23.1M/95.8M [00:03<00:12, 5.86MB/s]
+ 25%|██▍       | 23.8M/95.8M [00:03<00:13, 5.78MB/s]
+ 25%|██▌       | 24.4M/95.8M [00:04<00:13, 5.71MB/s]
+ 26%|██▌       |
+7:      | 23.0M/95.8M [00:02<00:10, 7.46MB/s]
+ 25%|██▍       | 23.8M/95.8M [00:02<00:10, 7.17MB/s]
+ 26%|██▌       | 24.5M/95.8M [00:02<00:10, 6.94MB/s]
+ 26%|██▋       | 25.2M/95.8M [00:02<00:10, 6.80MB/s]
+ 27%|██▋       | 26.0M/95.8M [00:02<00:10, 6.76MB/s]
+ 28%|██▊       | 26.8M/95.8M [00:02<00:10, 6.72MB/s]
+ 29%|██▊       | 27.5M/95.8M [00:02<00:10, 6.72MB/s]
+ 29%|██▉       | 28.2M/95.8M [00:03<00:10, 6.62MB/s]
+ 30%|███       | 29.0M/95.8M [00:03<00:10, 6.55MB/s]
+ 31%|███       | 29.8M/95.8M [00:03<00:10, 6.55MB/s]
+ 32%|███▏      | 30.5M/95.8M [00:03<00:10, 6.61MB/s]
+ 33%|███▎      | 31.2M/95.8M [00:03<00:10, 6.62MB/s]
+ 33%|███▎      | 32.0M/95.8M [00:03<00:10, 6.65MB/s]
+ 34%|███▍      | 32.8M/95.8M [00:03<00:09, 6.66MB/s]
+ 35%|███▍      | 33.5M/95.8M [00:03<00:09, 6.62MB/s]
+ 36%|███▌      | 34.2M/95.8M [00:04<00:09, 6.56MB/s]
+ 37%|███▋      | 35.0M/95.8M [00:04<00:09, 6.62MB/s]
+ 37%|███▋      
+2: 3.6M/95.8M [00:03<00:03, 14.1MB/s]
+ 57%|█████▋    | 55.0M/95.8M [00:03<00:03, 14.1MB/s]
+ 59%|█████▉    | 56.4M/95.8M [00:03<00:02, 14.0MB/s]
+ 60%|██████    | 57.8M/95.8M [00:04<00:02, 14.0MB/s]
+ 62%|██████▏   | 59.1M/95.8M [00:04<00:02, 13.8MB/s]
+ 63%|██████▎   | 60.5M/95.8M [00:04<00:02, 13.7MB/s]
+ 65%|██████▍   | 61.9M/95.8M [00:04<00:02, 13.6MB/s]
+ 66%|██████▌   | 63.2M/95.8M [00:04<00:02, 13.6MB/s]
+ 67%|██████▋   | 64.6M/95.8M [00:04<00:02, 13.5MB/s]
+ 69%|██████▉   | 66.0M/95.8M [00:04<00:02, 13.5MB/s]
+ 70%|███████   | 67.4M/95.8M [00:04<00:02, 13.4MB/s]
+ 72%|███████▏  | 68.8M/95.8M [00:04<00:02, 13.4MB/s]
+ 73%|███████▎  | 70.1M/95.8M [00:04<00:02, 13.3MB/s]
+ 75%|███████▍  | 71.5M/95.8M [00:05<00:01, 13.4MB/s]
+ 76%|███████▌  | 72.9M/95.8M [00:05<00:01, 13.2MB/s]
+ 78%|███████▊  | 74.2M/95.8M [00:
+5: 95.8M [00:03<00:04, 12.6MB/s]
+ 44%|████▍     | 42.0M/95.8M [00:03<00:04, 12.7MB/s]
+ 45%|████▌     | 43.2M/95.8M [00:04<00:04, 12.8MB/s]
+ 46%|████▋     | 44.5M/95.8M [00:04<00:04, 12.8MB/s]
+ 48%|████▊     | 45.8M/95.8M [00:04<00:04, 12.6MB/s]
+ 49%|████▉     | 47.0M/95.8M [00:04<00:04, 12.5MB/s]
+ 50%|█████     | 48.2M/95.8M [00:04<00:03, 12.5MB/s]
+ 52%|█████▏    | 49.5M/95.8M [00:04<00:03, 12.4MB/s]
+ 53%|█████▎    | 50.8M/95.8M [00:04<00:03, 12.4MB/s]
+ 54%|█████▍    | 52.0M/95.8M [00:04<00:03, 12.4MB/s]
+ 56%|█████▌    | 53.2M/95.8M [00:04<00:03, 12.4MB/s]
+ 57%|█████▋    | 54.5M/95.8M [00:04<00:03, 12.3MB/s]
+ 58%|█████▊    | 55.8M/95.8M [00:05<00:03, 12.2MB/s]
+ 60%|█████▉    | 57.0M/95.8M [00:05<00:03, 12.3MB/s]
+ 61%|██████    | 58.2M/95.8M [00:05<00:03, 12.3MB/s]
+ 62%|██████▏   | 59.5M/95.8M [00:05<00:03, 12.4MB/s]
+ 63%|██████▎   
+3: 38.6M/95.8M [00:03<00:06, 9.35MB/s]
+ 41%|████▏     | 39.6M/95.8M [00:04<00:06, 9.61MB/s]
+ 42%|████▏     | 40.6M/95.8M [00:04<00:05, 9.78MB/s]
+ 43%|████▎     | 41.6M/95.8M [00:04<00:05, 9.98MB/s]
+ 44%|████▍     | 42.6M/95.8M [00:04<00:05, 10.1MB/s]
+ 46%|████▌     | 43.6M/95.8M [00:04<00:05, 10.1MB/s]
+ 47%|████▋     | 44.6M/95.8M [00:04<00:05, 10.2MB/s]
+ 48%|████▊     | 45.6M/95.8M [00:04<00:05, 10.3MB/s]
+ 49%|████▉     | 46.8M/95.8M [00:04<00:04, 10.3MB/s]
+ 50%|████▉     | 47.9M/95.8M [00:04<00:04, 10.5MB/s]
+ 51%|█████     | 49.0M/95.8M [00:04<00:04, 10.7MB/s]
+ 52%|█████▏    | 50.1M/95.8M [00:05<00:04, 10.8MB/s]
+ 54%|█████▎    | 51.2M/95.8M [00:05<00:04, 11.1MB/s]
+ 55%|█████▍    | 52.4M/95.8M [00:05<00:04, 11.2MB/s]
+ 56%|█████▌    | 53.5M/95.8M [00:05<00:03, 11.2MB/s]
+ 57%|█████▋    | 54.6M/95.8M [00:05<00:03, 11.3MB/s]
+ 58%|█████▊    | 55.8
+6: ██▏     | 40.6M/95.8M [00:04<00:06, 9.03MB/s]
+ 43%|████▎     | 41.5M/95.8M [00:04<00:06, 9.02MB/s]
+ 44%|████▍     | 42.4M/95.8M [00:04<00:06, 9.01MB/s]
+ 45%|████▌     | 43.4M/95.8M [00:04<00:06, 9.07MB/s]
+ 46%|████▌     | 44.2M/95.8M [00:04<00:05, 9.05MB/s]
+ 47%|████▋     | 45.2M/95.8M [00:04<00:05, 9.10MB/s]
+ 48%|████▊     | 46.1M/95.8M [00:04<00:05, 9.07MB/s]
+ 49%|████▉     | 47.0M/95.8M [00:04<00:05, 9.08MB/s]
+ 50%|████▉     | 47.9M/95.8M [00:04<00:05, 9.07MB/s]
+ 51%|█████     | 48.8M/95.8M [00:04<00:05, 8.98MB/s]
+ 52%|█████▏    | 49.6M/95.8M [00:05<00:05, 9.00MB/s]
+ 53%|█████▎    | 50.5M/95.8M [00:05<00:05, 9.00MB/s]
+ 54%|█████▎    | 51.4M/95.8M [00:05<00:05, 9.03MB/s]
+ 55%|█████▍    | 52.2M/95.8M [00:05<00:05, 8.96MB/s]
+ 55%|█████▌    | 53.1M/95.8M [00:05<00:05, 8.93MB/s]
+ 56%|█████▋    | 54.0M/95.8M [00:05<00:04, 8.92MB/s]
+ 57%|███�
+0:     | 37.2M/95.8M [00:04<00:08, 7.15MB/s]
+ 40%|███▉      | 38.0M/95.8M [00:04<00:08, 7.13MB/s]
+ 40%|████      | 38.8M/95.8M [00:04<00:08, 7.11MB/s]
+ 41%|████      | 39.5M/95.8M [00:04<00:08, 7.11MB/s]
+ 42%|████▏     | 40.2M/95.8M [00:04<00:08, 6.99MB/s]
+ 43%|████▎     | 41.0M/95.8M [00:04<00:08, 6.95MB/s]
+ 44%|████▎     | 41.8M/95.8M [00:04<00:08, 6.94MB/s]
+ 44%|████▍     | 42.5M/95.8M [00:04<00:08, 6.98MB/s]
+ 45%|████▌     | 43.2M/95.8M [00:04<00:07, 6.98MB/s]
+ 46%|████▌     | 44.0M/95.8M [00:05<00:07, 6.96MB/s]
+ 47%|████▋     | 44.8M/95.8M [00:05<00:07, 7.01MB/s]
+ 48%|████▊     | 45.5M/95.8M [00:05<00:07, 6.97MB/s]
+ 48%|████▊     | 46.2M/95.8M [00:05<00:07, 6.99MB/s]
+ 49%|████▉     | 47.0M/95.8M [00:05<00:07, 6.97MB/s]
+ 50%|████▉     | 47.8M/95.8M [00:05<00:07, 6.96MB/s]
+ 51%|█████     | 48.5M/95.8M [00:05<00:07, 6.94MB/s]
+ 51%|█████▏    | 49.2M/95.8M [0
+4:  25.0M/95.8M [00:04<00:12, 5.75MB/s]
+ 27%|██▋       | 25.6M/95.8M [00:04<00:12, 5.84MB/s]
+ 27%|██▋       | 26.2M/95.8M [00:04<00:12, 5.89MB/s]
+ 28%|██▊       | 26.9M/95.8M [00:04<00:12, 5.88MB/s]
+ 29%|██▊       | 27.5M/95.8M [00:04<00:12, 5.90MB/s]
+ 29%|██▉       | 28.1M/95.8M [00:04<00:12, 5.91MB/s]
+ 30%|███       | 28.8M/95.8M [00:04<00:11, 5.90MB/s]
+ 31%|███       | 29.4M/95.8M [00:04<00:11, 5.92MB/s]
+ 31%|███▏      | 30.0M/95.8M [00:05<00:11, 5.94MB/s]
+ 32%|███▏      | 30.6M/95.8M [00:05<00:11, 5.90MB/s]
+ 33%|███▎      | 31.2M/95.8M [00:05<00:11, 5.89MB/s]
+ 33%|███▎      | 31.9M/95.8M [00:05<00:11, 5.86MB/s]
+ 34%|███▍      | 32.5M/95.8M [00:05<00:11, 5.84MB/s]
+ 35%|███▍      | 33.1M/95.8M [00:05<00:11, 5.89MB/s]
+ 35%|███▌      | 33.8M/95.8M [00:05<00:11, 5.90MB/s]
+ 36%|███▌      | 34.4M/95.8M [00:05<00:10, 5.93MB/s]
+ 37%|███▋      | 35.0M/95.8M [00:05<00:10, 5.89MB/s]
+ 37%|███▋      | 
+1: 95.8M [00:04<00:09, 6.87MB/s]
+ 36%|███▌      | 34.6M/95.8M [00:04<00:09, 6.85MB/s]
+ 37%|███▋      | 35.4M/95.8M [00:04<00:09, 6.91MB/s]
+ 38%|███▊      | 36.1M/95.8M [00:04<00:09, 6.95MB/s]
+ 38%|███▊      | 36.9M/95.8M [00:04<00:08, 6.96MB/s]
+ 39%|███▉      | 37.6M/95.8M [00:04<00:08, 6.98MB/s]
+ 40%|████      | 38.4M/95.8M [00:04<00:08, 6.94MB/s]
+ 41%|████      | 39.1M/95.8M [00:05<00:08, 6.89MB/s]
+ 42%|████▏     | 39.9M/95.8M [00:05<00:08, 6.84MB/s]
+ 42%|████▏     | 40.6M/95.8M [00:05<00:08, 6.85MB/s]
+ 43%|████▎     | 41.4M/95.8M [00:05<00:08, 6.82MB/s]
+ 44%|████▍     | 42.1M/95.8M [00:05<00:08, 6.82MB/s]
+ 45%|████▍     | 42.9M/95.8M [00:05<00:08, 6.90MB/s]
+ 46%|████▌     | 43.6M/95.8M [00:05<00:08, 6.83MB/s]
+ 46%|████▋     | 44.4M/95.8M [00:05<00:07, 6.81MB/s]
+ 47%|████▋     | 45.1M/95.8M [00:05<00:07, 6.82MB/s]
+ 48%|████▊     | 45.9M/95.8M [00:06<00:07, 6.86MB/s]
+7: | 35.8M/95.8M [00:04<00:09, 6.62MB/s]
+ 38%|███▊      | 36.5M/95.8M [00:04<00:09, 6.56MB/s]
+ 39%|███▉      | 37.2M/95.8M [00:04<00:09, 6.58MB/s]
+ 40%|███▉      | 38.0M/95.8M [00:04<00:09, 6.59MB/s]
+ 40%|████      | 38.8M/95.8M [00:04<00:09, 6.62MB/s]
+ 41%|████      | 39.5M/95.8M [00:04<00:08, 6.59MB/s]
+ 42%|████▏     | 40.2M/95.8M [00:05<00:08, 6.54MB/s]
+ 43%|████▎     | 40.9M/95.8M [00:05<00:08, 6.44MB/s]
+ 43%|████▎     | 41.5M/95.8M [00:05<00:09, 6.23MB/s]
+ 44%|████▍     | 42.1M/95.8M [00:05<00:09, 6.10MB/s]
+ 45%|████▍     | 42.8M/95.8M [00:05<00:09, 5.99MB/s]
+ 45%|████▌     | 43.4M/95.8M [00:05<00:09, 5.86MB/s]
+ 46%|████▌     | 44.0M/95.8M [00:05<00:09, 5.75MB/s]
+ 47%|████▋     | 44.6M/95.8M [00:05<00:09, 5.72MB/s]
+ 47%|████▋     | 45.2M/95.8M [00:05<00:09, 5.72MB/s]
+ 48%|████▊     | 45.9M/95.8M [00:06<00:09, 5.67MB/s]
+ 49%|████▊     | 46.5M/95.8M [00:06<00:09
+2: 05<00:01, 13.2MB/s]
+ 79%|███████▉  | 75.6M/95.8M [00:05<00:01, 13.2MB/s]
+ 80%|████████  | 77.0M/95.8M [00:05<00:01, 13.2MB/s]
+ 82%|████████▏ | 78.4M/95.8M [00:05<00:01, 13.2MB/s]
+ 83%|████████▎ | 79.8M/95.8M [00:05<00:01, 13.3MB/s]
+ 85%|████████▍ | 81.1M/95.8M [00:05<00:01, 13.5MB/s]
+ 86%|████████▌ | 82.5M/95.8M [00:05<00:01, 13.6MB/s]
+ 88%|████████▊ | 83.9M/95.8M [00:06<00:00, 13.8MB/s]
+ 89%|████████▉ | 85.2M/95.8M [00:06<00:00, 13.8MB/s]
+ 90%|█████████ | 86.6M/95.8M [00:06<00:00, 13.9MB/s]
+ 92%|█████████▏| 88.0M/95.8M [00:06<00:00, 13.9MB/s]
+ 93%|█████████▎| 89.4M/95.8M [00:06<00:00, 14.0MB/s]
+ 95%|█████████▍| 90.8M/95.8M [00:06<00:00, 14.0MB/s]
+ 96%|█████████▌| 92.1M/95.8M [00:06<00:00, 14.0MB/s]
+ 98%|█████████▊| 93.5M/95.8M [00:06<00:00, 14.0MB/s]
+ 99%
+2: |█████████▉| 94.9M/95.8M [00:06<00:00, 14.0MB/s]
+100%|██████████| 95.8M/95.8M [00:06<00:00, 14.5MB/s]
+5: | 60.8M/95.8M [00:05<00:02, 12.5MB/s]
+ 65%|██████▍   | 62.0M/95.8M [00:05<00:02, 12.5MB/s]
+ 66%|██████▌   | 63.2M/95.8M [00:05<00:02, 12.5MB/s]
+ 67%|██████▋   | 64.5M/95.8M [00:05<00:02, 12.4MB/s]
+ 69%|██████▊   | 65.8M/95.8M [00:05<00:02, 12.4MB/s]
+ 70%|██████▉   | 67.0M/95.8M [00:06<00:02, 12.3MB/s]
+ 71%|███████▏  | 68.2M/95.8M [00:06<00:02, 12.3MB/s]
+ 73%|███████▎  | 69.5M/95.8M [00:06<00:02, 12.3MB/s]
+ 74%|███████▍  | 70.8M/95.8M [00:06<00:02, 12.2MB/s]
+ 75%|███████▌  | 72.0M/95.8M [00:06<00:02, 12.3MB/s]
+ 76%|███████▋  | 73.2M/95.8M [00:06<00:01, 12.3MB/s]
+ 78%|███████▊  | 74.5M/95.8M [00:06<00:01, 12.3MB/s]
+ 79%|███████▉  | 75.8M/95.8M [00:06<00:01, 12.3MB/s]
+ 80%|████████  | 77.0M/95.8M [00:06<00:01, 12.3MB/s]
+ 82%|████████▏ | 78.4M/95.8M [00:06<00:01, 12.6MB/s]
+ 84%|███████�
+3: M/95.8M [00:05<00:03, 11.3MB/s]
+ 59%|█████▉    | 56.9M/95.8M [00:05<00:03, 11.4MB/s]
+ 61%|██████    | 58.0M/95.8M [00:05<00:03, 11.5MB/s]
+ 62%|██████▏   | 59.1M/95.8M [00:05<00:03, 11.5MB/s]
+ 63%|██████▎   | 60.2M/95.8M [00:06<00:03, 11.5MB/s]
+ 64%|██████▍   | 61.4M/95.8M [00:06<00:03, 11.4MB/s]
+ 65%|██████▌   | 62.5M/95.8M [00:06<00:03, 11.4MB/s]
+ 66%|██████▋   | 63.6M/95.8M [00:06<00:02, 11.4MB/s]
+ 68%|██████▊   | 64.8M/95.8M [00:06<00:02, 11.4MB/s]
+ 69%|██████▉   | 65.9M/95.8M [00:06<00:02, 11.4MB/s]
+ 70%|██████▉   | 67.0M/95.8M [00:06<00:02, 11.4MB/s]
+ 71%|███████   | 68.1M/95.8M [00:06<00:02, 11.2MB/s]
+ 72%|███████▏  | 69.2M/95.8M [00:06<00:02, 11.3MB/s]
+ 73%|███████▎  | 70.4M/95.8M [00:06<00:02, 11.4MB/s]
+ 75%|███████▍  | 71.8M/95.8M [00:07<00:02, 12.0MB/s]
+ 76%|███████▋  | 73.1M/95.8M [00:07<
+6: ��█▋    | 54.9M/95.8M [00:05<00:04, 8.90MB/s]
+ 58%|█████▊    | 55.8M/95.8M [00:05<00:04, 8.82MB/s]
+ 59%|█████▉    | 56.6M/95.8M [00:05<00:04, 8.79MB/s]
+ 60%|██████    | 57.5M/95.8M [00:06<00:04, 8.80MB/s]
+ 61%|██████    | 58.4M/95.8M [00:06<00:04, 8.86MB/s]
+ 62%|██████▏   | 59.2M/95.8M [00:06<00:04, 8.93MB/s]
+ 63%|██████▎   | 60.1M/95.8M [00:06<00:04, 8.97MB/s]
+ 64%|██████▎   | 61.0M/95.8M [00:06<00:04, 8.91MB/s]
+ 65%|██████▍   | 61.9M/95.8M [00:06<00:04, 8.72MB/s]
+ 66%|██████▌   | 62.8M/95.8M [00:06<00:04, 8.53MB/s]
+ 66%|██████▋   | 63.6M/95.8M [00:06<00:04, 8.34MB/s]
+ 67%|██████▋   | 64.5M/95.8M [00:06<00:04, 8.10MB/s]
+ 68%|██████▊   | 65.4M/95.8M [00:06<00:03, 8.27MB/s]
+ 69%|██████▉   | 66.4M/95.8M [00:07<00:03, 8.61MB/s]
+ 70%|███████   | 67.4M/95.8M [00:07<00:03, 8.96MB/s]
+ 71%|███████▏  | 68.4M/95.8M
+0: 0:05<00:07, 6.93MB/s]
+ 52%|█████▏    | 50.0M/95.8M [00:05<00:06, 6.90MB/s]
+ 53%|█████▎    | 50.8M/95.8M [00:06<00:06, 6.83MB/s]
+ 54%|█████▍    | 51.5M/95.8M [00:06<00:06, 6.84MB/s]
+ 55%|█████▍    | 52.2M/95.8M [00:06<00:06, 6.85MB/s]
+ 55%|█████▌    | 53.0M/95.8M [00:06<00:06, 6.95MB/s]
+ 56%|█████▌    | 53.8M/95.8M [00:06<00:06, 6.99MB/s]
+ 57%|█████▋    | 54.5M/95.8M [00:06<00:06, 7.00MB/s]
+ 58%|█████▊    | 55.2M/95.8M [00:06<00:06, 7.08MB/s]
+ 58%|█████▊    | 56.0M/95.8M [00:06<00:05, 7.03MB/s]
+ 59%|█████▉    | 56.8M/95.8M [00:06<00:05, 7.25MB/s]
+ 60%|██████    | 57.6M/95.8M [00:07<00:05, 7.70MB/s]
+ 61%|██████    | 58.5M/95.8M [00:07<00:04, 8.04MB/s]
+ 62%|██████▏   | 59.4M/95.8M [00:07<00:04, 8.26MB/s]
+ 63%|██████▎   | 60.2M/95.8M [00:07<00:04, 8.37MB/s]
+ 64%|██████▍   | 61.1M/95.8M [00:07<00:04, 8.39MB/s]
+ 65%|█████�
+1:  49%|████▊     | 46.6M/95.8M [00:06<00:07, 6.87MB/s]
+ 49%|████▉     | 47.4M/95.8M [00:06<00:07, 6.78MB/s]
+ 50%|█████     | 48.1M/95.8M [00:06<00:07, 6.78MB/s]
+ 51%|█████     | 48.9M/95.8M [00:06<00:07, 6.78MB/s]
+ 52%|█████▏    | 49.6M/95.8M [00:06<00:06, 6.92MB/s]
+ 53%|█████▎    | 50.4M/95.8M [00:06<00:06, 7.08MB/s]
+ 53%|█████▎    | 51.1M/95.8M [00:06<00:06, 7.20MB/s]
+ 54%|█████▍    | 51.9M/95.8M [00:06<00:06, 7.33MB/s]
+ 55%|█████▌    | 52.9M/95.8M [00:07<00:05, 7.93MB/s]
+ 56%|█████▌    | 53.8M/95.8M [00:07<00:05, 8.24MB/s]
+ 57%|█████▋    | 54.6M/95.8M [00:07<00:05, 8.46MB/s]
+ 58%|█████▊    | 55.5M/95.8M [00:07<00:04, 8.66MB/s]
+ 59%|█████▉    | 56.5M/95.8M [00:07<00:04, 8.88MB/s]
+ 60%|██████    | 57.5M/95.8M [00:07<00:04, 8.97MB/s]
+ 61%|██████    | 58.5M/95.8M [00:07<00:04, 9.04MB/s]
+ 62%|██████▏   | 59.5M/95.8M [00:07<00:04, 
+4: 35.6M/95.8M [00:06<00:10, 5.84MB/s]
+ 38%|███▊      | 36.2M/95.8M [00:06<00:10, 5.82MB/s]
+ 38%|███▊      | 36.9M/95.8M [00:06<00:10, 5.86MB/s]
+ 39%|███▉      | 37.5M/95.8M [00:06<00:10, 5.85MB/s]
+ 40%|███▉      | 38.1M/95.8M [00:06<00:10, 5.79MB/s]
+ 40%|████      | 38.8M/95.8M [00:06<00:10, 5.86MB/s]
+ 41%|████      | 39.4M/95.8M [00:06<00:09, 5.97MB/s]
+ 42%|████▏     | 40.0M/95.8M [00:06<00:09, 6.01MB/s]
+ 43%|████▎     | 40.8M/95.8M [00:06<00:09, 6.24MB/s]
+ 43%|████▎     | 41.5M/95.8M [00:07<00:08, 6.55MB/s]
+ 44%|████▍     | 42.2M/95.8M [00:07<00:08, 6.71MB/s]
+ 45%|████▍     | 43.0M/95.8M [00:07<00:08, 6.82MB/s]
+ 46%|████▌     | 43.8M/95.8M [00:07<00:07, 6.83MB/s]
+ 46%|████▋     | 44.5M/95.8M [00:07<00:07, 6.90MB/s]
+ 47%|████▋     | 45.2M/95.8M [00:07<00:07, 6.92MB/s]
+ 48%|████▊     | 46.0M/95.8M [00:07<00:07, 6.99MB/s]
+ 49%|████▉     | 46.8M/95.8M [00:07<00:07, 7.
+7: , 5.68MB/s]
+ 49%|████▉     | 47.1M/95.8M [00:06<00:09, 5.61MB/s]
+ 50%|████▉     | 47.8M/95.8M [00:06<00:09, 5.54MB/s]
+ 51%|█████     | 48.4M/95.8M [00:06<00:08, 5.56MB/s]
+ 51%|█████     | 49.0M/95.8M [00:06<00:08, 5.64MB/s]
+ 52%|█████▏    | 49.6M/95.8M [00:06<00:08, 5.60MB/s]
+ 52%|█████▏    | 50.2M/95.8M [00:06<00:08, 5.60MB/s]
+ 53%|█████▎    | 51.0M/95.8M [00:07<00:07, 5.97MB/s]
+ 54%|█████▍    | 51.9M/95.8M [00:07<00:07, 6.58MB/s]
+ 55%|█████▌    | 52.8M/95.8M [00:07<00:06, 7.00MB/s]
+ 56%|█████▌    | 53.6M/95.8M [00:07<00:06, 7.31MB/s]
+ 57%|█████▋    | 54.4M/95.8M [00:07<00:05, 7.40MB/s]
+ 58%|█████▊    | 55.1M/95.8M [00:07<00:05, 7.39MB/s]
+ 58%|█████▊    | 55.9M/95.8M [00:07<00:05, 7.32MB/s]
+ 59%|█████▉    | 56.6M/95.8M [00:07<00:05, 7.19MB/s]
+ 60%|█████▉    | 57.4M/95.8M [00:07<00:05, 7.08MB/s]
+ 61%|██████    | 58.1M/95.8M [00:
+5: �▎ | 80.0M/95.8M [00:07<00:01, 13.6MB/s]
+ 85%|████████▌ | 81.6M/95.8M [00:07<00:01, 14.2MB/s]
+ 87%|████████▋ | 83.1M/95.8M [00:07<00:00, 14.6MB/s]
+ 88%|████████▊ | 84.8M/95.8M [00:07<00:00, 15.0MB/s]
+ 90%|█████████ | 86.4M/95.8M [00:07<00:00, 15.5MB/s]
+ 92%|█████████▏| 88.0M/95.8M [00:07<00:00, 15.8MB/s]
+ 94%|█████████▎| 89.6M/95.8M [00:07<00:00, 16.0MB/s]
+ 95%|█████████▌| 91.2M/95.8M [00:07<00:00, 16.1MB/s]
+ 97%|█████████▋| 92.9M/95.8M [00:07<00:00, 16.3MB/s]
+ 99%|█████████▉| 94.6M/95.8M [00:08<00:00, 16.5MB/s]
+100%|██████████| 95.8M/95.8M [00:08<00:00, 12.4MB/s]
+3: 00:01, 12.4MB/s]
+ 78%|███████▊  | 74.5M/95.8M [00:07<00:01, 12.6MB/s]
+ 79%|███████▉  | 75.8M/95.8M [00:07<00:01, 12.7MB/s]
+ 81%|████████  | 77.1M/95.8M [00:07<00:01, 12.8MB/s]
+ 82%|████████▏ | 78.4M/95.8M [00:07<00:01, 12.8MB/s]
+ 83%|████████▎ | 79.6M/95.8M [00:07<00:01, 12.9MB/s]
+ 84%|████████▍ | 80.9M/95.8M [00:07<00:01, 12.9MB/s]
+ 86%|████████▌ | 82.1M/95.8M [00:07<00:01, 12.9MB/s]
+ 87%|████████▋ | 83.4M/95.8M [00:08<00:01, 12.9MB/s]
+ 88%|████████▊ | 84.6M/95.8M [00:08<00:00, 12.9MB/s]
+ 90%|████████▉ | 86.1M/95.8M [00:08<00:00, 13.7MB/s]
+ 91%|█████████▏| 87.6M/95.8M [00:08<00:00, 14.1MB/s]
+ 93%|█████████▎| 89.1M/95.8M [00:08<00:00, 14.4MB/s]
+ 95%|█████████▍| 90.6M/95.8M [00:08<00:00, 14.5MB/s]
+ 96%|█████████▌| 92.1M/95.8M [00:08<00:00, 14.6MB/s]
+ 98%|██
+3: ███████▊| 93.6M/95.8M [00:08<00:00, 14.7MB/s]
+ 99%|█████████▉| 95.1M/95.8M [00:08<00:00, 14.7MB/s]
+100%|██████████| 95.8M/95.8M [00:08<00:00, 11.3MB/s]
+6:  [00:07<00:03, 9.25MB/s]
+ 72%|███████▏  | 69.4M/95.8M [00:07<00:02, 9.49MB/s]
+ 73%|███████▎  | 70.4M/95.8M [00:07<00:02, 9.64MB/s]
+ 75%|███████▍  | 71.4M/95.8M [00:07<00:02, 9.80MB/s]
+ 76%|███████▌  | 72.4M/95.8M [00:07<00:02, 9.88MB/s]
+ 77%|███████▋  | 73.4M/95.8M [00:07<00:02, 9.98MB/s]
+ 78%|███████▊  | 74.4M/95.8M [00:07<00:02, 10.1MB/s]
+ 79%|███████▊  | 75.4M/95.8M [00:08<00:02, 10.2MB/s]
+ 80%|███████▉  | 76.6M/95.8M [00:08<00:01, 10.7MB/s]
+ 82%|████████▏ | 78.1M/95.8M [00:08<00:01, 11.9MB/s]
+ 83%|████████▎ | 79.6M/95.8M [00:08<00:01, 12.6MB/s]
+ 85%|████████▍ | 81.0M/95.8M [00:08<00:01, 13.0MB/s]
+ 86%|████████▌ | 82.4M/95.8M [00:08<00:01, 13.2MB/s]
+ 87%|████████▋ | 83.8M/95.8M [00:08<00:00, 13.4MB/s]
+ 89%|████████▉ | 85.1M/95.8M [00:08<00:00, 13.6MB/s]
+ 90%|█████�
+0: ��▍   | 62.0M/95.8M [00:07<00:04, 8.52MB/s]
+ 66%|██████▌   | 62.9M/95.8M [00:07<00:04, 8.54MB/s]
+ 67%|██████▋   | 63.8M/95.8M [00:07<00:03, 8.57MB/s]
+ 67%|██████▋   | 64.6M/95.8M [00:07<00:03, 8.64MB/s]
+ 68%|██████▊   | 65.5M/95.8M [00:08<00:03, 8.53MB/s]
+ 69%|██████▉   | 66.5M/95.8M [00:08<00:03, 8.99MB/s]
+ 71%|███████   | 67.6M/95.8M [00:08<00:03, 9.55MB/s]
+ 72%|███████▏  | 68.8M/95.8M [00:08<00:02, 9.91MB/s]
+ 73%|███████▎  | 69.9M/95.8M [00:08<00:02, 10.4MB/s]
+ 74%|███████▍  | 71.0M/95.8M [00:08<00:02, 10.6MB/s]
+ 75%|███████▌  | 72.1M/95.8M [00:08<00:02, 10.7MB/s]
+ 76%|███████▋  | 73.2M/95.8M [00:08<00:02, 10.8MB/s]
+ 78%|███████▊  | 74.4M/95.8M [00:08<00:02, 11.0MB/s]
+ 79%|███████▉  | 75.8M/95.8M [00:09<00:01, 11.9MB/s]
+ 81%|████████  | 77.1M/95.8M [00:09<00:01, 12.4MB/s]
+ 82%|██████�
+1: 9.11MB/s]
+ 63%|██████▎   | 60.4M/95.8M [00:07<00:04, 9.10MB/s]
+ 64%|██████▍   | 61.4M/95.8M [00:08<00:03, 9.15MB/s]
+ 65%|██████▌   | 62.4M/95.8M [00:08<00:03, 9.36MB/s]
+ 66%|██████▋   | 63.6M/95.8M [00:08<00:03, 10.2MB/s]
+ 68%|██████▊   | 64.9M/95.8M [00:08<00:02, 11.0MB/s]
+ 69%|██████▉   | 66.1M/95.8M [00:08<00:02, 11.5MB/s]
+ 70%|███████   | 67.4M/95.8M [00:08<00:02, 11.9MB/s]
+ 72%|███████▏  | 68.6M/95.8M [00:08<00:02, 12.2MB/s]
+ 73%|███████▎  | 70.0M/95.8M [00:08<00:02, 12.5MB/s]
+ 75%|███████▍  | 71.4M/95.8M [00:08<00:01, 12.9MB/s]
+ 76%|███████▌  | 73.0M/95.8M [00:08<00:01, 13.8MB/s]
+ 78%|███████▊  | 74.8M/95.8M [00:09<00:01, 14.8MB/s]
+ 80%|███████▉  | 76.4M/95.8M [00:09<00:01, 15.5MB/s]
+ 81%|████████▏ | 78.0M/95.8M [00:09<00:01, 15.9MB/s]
+ 83%|████████▎ | 79.6M/95.8M [00:09<00:01,
+6: ��███ | 86.5M/95.8M [00:08<00:00, 13.7MB/s]
+ 92%|█████████▏| 88.1M/95.8M [00:08<00:00, 14.5MB/s]
+ 94%|█████████▎| 89.8M/95.8M [00:09<00:00, 15.2MB/s]
+ 95%|█████████▌| 91.4M/95.8M [00:09<00:00, 15.7MB/s]
+ 97%|█████████▋| 93.0M/95.8M [00:09<00:00, 15.9MB/s]
+ 99%|█████████▉| 94.6M/95.8M [00:09<00:00, 16.0MB/s]
+100%|██████████| 95.8M/95.8M [00:09<00:00, 10.6MB/s]
+4: 05MB/s]
+ 50%|████▉     | 47.5M/95.8M [00:07<00:07, 7.04MB/s]
+ 50%|█████     | 48.2M/95.8M [00:08<00:07, 7.02MB/s]
+ 51%|█████▏    | 49.2M/95.8M [00:08<00:06, 7.79MB/s]
+ 52%|█████▏    | 50.2M/95.8M [00:08<00:05, 8.25MB/s]
+ 53%|█████▎    | 51.1M/95.8M [00:08<00:05, 8.50MB/s]
+ 54%|█████▍    | 52.0M/95.8M [00:08<00:05, 8.69MB/s]
+ 55%|█████▌    | 53.0M/95.8M [00:08<00:05, 8.88MB/s]
+ 56%|█████▌    | 53.9M/95.8M [00:08<00:04, 8.91MB/s]
+ 57%|█████▋    | 54.8M/95.8M [00:08<00:04, 8.84MB/s]
+ 58%|█████▊    | 55.8M/95.8M [00:08<00:04, 9.28MB/s]
+ 59%|█████▉    | 56.9M/95.8M [00:09<00:04, 9.89MB/s]
+ 61%|██████    | 58.0M/95.8M [00:09<00:03, 10.3MB/s]
+ 62%|██████▏   | 59.1M/95.8M [00:09<00:03, 10.5MB/s]
+ 63%|██████▎   | 60.2M/95.8M [00:09<00:03, 10.7MB/s]
+ 64%|██████▍   | 61.4M/95.8M [00:09<00:03, 10.9MB/s]
+ 66%|██████▌   | 62.9M/95
+7: 08<00:05, 6.95MB/s]
+ 61%|██████▏   | 58.9M/95.8M [00:08<00:05, 7.03MB/s]
+ 63%|██████▎   | 59.9M/95.8M [00:08<00:04, 7.71MB/s]
+ 64%|██████▎   | 60.9M/95.8M [00:08<00:04, 8.20MB/s]
+ 65%|██████▍   | 61.9M/95.8M [00:08<00:04, 8.64MB/s]
+ 66%|██████▌   | 62.9M/95.8M [00:08<00:03, 8.88MB/s]
+ 67%|██████▋   | 63.9M/95.8M [00:08<00:03, 9.08MB/s]
+ 68%|██████▊   | 64.9M/95.8M [00:08<00:03, 9.25MB/s]
+ 69%|██████▉   | 65.9M/95.8M [00:08<00:03, 9.47MB/s]
+ 70%|███████   | 67.1M/95.8M [00:08<00:02, 10.4MB/s]
+ 71%|███████▏  | 68.4M/95.8M [00:09<00:02, 11.0MB/s]
+ 73%|███████▎  | 69.6M/95.8M [00:09<00:02, 11.5MB/s]
+ 74%|███████▍  | 71.0M/95.8M [00:09<00:02, 12.0MB/s]
+ 75%|███████▌  | 72.2M/95.8M [00:09<00:02, 12.3MB/s]
+ 77%|███████▋  | 73.6M/95.8M [00:09<00:01, 12.9MB/s]
+ 79%|███████▊  | 75.4M/95.8M [00:09<00:0
+1:  16.2MB/s]
+ 85%|████████▍ | 81.2M/95.8M [00:09<00:00, 16.3MB/s]
+ 87%|████████▋ | 83.2M/95.8M [00:09<00:00, 17.5MB/s]
+ 89%|████████▉ | 85.2M/95.8M [00:09<00:00, 18.5MB/s]
+ 91%|█████████ | 87.2M/95.8M [00:09<00:00, 18.9MB/s]
+ 93%|█████████▎| 89.2M/95.8M [00:09<00:00, 19.4MB/s]
+ 95%|█████████▌| 91.2M/95.8M [00:09<00:00, 19.8MB/s]
+ 97%|█████████▋| 93.2M/95.8M [00:10<00:00, 13.3MB/s]
+100%|██████████| 95.8M/95.8M [00:10<00:00, 9.73MB/s]
+0: ��█▏ | 78.5M/95.8M [00:09<00:01, 12.9MB/s]
+ 83%|████████▎ | 79.9M/95.8M [00:09<00:01, 13.3MB/s]
+ 85%|████████▍ | 81.2M/95.8M [00:09<00:01, 13.6MB/s]
+ 87%|████████▋ | 82.9M/95.8M [00:09<00:00, 14.5MB/s]
+ 88%|████████▊ | 84.8M/95.8M [00:09<00:00, 15.9MB/s]
+ 90%|█████████ | 86.6M/95.8M [00:09<00:00, 16.8MB/s]
+ 92%|█████████▏| 88.5M/95.8M [00:09<00:00, 17.6MB/s]
+ 94%|█████████▍| 90.4M/95.8M [00:09<00:00, 18.1MB/s]
+ 96%|█████████▌| 92.1M/95.8M [00:10<00:00, 11.7MB/s]
+ 99%|█████████▉| 95.2M/95.8M [00:10<00:00, 16.1MB/s]
+100%|██████████| 95.8M/95.8M [00:10<00:00, 9.72MB/s]
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240272, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.inner_blocks.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240273, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.inner_blocks.0.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240273, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.inner_blocks.1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240274, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.inner_blocks.1.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240274, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.inner_blocks.2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240275, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.inner_blocks.2.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240275, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.layer_blocks.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240276, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.layer_blocks.0.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240276, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.layer_blocks.1.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240277, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.layer_blocks.1.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240277, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 108, "tensor": "module.backbone.fpn.layer_blocks.2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240278, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/feature_pyramid_network.py", "lineno": 110, "tensor": "module.backbone.fpn.layer_blocks.2.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240284, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 142, "tensor": "module.head.classification_head.conv.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240285, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 144, "tensor": "module.head.classification_head.conv.0.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240285, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 142, "tensor": "module.head.classification_head.conv.2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240287, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 144, "tensor": "module.head.classification_head.conv.2.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240287, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 142, "tensor": "module.head.classification_head.conv.4.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240288, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 144, "tensor": "module.head.classification_head.conv.4.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240288, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 142, "tensor": "module.head.classification_head.conv.6.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240290, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 144, "tensor": "module.head.classification_head.conv.6.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240300, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 148, "tensor": "module.head.classification_head.cls_logits.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240313, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 150, "tensor": "module.head.classification_head.cls_logits.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240318, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 317, "tensor": "module.head.regression_head.bbox_reg.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240319, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 319, "tensor": "module.head.regression_head.bbox_reg.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240319, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 324, "tensor": "module.head.regression_head.conv.0.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240320, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 326, "tensor": "module.head.regression_head.conv.0.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240320, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 324, "tensor": "module.head.regression_head.conv.2.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240322, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 326, "tensor": "module.head.regression_head.conv.2.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240322, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 324, "tensor": "module.head.regression_head.conv.4.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240323, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 326, "tensor": "module.head.regression_head.conv.4.bias"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240323, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 324, "tensor": "module.head.regression_head.conv.6.weight"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240325, "event_type": "POINT_IN_TIME", "key": "weights_initialization", "value": null, "metadata": {"file": "/workspace/ssd/model/retinanet.py", "lineno": 326, "tensor": "module.head.regression_head.conv.6.bias"}}
+7: 1, 14.3MB/s]
+ 81%|████████  | 77.1M/95.8M [00:09<00:01, 15.1MB/s]
+ 82%|████████▏ | 78.8M/95.8M [00:09<00:01, 15.5MB/s]
+ 84%|████████▍ | 80.4M/95.8M [00:09<00:01, 15.9MB/s]
+ 86%|████████▌ | 82.0M/95.8M [00:10<00:01, 12.5MB/s]
+ 87%|████████▋ | 83.4M/95.8M [00:10<00:01, 11.5MB/s]
+ 90%|█████████ | 86.4M/95.8M [00:10<00:00, 16.2MB/s]
+ 97%|█████████▋| 92.6M/95.8M [00:10<00:00, 28.5MB/s]
+100%|██████████| 95.8M/95.8M [00:10<00:00, 9.53MB/s]
+4: .8M [00:09<00:02, 12.1MB/s]
+ 67%|██████▋   | 64.4M/95.8M [00:09<00:02, 12.8MB/s]
+ 69%|██████▉   | 65.9M/95.8M [00:09<00:02, 13.6MB/s]
+ 70%|███████   | 67.4M/95.8M [00:09<00:02, 14.1MB/s]
+ 72%|███████▏  | 68.9M/95.8M [00:09<00:01, 14.4MB/s]
+ 73%|███████▎  | 70.2M/95.8M [00:10<00:02, 9.67MB/s]
+ 76%|███████▌  | 72.6M/95.8M [00:10<00:01, 12.9MB/s]
+ 81%|████████  | 77.6M/95.8M [00:10<00:00, 22.2MB/s]
+ 88%|████████▊ | 83.9M/95.8M [00:10<00:00, 33.1MB/s]
+ 96%|█████████▋| 92.2M/95.8M [00:10<00:00, 47.4MB/s]
+100%|██████████| 95.8M/95.8M [00:10<00:00, 9.37MB/s]
+0: Casting convolutional layers to half
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240752, "event_type": "POINT_IN_TIME", "key": "opt_name", "value": "adam", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 449}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240753, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 8.5e-05, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 450}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240753, "event_type": "POINT_IN_TIME", "key": "opt_weight_decay", "value": 0, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 451}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240753, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_epochs", "value": 0, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 452}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240753, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_factor", "value": 0.001, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 453}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493240753, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 454}}
+4: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+4:   warnings.warn(
+5: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+5:   warnings.warn(
+0: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+0:   warnings.warn(
+2: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+2:   warnings.warn(
+6: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+6:   warnings.warn(
+7: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+7:   warnings.warn(
+1: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+1:   warnings.warn(
+3: /usr/local/lib/python3.12/dist-packages/torch/amp/grad_scaler.py:419: FutureWarning: GradScaler is going to stop passing itself as a keyword argument to the passed optimizer. In the near future GradScaler registers `grad_scale: Tensor` and `found_inf: Tensor` to the passed optimizer and let the optimizer use them directly.
+3:   warnings.warn(
+0: Model eval warmup
+0: Time: 3.522474765777588 sec
+0: Creating Dali training dataloader
+0: Creating Dali eval dataloader
+0: CUDA graph capture for training
+0: CUDA graphs: data preprocessing complete
+0: CUDA graphs: warmup iterations complete
+0: CUDA graphs: capture complete
+0: CUDA graph capture for training complete
+0: :::MLLOG {"namespace": "", "time_ms": 1745493258759, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 574}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493258760, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 578}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493258760, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 4572, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 632}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493258761, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 97, "metadata": {"file": "/workspace/ssd/train.py", "lineno": 635}}
+0: Running ...
+0: :::MLLOG {"namespace": "", "time_ms": 1745493258762, "event_type": "INTERVAL_START", "key": "epoch_start", "value": 0, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 158, "epoch_num": 0}}
+6: Corrupt JPEG data: premature end of data segment
+0: Epoch: [0]  [   0/4572]  eta: 0:00:58    time: 0.0129  data: 0.0002  max mem: 21022
+0: Epoch: [0]  [  20/4572]  eta: 0:04:45    time: 0.0652  data: 0.0635  max mem: 21022
+0: Epoch: [0]  [  40/4572]  eta: 0:04:53    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [  60/4572]  eta: 0:04:54    time: 0.0665  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [  80/4572]  eta: 0:04:54    time: 0.0667  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [ 100/4572]  eta: 0:04:54    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [ 120/4572]  eta: 0:04:54    time: 0.0673  data: 0.0641  max mem: 21022
+0: Epoch: [0]  [ 140/4572]  eta: 0:04:53    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [ 160/4572]  eta: 0:04:52    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [ 180/4572]  eta: 0:04:51    time: 0.0670  data: 0.0642  max mem: 21022
+0: Epoch: [0]  [ 200/4572]  eta: 0:04:50    time: 0.0668  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [ 220/4572]  eta: 0:04:48    time: 0.0670  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [ 240/4572]  eta: 0:04:47    time: 0.0671  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [ 260/4572]  eta: 0:04:46    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [ 280/4572]  eta: 0:04:45    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 300/4572]  eta: 0:04:44    time: 0.0671  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [ 320/4572]  eta: 0:04:43    time: 0.0670  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [ 340/4572]  eta: 0:04:41    time: 0.0669  data: 0.0658  max mem: 21022
+0: Epoch: [0]  [ 360/4572]  eta: 0:04:40    time: 0.0667  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [ 380/4572]  eta: 0:04:39    time: 0.0670  data: 0.0645  max mem: 21022
+0: Epoch: [0]  [ 400/4572]  eta: 0:04:37    time: 0.0671  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [ 420/4572]  eta: 0:04:36    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [ 440/4572]  eta: 0:04:35    time: 0.0670  data: 0.0658  max mem: 21022
+0: Epoch: [0]  [ 460/4572]  eta: 0:04:34    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 480/4572]  eta: 0:04:32    time: 0.0671  data: 0.0659  max mem: 21022
+0: Epoch: [0]  [ 500/4572]  eta: 0:04:31    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 520/4572]  eta: 0:04:30    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 540/4572]  eta: 0:04:28    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [ 560/4572]  eta: 0:04:27    time: 0.0673  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [ 580/4572]  eta: 0:04:26    time: 0.0666  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 600/4572]  eta: 0:04:25    time: 0.0673  data: 0.0662  max mem: 21022
+0: Epoch: [0]  [ 620/4572]  eta: 0:04:23    time: 0.0671  data: 0.0661  max mem: 21022
+0: Epoch: [0]  [ 640/4572]  eta: 0:04:22    time: 0.0670  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 660/4572]  eta: 0:04:21    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 680/4572]  eta: 0:04:19    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [ 700/4572]  eta: 0:04:18    time: 0.0673  data: 0.0657  max mem: 21022
+0: Epoch: [0]  [ 720/4572]  eta: 0:04:17    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [ 740/4572]  eta: 0:04:15    time: 0.0670  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [ 760/4572]  eta: 0:04:14    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 780/4572]  eta: 0:04:13    time: 0.0670  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 800/4572]  eta: 0:04:11    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 820/4572]  eta: 0:04:10    time: 0.0670  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [ 840/4572]  eta: 0:04:09    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [ 860/4572]  eta: 0:04:07    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [ 880/4572]  eta: 0:04:06    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [ 900/4572]  eta: 0:04:05    time: 0.0671  data: 0.0657  max mem: 21022
+0: Epoch: [0]  [ 920/4572]  eta: 0:04:03    time: 0.0672  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [ 940/4572]  eta: 0:04:02    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [ 960/4572]  eta: 0:04:01    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [ 980/4572]  eta: 0:03:59    time: 0.0673  data: 0.0657  max mem: 21022
+0: Epoch: [0]  [1000/4572]  eta: 0:03:58    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [1020/4572]  eta: 0:03:57    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [1040/4572]  eta: 0:03:55    time: 0.0673  data: 0.0658  max mem: 21022
+0: Epoch: [0]  [1060/4572]  eta: 0:03:54    time: 0.0672  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1080/4572]  eta: 0:03:53    time: 0.0669  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [1100/4572]  eta: 0:03:51    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [1120/4572]  eta: 0:03:50    time: 0.0671  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1140/4572]  eta: 0:03:49    time: 0.0667  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [1160/4572]  eta: 0:03:47    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [1180/4572]  eta: 0:03:46    time: 0.0669  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [1200/4572]  eta: 0:03:45    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [1220/4572]  eta: 0:03:43    time: 0.0669  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1240/4572]  eta: 0:03:42    time: 0.0672  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1260/4572]  eta: 0:03:41    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [1280/4572]  eta: 0:03:39    time: 0.0669  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [1300/4572]  eta: 0:03:38    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1320/4572]  eta: 0:03:37    time: 0.0673  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1340/4572]  eta: 0:03:35    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [1360/4572]  eta: 0:03:34    time: 0.0672  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1380/4572]  eta: 0:03:33    time: 0.0671  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1400/4572]  eta: 0:03:31    time: 0.0670  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1420/4572]  eta: 0:03:30    time: 0.0670  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1440/4572]  eta: 0:03:29    time: 0.0667  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1460/4572]  eta: 0:03:27    time: 0.0668  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [1480/4572]  eta: 0:03:26    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [1500/4572]  eta: 0:03:25    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1520/4572]  eta: 0:03:23    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [1540/4572]  eta: 0:03:22    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1560/4572]  eta: 0:03:21    time: 0.0673  data: 0.0659  max mem: 21022
+0: Epoch: [0]  [1580/4572]  eta: 0:03:19    time: 0.0671  data: 0.0658  max mem: 21022
+0: Epoch: [0]  [1600/4572]  eta: 0:03:18    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [1620/4572]  eta: 0:03:17    time: 0.0672  data: 0.0657  max mem: 21022
+0: Epoch: [0]  [1640/4572]  eta: 0:03:15    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1660/4572]  eta: 0:03:14    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1680/4572]  eta: 0:03:13    time: 0.0669  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [1700/4572]  eta: 0:03:11    time: 0.0671  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1720/4572]  eta: 0:03:10    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [1740/4572]  eta: 0:03:09    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [1760/4572]  eta: 0:03:07    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [1780/4572]  eta: 0:03:06    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1800/4572]  eta: 0:03:05    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [1820/4572]  eta: 0:03:03    time: 0.0670  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [1840/4572]  eta: 0:03:02    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [1860/4572]  eta: 0:03:01    time: 0.0674  data: 0.0657  max mem: 21022
+0: Epoch: [0]  [1880/4572]  eta: 0:02:59    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [1900/4572]  eta: 0:02:58    time: 0.0673  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [1920/4572]  eta: 0:02:57    time: 0.0669  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [1940/4572]  eta: 0:02:55    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [1960/4572]  eta: 0:02:54    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [1980/4572]  eta: 0:02:53    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [2000/4572]  eta: 0:02:51    time: 0.0670  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [2020/4572]  eta: 0:02:50    time: 0.0670  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [2040/4572]  eta: 0:02:49    time: 0.0668  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [2060/4572]  eta: 0:02:47    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [2080/4572]  eta: 0:02:46    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [2100/4572]  eta: 0:02:45    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [2120/4572]  eta: 0:02:43    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [2140/4572]  eta: 0:02:42    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [2160/4572]  eta: 0:02:41    time: 0.0670  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [2180/4572]  eta: 0:02:39    time: 0.0666  data: 0.0638  max mem: 21022
+0: Epoch: [0]  [2200/4572]  eta: 0:02:38    time: 0.0670  data: 0.0642  max mem: 21022
+0: Epoch: [0]  [2220/4572]  eta: 0:02:37    time: 0.0668  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [2240/4572]  eta: 0:02:35    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [2260/4572]  eta: 0:02:34    time: 0.0666  data: 0.0638  max mem: 21022
+0: Epoch: [0]  [2280/4572]  eta: 0:02:33    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [2300/4572]  eta: 0:02:31    time: 0.0672  data: 0.0642  max mem: 21022
+0: Epoch: [0]  [2320/4572]  eta: 0:02:30    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [2340/4572]  eta: 0:02:29    time: 0.0667  data: 0.0638  max mem: 21022
+0: Epoch: [0]  [2360/4572]  eta: 0:02:27    time: 0.0669  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [2380/4572]  eta: 0:02:26    time: 0.0664  data: 0.0635  max mem: 21022
+0: Epoch: [0]  [2400/4572]  eta: 0:02:25    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [2420/4572]  eta: 0:02:23    time: 0.0668  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [2440/4572]  eta: 0:02:22    time: 0.0668  data: 0.0636  max mem: 21022
+0: Epoch: [0]  [2460/4572]  eta: 0:02:21    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [2480/4572]  eta: 0:02:19    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [2500/4572]  eta: 0:02:18    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [2520/4572]  eta: 0:02:17    time: 0.0668  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [2540/4572]  eta: 0:02:15    time: 0.0670  data: 0.0641  max mem: 21022
+0: Epoch: [0]  [2560/4572]  eta: 0:02:14    time: 0.0671  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [2580/4572]  eta: 0:02:13    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [2600/4572]  eta: 0:02:11    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [2620/4572]  eta: 0:02:10    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [2640/4572]  eta: 0:02:09    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [2660/4572]  eta: 0:02:07    time: 0.0672  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [2680/4572]  eta: 0:02:06    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [2700/4572]  eta: 0:02:05    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [2720/4572]  eta: 0:02:03    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [2740/4572]  eta: 0:02:02    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [2760/4572]  eta: 0:02:01    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [2780/4572]  eta: 0:01:59    time: 0.0671  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [2800/4572]  eta: 0:01:58    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [2820/4572]  eta: 0:01:57    time: 0.0663  data: 0.0643  max mem: 21022
+0: Epoch: [0]  [2840/4572]  eta: 0:01:55    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [2860/4572]  eta: 0:01:54    time: 0.0669  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [2880/4572]  eta: 0:01:53    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [0]  [2900/4572]  eta: 0:01:51    time: 0.0671  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [2920/4572]  eta: 0:01:50    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [2940/4572]  eta: 0:01:49    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [2960/4572]  eta: 0:01:47    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [2980/4572]  eta: 0:01:46    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [3000/4572]  eta: 0:01:45    time: 0.0673  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [3020/4572]  eta: 0:01:43    time: 0.0667  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [3040/4572]  eta: 0:01:42    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3060/4572]  eta: 0:01:41    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [3080/4572]  eta: 0:01:39    time: 0.0667  data: 0.0638  max mem: 21022
+0: Epoch: [0]  [3100/4572]  eta: 0:01:38    time: 0.0671  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [3120/4572]  eta: 0:01:37    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [3140/4572]  eta: 0:01:35    time: 0.0669  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [3160/4572]  eta: 0:01:34    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3180/4572]  eta: 0:01:32    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [3200/4572]  eta: 0:01:31    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [3220/4572]  eta: 0:01:30    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [3240/4572]  eta: 0:01:28    time: 0.0669  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [3260/4572]  eta: 0:01:27    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [3280/4572]  eta: 0:01:26    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3300/4572]  eta: 0:01:24    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [3320/4572]  eta: 0:01:23    time: 0.0670  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [3340/4572]  eta: 0:01:22    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [3360/4572]  eta: 0:01:20    time: 0.0673  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [3380/4572]  eta: 0:01:19    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [0]  [3400/4572]  eta: 0:01:18    time: 0.0670  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [3420/4572]  eta: 0:01:16    time: 0.0668  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [3440/4572]  eta: 0:01:15    time: 0.0671  data: 0.0640  max mem: 21022
+0: Epoch: [0]  [3460/4572]  eta: 0:01:14    time: 0.0670  data: 0.0638  max mem: 21022
+0: Epoch: [0]  [3480/4572]  eta: 0:01:12    time: 0.0663  data: 0.0634  max mem: 21022
+0: Epoch: [0]  [3500/4572]  eta: 0:01:11    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [3520/4572]  eta: 0:01:10    time: 0.0668  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [3540/4572]  eta: 0:01:08    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [3560/4572]  eta: 0:01:07    time: 0.0670  data: 0.0635  max mem: 21022
+0: Epoch: [0]  [3580/4572]  eta: 0:01:06    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [3600/4572]  eta: 0:01:04    time: 0.0669  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [3620/4572]  eta: 0:01:03    time: 0.0670  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [3640/4572]  eta: 0:01:02    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [3660/4572]  eta: 0:01:00    time: 0.0668  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [3680/4572]  eta: 0:00:59    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [0]  [3700/4572]  eta: 0:00:58    time: 0.0668  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [3720/4572]  eta: 0:00:56    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [3740/4572]  eta: 0:00:55    time: 0.0669  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [3760/4572]  eta: 0:00:54    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3780/4572]  eta: 0:00:52    time: 0.0665  data: 0.0633  max mem: 21022
+0: Epoch: [0]  [3800/4572]  eta: 0:00:51    time: 0.0669  data: 0.0643  max mem: 21022
+0: Epoch: [0]  [3820/4572]  eta: 0:00:50    time: 0.0667  data: 0.0643  max mem: 21022
+0: Epoch: [0]  [3840/4572]  eta: 0:00:48    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [3860/4572]  eta: 0:00:47    time: 0.0665  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [3880/4572]  eta: 0:00:46    time: 0.0667  data: 0.0644  max mem: 21022
+0: Epoch: [0]  [3900/4572]  eta: 0:00:44    time: 0.0663  data: 0.0631  max mem: 21022
+0: Epoch: [0]  [3920/4572]  eta: 0:00:43    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3940/4572]  eta: 0:00:42    time: 0.0667  data: 0.0645  max mem: 21022
+0: Epoch: [0]  [3960/4572]  eta: 0:00:40    time: 0.0668  data: 0.0647  max mem: 21022
+0: Epoch: [0]  [3980/4572]  eta: 0:00:39    time: 0.0664  data: 0.0632  max mem: 21022
+0: Epoch: [0]  [4000/4572]  eta: 0:00:38    time: 0.0669  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [4020/4572]  eta: 0:00:36    time: 0.0667  data: 0.0646  max mem: 21022
+0: Epoch: [0]  [4040/4572]  eta: 0:00:35    time: 0.0671  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [4060/4572]  eta: 0:00:34    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4080/4572]  eta: 0:00:32    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [4100/4572]  eta: 0:00:31    time: 0.0665  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [4120/4572]  eta: 0:00:30    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4140/4572]  eta: 0:00:28    time: 0.0671  data: 0.0656  max mem: 21022
+0: Epoch: [0]  [4160/4572]  eta: 0:00:27    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [0]  [4180/4572]  eta: 0:00:26    time: 0.0667  data: 0.0654  max mem: 21022
+0: Epoch: [0]  [4200/4572]  eta: 0:00:24    time: 0.0672  data: 0.0658  max mem: 21022
+0: Epoch: [0]  [4220/4572]  eta: 0:00:23    time: 0.0661  data: 0.0635  max mem: 21022
+0: Epoch: [0]  [4240/4572]  eta: 0:00:22    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4260/4572]  eta: 0:00:20    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4280/4572]  eta: 0:00:19    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [4300/4572]  eta: 0:00:18    time: 0.0671  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [4320/4572]  eta: 0:00:16    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [4340/4572]  eta: 0:00:15    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [4360/4572]  eta: 0:00:14    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [4380/4572]  eta: 0:00:12    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [0]  [4400/4572]  eta: 0:00:11    time: 0.0670  data: 0.0655  max mem: 21022
+0: Epoch: [0]  [4420/4572]  eta: 0:00:10    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [4440/4572]  eta: 0:00:08    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [4460/4572]  eta: 0:00:07    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [0]  [4480/4572]  eta: 0:00:06    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [0]  [4500/4572]  eta: 0:00:04    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [0]  [4520/4572]  eta: 0:00:03    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4540/4572]  eta: 0:00:02    time: 0.0669  data: 0.0651  max mem: 21022
+0: Epoch: [0]  [4560/4572]  eta: 0:00:00    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [0]  [4571/4572]  eta: 0:00:00    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [0] Total time: 0:05:05 (0.0668 s / it)
+0: :::MLLOG {"namespace": "", "time_ms": 1745493564228, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": 0, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 330, "epoch_num": 0}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493564228, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 3832.806415328201, "max_memory_usage": 20.529}, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 334, "step": 1}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493564229, "event_type": "INTERVAL_START", "key": "eval_start", "value": 1, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 347, "epoch_num": 1}}
+7: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+7:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+6: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+6:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+2: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+2:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+0: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+0:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+4: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+4:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+1: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+1:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+3: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+3:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+5: /workspace/ssd/model/transform.py:211: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+5:   torch.tensor(s, dtype=torch.float32, device=boxes.device) /
+0: Test:  [ 0/97]  eta: 0:00:29  model_time: 0.2984 (0.2984)  evaluator_time: 0.0025 (0.0025)  time: 0.3013  data: 0.0002  max mem: 21022
+0: Test:  [20/97]  eta: 0:00:18  model_time: 0.2308 (0.2336)  evaluator_time: 0.0028 (0.0029)  time: 0.2341  data: 0.0007  max mem: 21022
+0: Test:  [40/97]  eta: 0:00:13  model_time: 0.2255 (0.2315)  evaluator_time: 0.0030 (0.0029)  time: 0.2330  data: 0.0006  max mem: 21022
+0: Test:  [60/97]  eta: 0:00:08  model_time: 0.2344 (0.2324)  evaluator_time: 0.0032 (0.0064)  time: 0.2488  data: 0.0007  max mem: 21022
+0: Test:  [80/97]  eta: 0:00:04  model_time: 0.2308 (0.2318)  evaluator_time: 0.0034 (0.0057)  time: 0.2339  data: 0.0007  max mem: 21022
+0: Test:  [96/97]  eta: 0:00:00  model_time: 0.2326 (0.2314)  evaluator_time: 0.0034 (0.0053)  time: 0.2341  data: 0.0006  max mem: 21022
+0: Test: Total time: 0:00:23 (0.2375 s / it)
+0: Averaged stats: model_time: 0.2326 (0.2288)  evaluator_time: 0.0034 (0.0047)
+0: :::MLLOG {"namespace": "", "time_ms": 1745493588218, "event_type": "INTERVAL_START", "key": "epoch_start", "value": 1, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 158, "epoch_num": 1}}
+5: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+7: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+6: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+1: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+2: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+3: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+4: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+0: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+0: Epoch: [1]  [   0/4571]  eta: 0:00:13    time: 0.0030  data: 0.0012  max mem: 21022
+0: Epoch: [1]  [  20/4571]  eta: 0:04:39    time: 0.0642  data: 0.0627  max mem: 21022
+0: Epoch: [1]  [  40/4571]  eta: 0:04:49    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [  60/4571]  eta: 0:04:52    time: 0.0667  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [  80/4571]  eta: 0:04:53    time: 0.0668  data: 0.0639  max mem: 21022
+0: :::MLLOG {"namespace": "", "time_ms": 1745493594761, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.23744817017343242, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 440, "epoch_num": 1}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493594761, "event_type": "INTERVAL_END", "key": "eval_stop", "value": 1, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 441, "epoch_num": 1}}
+0: Corrupt JPEG data: premature end of data segment
+0: Epoch: [1]  [ 100/4571]  eta: 0:04:52    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [ 120/4571]  eta: 0:04:52    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 140/4571]  eta: 0:04:51    time: 0.0668  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 160/4571]  eta: 0:04:50    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 180/4571]  eta: 0:04:49    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [ 200/4571]  eta: 0:04:48    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [ 220/4571]  eta: 0:04:47    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [ 240/4571]  eta: 0:04:46    time: 0.0669  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [ 260/4571]  eta: 0:04:45    time: 0.0668  data: 0.0657  max mem: 21022
+0: Epoch: [1]  [ 280/4571]  eta: 0:04:44    time: 0.0663  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 300/4571]  eta: 0:04:42    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 320/4571]  eta: 0:04:41    time: 0.0667  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [ 340/4571]  eta: 0:04:40    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 360/4571]  eta: 0:04:39    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 380/4571]  eta: 0:04:37    time: 0.0670  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [ 400/4571]  eta: 0:04:36    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [ 420/4571]  eta: 0:04:35    time: 0.0670  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [ 440/4571]  eta: 0:04:34    time: 0.0667  data: 0.0639  max mem: 21022
+0: Epoch: [1]  [ 460/4571]  eta: 0:04:32    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [ 480/4571]  eta: 0:04:31    time: 0.0667  data: 0.0640  max mem: 21022
+0: Epoch: [1]  [ 500/4571]  eta: 0:04:30    time: 0.0666  data: 0.0639  max mem: 21022
+0: Epoch: [1]  [ 520/4571]  eta: 0:04:29    time: 0.0669  data: 0.0643  max mem: 21022
+0: Epoch: [1]  [ 540/4571]  eta: 0:04:27    time: 0.0668  data: 0.0642  max mem: 21022
+0: Epoch: [1]  [ 560/4571]  eta: 0:04:26    time: 0.0668  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 580/4571]  eta: 0:04:25    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 600/4571]  eta: 0:04:24    time: 0.0671  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [ 620/4571]  eta: 0:04:22    time: 0.0660  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [ 640/4571]  eta: 0:04:21    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [ 660/4571]  eta: 0:04:19    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 680/4571]  eta: 0:04:18    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 700/4571]  eta: 0:04:17    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 720/4571]  eta: 0:04:15    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [ 740/4571]  eta: 0:04:14    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [ 760/4571]  eta: 0:04:13    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 780/4571]  eta: 0:04:12    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [ 800/4571]  eta: 0:04:10    time: 0.0664  data: 0.0633  max mem: 21022
+0: Epoch: [1]  [ 820/4571]  eta: 0:04:09    time: 0.0666  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [ 840/4571]  eta: 0:04:08    time: 0.0669  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [ 860/4571]  eta: 0:04:06    time: 0.0663  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [ 880/4571]  eta: 0:04:05    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [ 900/4571]  eta: 0:04:04    time: 0.0668  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [ 920/4571]  eta: 0:04:02    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 940/4571]  eta: 0:04:01    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [ 960/4571]  eta: 0:04:00    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [ 980/4571]  eta: 0:03:58    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [1000/4571]  eta: 0:03:57    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [1020/4571]  eta: 0:03:56    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [1040/4571]  eta: 0:03:54    time: 0.0674  data: 0.0659  max mem: 21022
+0: Epoch: [1]  [1060/4571]  eta: 0:03:53    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [1080/4571]  eta: 0:03:52    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [1100/4571]  eta: 0:03:50    time: 0.0665  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [1120/4571]  eta: 0:03:49    time: 0.0669  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [1140/4571]  eta: 0:03:48    time: 0.0669  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [1160/4571]  eta: 0:03:46    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [1180/4571]  eta: 0:03:45    time: 0.0665  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [1200/4571]  eta: 0:03:44    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [1220/4571]  eta: 0:03:42    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [1240/4571]  eta: 0:03:41    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [1260/4571]  eta: 0:03:40    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [1280/4571]  eta: 0:03:38    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [1300/4571]  eta: 0:03:37    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1320/4571]  eta: 0:03:36    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1340/4571]  eta: 0:03:34    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [1360/4571]  eta: 0:03:33    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [1380/4571]  eta: 0:03:32    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1400/4571]  eta: 0:03:30    time: 0.0669  data: 0.0656  max mem: 21022
+0: Epoch: [1]  [1420/4571]  eta: 0:03:29    time: 0.0668  data: 0.0656  max mem: 21022
+0: Epoch: [1]  [1440/4571]  eta: 0:03:28    time: 0.0667  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [1460/4571]  eta: 0:03:26    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [1480/4571]  eta: 0:03:25    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [1500/4571]  eta: 0:03:24    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [1520/4571]  eta: 0:03:22    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [1540/4571]  eta: 0:03:21    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1560/4571]  eta: 0:03:20    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [1580/4571]  eta: 0:03:19    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [1600/4571]  eta: 0:03:17    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [1620/4571]  eta: 0:03:16    time: 0.0661  data: 0.0632  max mem: 21022
+0: Epoch: [1]  [1640/4571]  eta: 0:03:15    time: 0.0667  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [1660/4571]  eta: 0:03:13    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [1680/4571]  eta: 0:03:12    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [1700/4571]  eta: 0:03:11    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [1720/4571]  eta: 0:03:09    time: 0.0668  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [1740/4571]  eta: 0:03:08    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1760/4571]  eta: 0:03:07    time: 0.0663  data: 0.0643  max mem: 21022
+0: Epoch: [1]  [1780/4571]  eta: 0:03:05    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [1800/4571]  eta: 0:03:04    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [1820/4571]  eta: 0:03:03    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [1840/4571]  eta: 0:03:01    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [1860/4571]  eta: 0:03:00    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1880/4571]  eta: 0:02:59    time: 0.0665  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [1900/4571]  eta: 0:02:57    time: 0.0666  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [1920/4571]  eta: 0:02:56    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [1940/4571]  eta: 0:02:55    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [1960/4571]  eta: 0:02:53    time: 0.0671  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [1980/4571]  eta: 0:02:52    time: 0.0669  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2000/4571]  eta: 0:02:51    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2020/4571]  eta: 0:02:49    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2040/4571]  eta: 0:02:48    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2060/4571]  eta: 0:02:47    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2080/4571]  eta: 0:02:45    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [2100/4571]  eta: 0:02:44    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2120/4571]  eta: 0:02:43    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2140/4571]  eta: 0:02:41    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2160/4571]  eta: 0:02:40    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2180/4571]  eta: 0:02:39    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2200/4571]  eta: 0:02:37    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [2220/4571]  eta: 0:02:36    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [2240/4571]  eta: 0:02:35    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2260/4571]  eta: 0:02:33    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2280/4571]  eta: 0:02:32    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2300/4571]  eta: 0:02:31    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [2320/4571]  eta: 0:02:29    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [2340/4571]  eta: 0:02:28    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [2360/4571]  eta: 0:02:27    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [2380/4571]  eta: 0:02:25    time: 0.0665  data: 0.0634  max mem: 21022
+0: Epoch: [1]  [2400/4571]  eta: 0:02:24    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [2420/4571]  eta: 0:02:23    time: 0.0669  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2440/4571]  eta: 0:02:21    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2460/4571]  eta: 0:02:20    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2480/4571]  eta: 0:02:19    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [2500/4571]  eta: 0:02:17    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [2520/4571]  eta: 0:02:16    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [2540/4571]  eta: 0:02:15    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [2560/4571]  eta: 0:02:13    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [2580/4571]  eta: 0:02:12    time: 0.0662  data: 0.0632  max mem: 21022
+0: Epoch: [1]  [2600/4571]  eta: 0:02:11    time: 0.0662  data: 0.0642  max mem: 21022
+0: Epoch: [1]  [2620/4571]  eta: 0:02:09    time: 0.0665  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [2640/4571]  eta: 0:02:08    time: 0.0663  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [2660/4571]  eta: 0:02:07    time: 0.0668  data: 0.0640  max mem: 21022
+0: Epoch: [1]  [2680/4571]  eta: 0:02:05    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [2700/4571]  eta: 0:02:04    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [2720/4571]  eta: 0:02:03    time: 0.0662  data: 0.0630  max mem: 21022
+0: Epoch: [1]  [2740/4571]  eta: 0:02:01    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [2760/4571]  eta: 0:02:00    time: 0.0665  data: 0.0643  max mem: 21022
+0: Epoch: [1]  [2780/4571]  eta: 0:01:59    time: 0.0664  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [2800/4571]  eta: 0:01:57    time: 0.0666  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [2820/4571]  eta: 0:01:56    time: 0.0661  data: 0.0631  max mem: 21022
+0: Epoch: [1]  [2840/4571]  eta: 0:01:55    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [2860/4571]  eta: 0:01:53    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [1]  [2880/4571]  eta: 0:01:52    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [1]  [2900/4571]  eta: 0:01:51    time: 0.0663  data: 0.0635  max mem: 21022
+0: Epoch: [1]  [2920/4571]  eta: 0:01:49    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [1]  [2940/4571]  eta: 0:01:48    time: 0.0666  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [2960/4571]  eta: 0:01:47    time: 0.0666  data: 0.0643  max mem: 21022
+0: Epoch: [1]  [2980/4571]  eta: 0:01:45    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3000/4571]  eta: 0:01:44    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [3020/4571]  eta: 0:01:43    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3040/4571]  eta: 0:01:41    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3060/4571]  eta: 0:01:40    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3080/4571]  eta: 0:01:39    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [3100/4571]  eta: 0:01:37    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [1]  [3120/4571]  eta: 0:01:36    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [3140/4571]  eta: 0:01:35    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [3160/4571]  eta: 0:01:33    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [3180/4571]  eta: 0:01:32    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3200/4571]  eta: 0:01:31    time: 0.0664  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [3220/4571]  eta: 0:01:29    time: 0.0669  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3240/4571]  eta: 0:01:28    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [3260/4571]  eta: 0:01:27    time: 0.0666  data: 0.0644  max mem: 21022
+0: Epoch: [1]  [3280/4571]  eta: 0:01:25    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [3300/4571]  eta: 0:01:24    time: 0.0670  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [3320/4571]  eta: 0:01:23    time: 0.0665  data: 0.0642  max mem: 21022
+0: Epoch: [1]  [3340/4571]  eta: 0:01:21    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [3360/4571]  eta: 0:01:20    time: 0.0666  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [3380/4571]  eta: 0:01:19    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3400/4571]  eta: 0:01:17    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [3420/4571]  eta: 0:01:16    time: 0.0667  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3440/4571]  eta: 0:01:15    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [1]  [3460/4571]  eta: 0:01:13    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3480/4571]  eta: 0:01:12    time: 0.0668  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [3500/4571]  eta: 0:01:11    time: 0.0703  data: 0.0687  max mem: 21022
+0: Epoch: [1]  [3520/4571]  eta: 0:01:09    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [3540/4571]  eta: 0:01:08    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [3560/4571]  eta: 0:01:07    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3580/4571]  eta: 0:01:05    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [3600/4571]  eta: 0:01:04    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [3620/4571]  eta: 0:01:03    time: 0.0667  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [3640/4571]  eta: 0:01:01    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [3660/4571]  eta: 0:01:00    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3680/4571]  eta: 0:00:59    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [3700/4571]  eta: 0:00:57    time: 0.0660  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3720/4571]  eta: 0:00:56    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [3740/4571]  eta: 0:00:55    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [3760/4571]  eta: 0:00:53    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3780/4571]  eta: 0:00:52    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [3800/4571]  eta: 0:00:51    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [1]  [3820/4571]  eta: 0:00:49    time: 0.0671  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [3840/4571]  eta: 0:00:48    time: 0.0664  data: 0.0632  max mem: 21022
+0: Epoch: [1]  [3860/4571]  eta: 0:00:47    time: 0.0665  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3880/4571]  eta: 0:00:45    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [3900/4571]  eta: 0:00:44    time: 0.0660  data: 0.0642  max mem: 21022
+0: Epoch: [1]  [3920/4571]  eta: 0:00:43    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [3940/4571]  eta: 0:00:41    time: 0.0663  data: 0.0638  max mem: 21022
+0: Epoch: [1]  [3960/4571]  eta: 0:00:40    time: 0.0662  data: 0.0633  max mem: 21022
+0: Epoch: [1]  [3980/4571]  eta: 0:00:39    time: 0.0665  data: 0.0639  max mem: 21022
+0: Epoch: [1]  [4000/4571]  eta: 0:00:38    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [4020/4571]  eta: 0:00:36    time: 0.0664  data: 0.0638  max mem: 21022
+0: Epoch: [1]  [4040/4571]  eta: 0:00:35    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [4060/4571]  eta: 0:00:34    time: 0.0665  data: 0.0635  max mem: 21022
+0: Epoch: [1]  [4080/4571]  eta: 0:00:32    time: 0.0770  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [4100/4571]  eta: 0:00:31    time: 0.0646  data: 0.0630  max mem: 21022
+0: Epoch: [1]  [4120/4571]  eta: 0:00:30    time: 0.0668  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [4140/4571]  eta: 0:00:28    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [4160/4571]  eta: 0:00:27    time: 0.0661  data: 0.0636  max mem: 21022
+0: Epoch: [1]  [4180/4571]  eta: 0:00:26    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [4200/4571]  eta: 0:00:24    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [4220/4571]  eta: 0:00:23    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [4240/4571]  eta: 0:00:22    time: 0.0663  data: 0.0645  max mem: 21022
+0: Epoch: [1]  [4260/4571]  eta: 0:00:20    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [4280/4571]  eta: 0:00:19    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [4300/4571]  eta: 0:00:18    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [1]  [4320/4571]  eta: 0:00:16    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [4340/4571]  eta: 0:00:15    time: 0.0664  data: 0.0653  max mem: 21022
+0: Epoch: [1]  [4360/4571]  eta: 0:00:14    time: 0.0662  data: 0.0652  max mem: 21022
+0: Epoch: [1]  [4380/4571]  eta: 0:00:12    time: 0.0661  data: 0.0646  max mem: 21022
+0: Epoch: [1]  [4400/4571]  eta: 0:00:11    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [4420/4571]  eta: 0:00:10    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [4440/4571]  eta: 0:00:08    time: 0.0669  data: 0.0657  max mem: 21022
+0: Epoch: [1]  [4460/4571]  eta: 0:00:07    time: 0.0666  data: 0.0655  max mem: 21022
+0: Epoch: [1]  [4480/4571]  eta: 0:00:06    time: 0.0665  data: 0.0654  max mem: 21022
+0: Epoch: [1]  [4500/4571]  eta: 0:00:04    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [1]  [4520/4571]  eta: 0:00:03    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [1]  [4540/4571]  eta: 0:00:02    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [1]  [4560/4571]  eta: 0:00:00    time: 0.0663  data: 0.0632  max mem: 21022
+0: Epoch: [1]  [4570/4571]  eta: 0:00:00    time: 0.0654  data: 0.0625  max mem: 21022
+0: Epoch: [1] Total time: 0:05:04 (0.0666 s / it)
+0: :::MLLOG {"namespace": "", "time_ms": 1745493892702, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": 1, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 330, "epoch_num": 1}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493892703, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 3844.6527680242352, "max_memory_usage": 20.529}, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 334, "step": 2}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493892703, "event_type": "INTERVAL_START", "key": "eval_start", "value": 2, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 347, "epoch_num": 2}}
+0: Test:  [ 0/97]  eta: 0:00:21  model_time: 0.2222 (0.2222)  evaluator_time: 0.0025 (0.0025)  time: 0.2258  data: 0.0010  max mem: 21022
+0: Test:  [20/97]  eta: 0:00:18  model_time: 0.2199 (0.2223)  evaluator_time: 0.0023 (0.0129)  time: 0.2362  data: 0.0005  max mem: 21022
+0: Test:  [40/97]  eta: 0:00:12  model_time: 0.2120 (0.2189)  evaluator_time: 0.0023 (0.0077)  time: 0.2181  data: 0.0004  max mem: 21022
+0: Test:  [60/97]  eta: 0:00:08  model_time: 0.2206 (0.2201)  evaluator_time: 0.0022 (0.0059)  time: 0.2251  data: 0.0004  max mem: 21022
+0: Test:  [80/97]  eta: 0:00:03  model_time: 0.2164 (0.2190)  evaluator_time: 0.0023 (0.0068)  time: 0.2260  data: 0.0004  max mem: 21022
+0: Test:  [96/97]  eta: 0:00:00  model_time: 0.2168 (0.2186)  evaluator_time: 0.0023 (0.0061)  time: 0.2192  data: 0.0004  max mem: 21022
+0: Test: Total time: 0:00:21 (0.2252 s / it)
+0: Averaged stats: model_time: 0.2168 (0.2232)  evaluator_time: 0.0023 (0.0057)
+0: :::MLLOG {"namespace": "", "time_ms": 1745493916266, "event_type": "INTERVAL_START", "key": "epoch_start", "value": 2, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 158, "epoch_num": 2}}
+0: Epoch: [2]  [   0/4572]  eta: 0:00:13    time: 0.0030  data: 0.0010  max mem: 21022
+0: Epoch: [2]  [  20/4572]  eta: 0:04:38    time: 0.0640  data: 0.0624  max mem: 21022
+0: Epoch: [2]  [  40/4572]  eta: 0:04:48    time: 0.0664  data: 0.0635  max mem: 21022
+0: :::MLLOG {"namespace": "", "time_ms": 1745493919865, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.29661628850127547, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 440, "epoch_num": 2}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745493919865, "event_type": "INTERVAL_END", "key": "eval_stop", "value": 2, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 441, "epoch_num": 2}}
+3: Corrupt JPEG data: premature end of data segment
+0: Epoch: [2]  [  60/4572]  eta: 0:04:51    time: 0.0662  data: 0.0640  max mem: 21022
+0: Epoch: [2]  [  80/4572]  eta: 0:04:51    time: 0.0658  data: 0.0639  max mem: 21022
+0: Epoch: [2]  [ 100/4572]  eta: 0:04:50    time: 0.0657  data: 0.0626  max mem: 21022
+0: Epoch: [2]  [ 120/4572]  eta: 0:04:50    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [2]  [ 140/4572]  eta: 0:04:49    time: 0.0663  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [ 160/4572]  eta: 0:04:48    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 180/4572]  eta: 0:04:48    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 200/4572]  eta: 0:04:47    time: 0.0664  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [ 220/4572]  eta: 0:04:46    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [ 240/4572]  eta: 0:04:45    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 260/4572]  eta: 0:04:43    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 280/4572]  eta: 0:04:42    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 300/4572]  eta: 0:04:41    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [ 320/4572]  eta: 0:04:40    time: 0.0667  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [ 340/4572]  eta: 0:04:39    time: 0.0659  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [ 360/4572]  eta: 0:04:37    time: 0.0665  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [ 380/4572]  eta: 0:04:36    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [ 400/4572]  eta: 0:04:35    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 420/4572]  eta: 0:04:34    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [2]  [ 440/4572]  eta: 0:04:32    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [ 460/4572]  eta: 0:04:31    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 480/4572]  eta: 0:04:30    time: 0.0663  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 500/4572]  eta: 0:04:29    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 520/4572]  eta: 0:04:27    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 540/4572]  eta: 0:04:26    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 560/4572]  eta: 0:04:25    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 580/4572]  eta: 0:04:24    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [ 600/4572]  eta: 0:04:22    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 620/4572]  eta: 0:04:21    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 640/4572]  eta: 0:04:20    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [2]  [ 660/4572]  eta: 0:04:18    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 680/4572]  eta: 0:04:17    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [ 700/4572]  eta: 0:04:16    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [ 720/4572]  eta: 0:04:14    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 740/4572]  eta: 0:04:13    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [ 760/4572]  eta: 0:04:12    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 780/4572]  eta: 0:04:11    time: 0.0669  data: 0.0656  max mem: 21022
+0: Epoch: [2]  [ 800/4572]  eta: 0:04:09    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [ 820/4572]  eta: 0:04:08    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [ 840/4572]  eta: 0:04:07    time: 0.0661  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [ 860/4572]  eta: 0:04:05    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 880/4572]  eta: 0:04:04    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [2]  [ 900/4572]  eta: 0:04:03    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 920/4572]  eta: 0:04:01    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 940/4572]  eta: 0:04:00    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [ 960/4572]  eta: 0:03:59    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [ 980/4572]  eta: 0:03:58    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1000/4572]  eta: 0:03:56    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1020/4572]  eta: 0:03:55    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1040/4572]  eta: 0:03:54    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [1060/4572]  eta: 0:03:52    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [1080/4572]  eta: 0:03:51    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [2]  [1100/4572]  eta: 0:03:50    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [1120/4572]  eta: 0:03:48    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1140/4572]  eta: 0:03:47    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1160/4572]  eta: 0:03:46    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [1180/4572]  eta: 0:03:44    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [1200/4572]  eta: 0:03:43    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1220/4572]  eta: 0:03:42    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [1240/4572]  eta: 0:03:40    time: 0.0665  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [1260/4572]  eta: 0:03:39    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1280/4572]  eta: 0:03:38    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [1300/4572]  eta: 0:03:36    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1320/4572]  eta: 0:03:35    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1340/4572]  eta: 0:03:34    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1360/4572]  eta: 0:03:32    time: 0.0661  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [1380/4572]  eta: 0:03:31    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [1400/4572]  eta: 0:03:30    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1420/4572]  eta: 0:03:29    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [1440/4572]  eta: 0:03:27    time: 0.0669  data: 0.0653  max mem: 21022
+0: Epoch: [2]  [1460/4572]  eta: 0:03:26    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [1480/4572]  eta: 0:03:25    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [1500/4572]  eta: 0:03:23    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [1520/4572]  eta: 0:03:22    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1540/4572]  eta: 0:03:21    time: 0.0671  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1560/4572]  eta: 0:03:19    time: 0.0658  data: 0.0643  max mem: 21022
+0: Epoch: [2]  [1580/4572]  eta: 0:03:18    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1600/4572]  eta: 0:03:17    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [1620/4572]  eta: 0:03:15    time: 0.0668  data: 0.0654  max mem: 21022
+0: Epoch: [2]  [1640/4572]  eta: 0:03:14    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [1660/4572]  eta: 0:03:13    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1680/4572]  eta: 0:03:11    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1700/4572]  eta: 0:03:10    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1720/4572]  eta: 0:03:09    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [1740/4572]  eta: 0:03:07    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [1760/4572]  eta: 0:03:06    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1780/4572]  eta: 0:03:05    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [1800/4572]  eta: 0:03:03    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1820/4572]  eta: 0:03:02    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1840/4572]  eta: 0:03:01    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [1860/4572]  eta: 0:02:59    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [1880/4572]  eta: 0:02:58    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [1900/4572]  eta: 0:02:57    time: 0.0662  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [1920/4572]  eta: 0:02:55    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [2]  [1940/4572]  eta: 0:02:54    time: 0.0667  data: 0.0638  max mem: 21022
+0: Epoch: [2]  [1960/4572]  eta: 0:02:53    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [1980/4572]  eta: 0:02:52    time: 0.0668  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2000/4572]  eta: 0:02:50    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2020/4572]  eta: 0:02:49    time: 0.0667  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [2040/4572]  eta: 0:02:48    time: 0.0666  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [2060/4572]  eta: 0:02:46    time: 0.0664  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [2080/4572]  eta: 0:02:45    time: 0.0663  data: 0.0632  max mem: 21022
+0: Epoch: [2]  [2100/4572]  eta: 0:02:44    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2120/4572]  eta: 0:02:42    time: 0.0670  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [2140/4572]  eta: 0:02:41    time: 0.0659  data: 0.0630  max mem: 21022
+0: Epoch: [2]  [2160/4572]  eta: 0:02:40    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2180/4572]  eta: 0:02:38    time: 0.0665  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [2200/4572]  eta: 0:02:37    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [2]  [2220/4572]  eta: 0:02:36    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [2240/4572]  eta: 0:02:34    time: 0.0669  data: 0.0638  max mem: 21022
+0: Epoch: [2]  [2260/4572]  eta: 0:02:33    time: 0.0662  data: 0.0642  max mem: 21022
+0: Epoch: [2]  [2280/4572]  eta: 0:02:32    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [2300/4572]  eta: 0:02:30    time: 0.0668  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [2320/4572]  eta: 0:02:29    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2340/4572]  eta: 0:02:28    time: 0.0669  data: 0.0639  max mem: 21022
+0: Epoch: [2]  [2360/4572]  eta: 0:02:26    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [2380/4572]  eta: 0:02:25    time: 0.0667  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [2400/4572]  eta: 0:02:24    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [2420/4572]  eta: 0:02:22    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [2440/4572]  eta: 0:02:21    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2460/4572]  eta: 0:02:20    time: 0.0659  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [2480/4572]  eta: 0:02:18    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [2500/4572]  eta: 0:02:17    time: 0.0663  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [2520/4572]  eta: 0:02:16    time: 0.0664  data: 0.0638  max mem: 21022
+0: Epoch: [2]  [2540/4572]  eta: 0:02:14    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [2560/4572]  eta: 0:02:13    time: 0.0666  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [2580/4572]  eta: 0:02:12    time: 0.0661  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [2600/4572]  eta: 0:02:10    time: 0.0662  data: 0.0633  max mem: 21022
+0: Epoch: [2]  [2620/4572]  eta: 0:02:09    time: 0.0661  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2640/4572]  eta: 0:02:08    time: 0.0665  data: 0.0639  max mem: 21022
+0: Epoch: [2]  [2660/4572]  eta: 0:02:06    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [2680/4572]  eta: 0:02:05    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [2700/4572]  eta: 0:02:04    time: 0.0663  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [2720/4572]  eta: 0:02:02    time: 0.0664  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [2740/4572]  eta: 0:02:01    time: 0.0662  data: 0.0632  max mem: 21022
+0: Epoch: [2]  [2760/4572]  eta: 0:02:00    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [2780/4572]  eta: 0:01:58    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [2800/4572]  eta: 0:01:57    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [2820/4572]  eta: 0:01:56    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [2840/4572]  eta: 0:01:54    time: 0.0663  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [2860/4572]  eta: 0:01:53    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [2880/4572]  eta: 0:01:52    time: 0.0663  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [2900/4572]  eta: 0:01:50    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [2920/4572]  eta: 0:01:49    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [2940/4572]  eta: 0:01:48    time: 0.0668  data: 0.0638  max mem: 21022
+0: Epoch: [2]  [2960/4572]  eta: 0:01:47    time: 0.0663  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [2980/4572]  eta: 0:01:45    time: 0.0662  data: 0.0632  max mem: 21022
+0: Epoch: [2]  [3000/4572]  eta: 0:01:44    time: 0.0669  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [3020/4572]  eta: 0:01:43    time: 0.0661  data: 0.0640  max mem: 21022
+0: Epoch: [2]  [3040/4572]  eta: 0:01:41    time: 0.0658  data: 0.0628  max mem: 21022
+0: Epoch: [2]  [3060/4572]  eta: 0:01:40    time: 0.0667  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [3080/4572]  eta: 0:01:39    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [3100/4572]  eta: 0:01:37    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [3120/4572]  eta: 0:01:36    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [3140/4572]  eta: 0:01:35    time: 0.0663  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [3160/4572]  eta: 0:01:33    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [3180/4572]  eta: 0:01:32    time: 0.0665  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [3200/4572]  eta: 0:01:31    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [3220/4572]  eta: 0:01:29    time: 0.0660  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [3240/4572]  eta: 0:01:28    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [3260/4572]  eta: 0:01:27    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [2]  [3280/4572]  eta: 0:01:25    time: 0.0663  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [3300/4572]  eta: 0:01:24    time: 0.0663  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [3320/4572]  eta: 0:01:23    time: 0.0662  data: 0.0631  max mem: 21022
+0: Epoch: [2]  [3340/4572]  eta: 0:01:21    time: 0.0664  data: 0.0633  max mem: 21022
+0: Epoch: [2]  [3360/4572]  eta: 0:01:20    time: 0.0658  data: 0.0632  max mem: 21022
+0: Epoch: [2]  [3380/4572]  eta: 0:01:19    time: 0.0665  data: 0.0637  max mem: 21022
+0: Epoch: [2]  [3400/4572]  eta: 0:01:17    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [3420/4572]  eta: 0:01:16    time: 0.0663  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [3440/4572]  eta: 0:01:15    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [3460/4572]  eta: 0:01:13    time: 0.0661  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [3480/4572]  eta: 0:01:12    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [3500/4572]  eta: 0:01:11    time: 0.0669  data: 0.0640  max mem: 21022
+0: Epoch: [2]  [3520/4572]  eta: 0:01:09    time: 0.0661  data: 0.0631  max mem: 21022
+0: Epoch: [2]  [3540/4572]  eta: 0:01:08    time: 0.0664  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [3560/4572]  eta: 0:01:07    time: 0.0658  data: 0.0643  max mem: 21022
+0: Epoch: [2]  [3580/4572]  eta: 0:01:05    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [3600/4572]  eta: 0:01:04    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [2]  [3620/4572]  eta: 0:01:03    time: 0.0669  data: 0.0652  max mem: 21022
+0: Epoch: [2]  [3640/4572]  eta: 0:01:01    time: 0.0663  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [3660/4572]  eta: 0:01:00    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [3680/4572]  eta: 0:00:59    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [2]  [3700/4572]  eta: 0:00:57    time: 0.0661  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [3720/4572]  eta: 0:00:56    time: 0.0708  data: 0.0690  max mem: 21022
+0: Epoch: [2]  [3740/4572]  eta: 0:00:55    time: 0.0667  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [3760/4572]  eta: 0:00:53    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [3780/4572]  eta: 0:00:52    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [2]  [3800/4572]  eta: 0:00:51    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [3820/4572]  eta: 0:00:49    time: 0.0662  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [3840/4572]  eta: 0:00:48    time: 0.0665  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [3860/4572]  eta: 0:00:47    time: 0.0662  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [3880/4572]  eta: 0:00:45    time: 0.0666  data: 0.0639  max mem: 21022
+0: Epoch: [2]  [3900/4572]  eta: 0:00:44    time: 0.0663  data: 0.0637  max mem: 21022
+0: Epoch: [2]  [3920/4572]  eta: 0:00:43    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [3940/4572]  eta: 0:00:41    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [3960/4572]  eta: 0:00:40    time: 0.0661  data: 0.0643  max mem: 21022
+0: Epoch: [2]  [3980/4572]  eta: 0:00:39    time: 0.0665  data: 0.0635  max mem: 21022
+0: Epoch: [2]  [4000/4572]  eta: 0:00:37    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [2]  [4020/4572]  eta: 0:00:36    time: 0.0661  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [4040/4572]  eta: 0:00:35    time: 0.0724  data: 0.0691  max mem: 21022
+0: Epoch: [2]  [4060/4572]  eta: 0:00:34    time: 0.0660  data: 0.0642  max mem: 21022
+0: Epoch: [2]  [4080/4572]  eta: 0:00:32    time: 0.0660  data: 0.0643  max mem: 21022
+0: Epoch: [2]  [4100/4572]  eta: 0:00:31    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [4120/4572]  eta: 0:00:30    time: 0.0662  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [4140/4572]  eta: 0:00:28    time: 0.0663  data: 0.0636  max mem: 21022
+0: Epoch: [2]  [4160/4572]  eta: 0:00:27    time: 0.0661  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [4180/4572]  eta: 0:00:26    time: 0.0660  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [4200/4572]  eta: 0:00:24    time: 0.0665  data: 0.0637  max mem: 21022
+0: Epoch: [2]  [4220/4572]  eta: 0:00:23    time: 0.0665  data: 0.0645  max mem: 21022
+0: Epoch: [2]  [4240/4572]  eta: 0:00:22    time: 0.0663  data: 0.0632  max mem: 21022
+0: Epoch: [2]  [4260/4572]  eta: 0:00:20    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [4280/4572]  eta: 0:00:19    time: 0.0671  data: 0.0649  max mem: 21022
+0: Epoch: [2]  [4300/4572]  eta: 0:00:18    time: 0.0661  data: 0.0641  max mem: 21022
+0: Epoch: [2]  [4320/4572]  eta: 0:00:16    time: 0.0661  data: 0.0641  max mem: 21022
+0: Epoch: [2]  [4340/4572]  eta: 0:00:15    time: 0.0665  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [4360/4572]  eta: 0:00:14    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [2]  [4380/4572]  eta: 0:00:12    time: 0.0667  data: 0.0639  max mem: 21022
+0: Epoch: [2]  [4400/4572]  eta: 0:00:11    time: 0.0663  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [4420/4572]  eta: 0:00:10    time: 0.0660  data: 0.0640  max mem: 21022
+0: Epoch: [2]  [4440/4572]  eta: 0:00:08    time: 0.0665  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [4460/4572]  eta: 0:00:07    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [4480/4572]  eta: 0:00:06    time: 0.0666  data: 0.0646  max mem: 21022
+0: Epoch: [2]  [4500/4572]  eta: 0:00:04    time: 0.0661  data: 0.0630  max mem: 21022
+0: Epoch: [2]  [4520/4572]  eta: 0:00:03    time: 0.0663  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [4540/4572]  eta: 0:00:02    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [2]  [4560/4572]  eta: 0:00:00    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [2]  [4571/4572]  eta: 0:00:00    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [2] Total time: 0:05:03 (0.0664 s / it)
+0: :::MLLOG {"namespace": "", "time_ms": 1745494220072, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": 2, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 330, "epoch_num": 2}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494220072, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 3853.7719621632077, "max_memory_usage": 20.529}, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 334, "step": 3}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494220072, "event_type": "INTERVAL_START", "key": "eval_start", "value": 3, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 347, "epoch_num": 3}}
+0: Test:  [ 0/97]  eta: 0:00:19  model_time: 0.1952 (0.1952)  evaluator_time: 0.0029 (0.0029)  time: 0.1988  data: 0.0006  max mem: 21022
+0: Test:  [20/97]  eta: 0:00:15  model_time: 0.1938 (0.1926)  evaluator_time: 0.0019 (0.0020)  time: 0.1949  data: 0.0004  max mem: 21022
+0: Test:  [40/97]  eta: 0:00:11  model_time: 0.1882 (0.1925)  evaluator_time: 0.0020 (0.0055)  time: 0.2022  data: 0.0004  max mem: 21022
+0: Test:  [60/97]  eta: 0:00:07  model_time: 0.1938 (0.1939)  evaluator_time: 0.0019 (0.0044)  time: 0.1992  data: 0.0004  max mem: 21022
+0: Test:  [80/97]  eta: 0:00:03  model_time: 0.1907 (0.1934)  evaluator_time: 0.0019 (0.0038)  time: 0.1943  data: 0.0004  max mem: 21022
+0: Test:  [96/97]  eta: 0:00:00  model_time: 0.1904 (0.1928)  evaluator_time: 0.0019 (0.0035)  time: 0.1925  data: 0.0004  max mem: 21022
+0: Test: Total time: 0:00:19 (0.1968 s / it)
+0: Averaged stats: model_time: 0.1904 (0.2001)  evaluator_time: 0.0019 (0.0048)
+0: :::MLLOG {"namespace": "", "time_ms": 1745494240971, "event_type": "INTERVAL_START", "key": "epoch_start", "value": 3, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 158, "epoch_num": 3}}
+5: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+1: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+2: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+3: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+6: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+0: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+4: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+7: WARNING:root:DALI iterator does not support resetting while epoch is not finished.                              Ignoring...
+0: Epoch: [3]  [   0/4571]  eta: 0:00:15    time: 0.0034  data: 0.0010  max mem: 21022
+0: Epoch: [3]  [  20/4571]  eta: 0:04:39    time: 0.0642  data: 0.0615  max mem: 21022
+0: Epoch: [3]  [  40/4571]  eta: 0:04:47    time: 0.0658  data: 0.0640  max mem: 21022
+0: :::MLLOG {"namespace": "", "time_ms": 1745494243963, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.33509708069311744, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 440, "epoch_num": 3}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494243963, "event_type": "INTERVAL_END", "key": "eval_stop", "value": 3, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 441, "epoch_num": 3}}
+0: Epoch: [3]  [  60/4571]  eta: 0:04:50    time: 0.0661  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [  80/4571]  eta: 0:04:50    time: 0.0659  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [ 100/4571]  eta: 0:04:51    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [ 120/4571]  eta: 0:04:50    time: 0.0661  data: 0.0630  max mem: 21022
+0: Epoch: [3]  [ 140/4571]  eta: 0:04:49    time: 0.0661  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [ 160/4571]  eta: 0:04:48    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 180/4571]  eta: 0:04:48    time: 0.0663  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [ 200/4571]  eta: 0:04:46    time: 0.0659  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [ 220/4571]  eta: 0:04:45    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 240/4571]  eta: 0:04:44    time: 0.0660  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 260/4571]  eta: 0:04:43    time: 0.0667  data: 0.0656  max mem: 21022
+0: Epoch: [3]  [ 280/4571]  eta: 0:04:42    time: 0.0661  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [ 300/4571]  eta: 0:04:41    time: 0.0661  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [ 320/4571]  eta: 0:04:39    time: 0.0663  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [ 340/4571]  eta: 0:04:38    time: 0.0662  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [ 360/4571]  eta: 0:04:37    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 380/4571]  eta: 0:04:36    time: 0.0664  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [ 400/4571]  eta: 0:04:35    time: 0.0664  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [ 420/4571]  eta: 0:04:33    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [ 440/4571]  eta: 0:04:32    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 460/4571]  eta: 0:04:31    time: 0.0665  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [ 480/4571]  eta: 0:04:30    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [ 500/4571]  eta: 0:04:28    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [ 520/4571]  eta: 0:04:27    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [ 540/4571]  eta: 0:04:26    time: 0.0663  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [ 560/4571]  eta: 0:04:25    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [ 580/4571]  eta: 0:04:23    time: 0.0664  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [ 600/4571]  eta: 0:04:22    time: 0.0667  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [ 620/4571]  eta: 0:04:21    time: 0.0665  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [ 640/4571]  eta: 0:04:19    time: 0.0662  data: 0.0628  max mem: 21022
+0: Epoch: [3]  [ 660/4571]  eta: 0:04:18    time: 0.0664  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [ 680/4571]  eta: 0:04:17    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [ 700/4571]  eta: 0:04:16    time: 0.0662  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [ 720/4571]  eta: 0:04:14    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [ 740/4571]  eta: 0:04:13    time: 0.0663  data: 0.0640  max mem: 21022
+0: Epoch: [3]  [ 760/4571]  eta: 0:04:12    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [ 780/4571]  eta: 0:04:10    time: 0.0664  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [ 800/4571]  eta: 0:04:09    time: 0.0663  data: 0.0637  max mem: 21022
+0: Epoch: [3]  [ 820/4571]  eta: 0:04:08    time: 0.0667  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [ 840/4571]  eta: 0:04:06    time: 0.0661  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [ 860/4571]  eta: 0:04:05    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [ 880/4571]  eta: 0:04:04    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [ 900/4571]  eta: 0:04:03    time: 0.0668  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [ 920/4571]  eta: 0:04:01    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 940/4571]  eta: 0:04:00    time: 0.0663  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [ 960/4571]  eta: 0:03:59    time: 0.0665  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [ 980/4571]  eta: 0:03:58    time: 0.0756  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [1000/4571]  eta: 0:03:57    time: 0.0644  data: 0.0616  max mem: 21022
+0: Epoch: [3]  [1020/4571]  eta: 0:03:55    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [1040/4571]  eta: 0:03:54    time: 0.0659  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [1060/4571]  eta: 0:03:52    time: 0.0661  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [1080/4571]  eta: 0:03:51    time: 0.0661  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [1100/4571]  eta: 0:03:50    time: 0.0660  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [1120/4571]  eta: 0:03:48    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [1140/4571]  eta: 0:03:47    time: 0.0662  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [1160/4571]  eta: 0:03:46    time: 0.0660  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [1180/4571]  eta: 0:03:44    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [1200/4571]  eta: 0:03:43    time: 0.0666  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [1220/4571]  eta: 0:03:42    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [1240/4571]  eta: 0:03:40    time: 0.0664  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [1260/4571]  eta: 0:03:39    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [1280/4571]  eta: 0:03:38    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1300/4571]  eta: 0:03:36    time: 0.0661  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1320/4571]  eta: 0:03:35    time: 0.0660  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1340/4571]  eta: 0:03:34    time: 0.0668  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [1360/4571]  eta: 0:03:33    time: 0.0665  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [1380/4571]  eta: 0:03:31    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1400/4571]  eta: 0:03:30    time: 0.0661  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [1420/4571]  eta: 0:03:29    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1440/4571]  eta: 0:03:27    time: 0.0662  data: 0.0638  max mem: 21022
+0: Epoch: [3]  [1460/4571]  eta: 0:03:26    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1480/4571]  eta: 0:03:25    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [1500/4571]  eta: 0:03:23    time: 0.0663  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [1520/4571]  eta: 0:03:22    time: 0.0663  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [1540/4571]  eta: 0:03:21    time: 0.0660  data: 0.0638  max mem: 21022
+0: Epoch: [3]  [1560/4571]  eta: 0:03:19    time: 0.0662  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1580/4571]  eta: 0:03:18    time: 0.0667  data: 0.0655  max mem: 21022
+0: Epoch: [3]  [1600/4571]  eta: 0:03:17    time: 0.0665  data: 0.0654  max mem: 21022
+0: Epoch: [3]  [1620/4571]  eta: 0:03:15    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [1640/4571]  eta: 0:03:14    time: 0.0662  data: 0.0638  max mem: 21022
+0: Epoch: [3]  [1660/4571]  eta: 0:03:13    time: 0.0664  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [1680/4571]  eta: 0:03:11    time: 0.0661  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1700/4571]  eta: 0:03:10    time: 0.0663  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [1720/4571]  eta: 0:03:09    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1740/4571]  eta: 0:03:07    time: 0.0665  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [1760/4571]  eta: 0:03:06    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [1780/4571]  eta: 0:03:05    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1800/4571]  eta: 0:03:03    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [1820/4571]  eta: 0:03:02    time: 0.0660  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [1840/4571]  eta: 0:03:01    time: 0.0665  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [1860/4571]  eta: 0:02:59    time: 0.0667  data: 0.0637  max mem: 21022
+0: Epoch: [3]  [1880/4571]  eta: 0:02:58    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [1900/4571]  eta: 0:02:57    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1920/4571]  eta: 0:02:55    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [1940/4571]  eta: 0:02:54    time: 0.0664  data: 0.0641  max mem: 21022
+0: Epoch: [3]  [1960/4571]  eta: 0:02:53    time: 0.0662  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [1980/4571]  eta: 0:02:51    time: 0.0664  data: 0.0649  max mem: 21022
+2: Corrupt JPEG data: premature end of data segment
+0: Epoch: [3]  [2000/4571]  eta: 0:02:50    time: 0.0663  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [2020/4571]  eta: 0:02:49    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [2040/4571]  eta: 0:02:47    time: 0.0660  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [2060/4571]  eta: 0:02:46    time: 0.0660  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [2080/4571]  eta: 0:02:45    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [2100/4571]  eta: 0:02:43    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [2120/4571]  eta: 0:02:42    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [2140/4571]  eta: 0:02:41    time: 0.0658  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [2160/4571]  eta: 0:02:39    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [2180/4571]  eta: 0:02:38    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [2200/4571]  eta: 0:02:37    time: 0.0664  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [2220/4571]  eta: 0:02:35    time: 0.0662  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [2240/4571]  eta: 0:02:34    time: 0.0663  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [2260/4571]  eta: 0:02:33    time: 0.0659  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [2280/4571]  eta: 0:02:31    time: 0.0666  data: 0.0655  max mem: 21022
+0: Epoch: [3]  [2300/4571]  eta: 0:02:30    time: 0.0659  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2320/4571]  eta: 0:02:29    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [2340/4571]  eta: 0:02:27    time: 0.0658  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2360/4571]  eta: 0:02:26    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [2380/4571]  eta: 0:02:25    time: 0.0662  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [2400/4571]  eta: 0:02:23    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [2420/4571]  eta: 0:02:22    time: 0.0665  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2440/4571]  eta: 0:02:21    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [2460/4571]  eta: 0:02:19    time: 0.0664  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [2480/4571]  eta: 0:02:18    time: 0.0666  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [2500/4571]  eta: 0:02:17    time: 0.0660  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [2520/4571]  eta: 0:02:16    time: 0.0658  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [2540/4571]  eta: 0:02:14    time: 0.0663  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [2560/4571]  eta: 0:02:13    time: 0.0666  data: 0.0637  max mem: 21022
+0: Epoch: [3]  [2580/4571]  eta: 0:02:12    time: 0.0659  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [2600/4571]  eta: 0:02:10    time: 0.0665  data: 0.0637  max mem: 21022
+0: Epoch: [3]  [2620/4571]  eta: 0:02:09    time: 0.0663  data: 0.0630  max mem: 21022
+0: Epoch: [3]  [2640/4571]  eta: 0:02:08    time: 0.0662  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [2660/4571]  eta: 0:02:06    time: 0.0660  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [2680/4571]  eta: 0:02:05    time: 0.0663  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2700/4571]  eta: 0:02:04    time: 0.0659  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [2720/4571]  eta: 0:02:02    time: 0.0662  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [2740/4571]  eta: 0:02:01    time: 0.0664  data: 0.0639  max mem: 21022
+0: Epoch: [3]  [2760/4571]  eta: 0:02:00    time: 0.0662  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2780/4571]  eta: 0:01:58    time: 0.0667  data: 0.0655  max mem: 21022
+0: Epoch: [3]  [2800/4571]  eta: 0:01:57    time: 0.0667  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [2820/4571]  eta: 0:01:56    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [2840/4571]  eta: 0:01:54    time: 0.0660  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [2860/4571]  eta: 0:01:53    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [2880/4571]  eta: 0:01:52    time: 0.0658  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [2900/4571]  eta: 0:01:50    time: 0.0663  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [2920/4571]  eta: 0:01:49    time: 0.0664  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [2940/4571]  eta: 0:01:48    time: 0.0659  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [2960/4571]  eta: 0:01:46    time: 0.0664  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [2980/4571]  eta: 0:01:45    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [3000/4571]  eta: 0:01:44    time: 0.0661  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3020/4571]  eta: 0:01:42    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3040/4571]  eta: 0:01:41    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [3060/4571]  eta: 0:01:40    time: 0.0660  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [3080/4571]  eta: 0:01:38    time: 0.0666  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [3100/4571]  eta: 0:01:37    time: 0.0660  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [3120/4571]  eta: 0:01:36    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3140/4571]  eta: 0:01:34    time: 0.0661  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [3160/4571]  eta: 0:01:33    time: 0.0666  data: 0.0652  max mem: 21022
+0: Epoch: [3]  [3180/4571]  eta: 0:01:32    time: 0.0664  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [3200/4571]  eta: 0:01:30    time: 0.0661  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [3220/4571]  eta: 0:01:29    time: 0.0661  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [3240/4571]  eta: 0:01:28    time: 0.0664  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3260/4571]  eta: 0:01:26    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3280/4571]  eta: 0:01:25    time: 0.0664  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3300/4571]  eta: 0:01:24    time: 0.0659  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [3320/4571]  eta: 0:01:22    time: 0.0666  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [3340/4571]  eta: 0:01:21    time: 0.0664  data: 0.0635  max mem: 21022
+0: Epoch: [3]  [3360/4571]  eta: 0:01:20    time: 0.0661  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [3380/4571]  eta: 0:01:18    time: 0.0659  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [3400/4571]  eta: 0:01:17    time: 0.0660  data: 0.0631  max mem: 21022
+0: Epoch: [3]  [3420/4571]  eta: 0:01:16    time: 0.0661  data: 0.0632  max mem: 21022
+0: Epoch: [3]  [3440/4571]  eta: 0:01:14    time: 0.0665  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [3460/4571]  eta: 0:01:13    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [3480/4571]  eta: 0:01:12    time: 0.0661  data: 0.0636  max mem: 21022
+0: Epoch: [3]  [3500/4571]  eta: 0:01:11    time: 0.0666  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [3520/4571]  eta: 0:01:09    time: 0.0661  data: 0.0641  max mem: 21022
+0: Epoch: [3]  [3540/4571]  eta: 0:01:08    time: 0.0665  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [3560/4571]  eta: 0:01:07    time: 0.0659  data: 0.0630  max mem: 21022
+0: Epoch: [3]  [3580/4571]  eta: 0:01:05    time: 0.0662  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [3600/4571]  eta: 0:01:04    time: 0.0664  data: 0.0637  max mem: 21022
+0: Epoch: [3]  [3620/4571]  eta: 0:01:03    time: 0.0660  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [3640/4571]  eta: 0:01:01    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3660/4571]  eta: 0:01:00    time: 0.0663  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [3680/4571]  eta: 0:00:59    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [3700/4571]  eta: 0:00:57    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3720/4571]  eta: 0:00:56    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3740/4571]  eta: 0:00:55    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [3760/4571]  eta: 0:00:53    time: 0.0664  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [3780/4571]  eta: 0:00:52    time: 0.0667  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [3800/4571]  eta: 0:00:51    time: 0.0661  data: 0.0643  max mem: 21022
+0: Epoch: [3]  [3820/4571]  eta: 0:00:49    time: 0.0657  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [3840/4571]  eta: 0:00:48    time: 0.0661  data: 0.0633  max mem: 21022
+0: Epoch: [3]  [3860/4571]  eta: 0:00:47    time: 0.0662  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [3880/4571]  eta: 0:00:45    time: 0.0662  data: 0.0646  max mem: 21022
+0: Epoch: [3]  [3900/4571]  eta: 0:00:44    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3920/4571]  eta: 0:00:43    time: 0.0660  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3940/4571]  eta: 0:00:41    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [3960/4571]  eta: 0:00:40    time: 0.0662  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [3980/4571]  eta: 0:00:39    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [4000/4571]  eta: 0:00:37    time: 0.0666  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [4020/4571]  eta: 0:00:36    time: 0.0661  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [4040/4571]  eta: 0:00:35    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [4060/4571]  eta: 0:00:33    time: 0.0661  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [4080/4571]  eta: 0:00:32    time: 0.0665  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [4100/4571]  eta: 0:00:31    time: 0.0660  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4120/4571]  eta: 0:00:29    time: 0.0665  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [4140/4571]  eta: 0:00:28    time: 0.0661  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [4160/4571]  eta: 0:00:27    time: 0.0663  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [4180/4571]  eta: 0:00:25    time: 0.0661  data: 0.0649  max mem: 21022
+0: Epoch: [3]  [4200/4571]  eta: 0:00:24    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4220/4571]  eta: 0:00:23    time: 0.0665  data: 0.0650  max mem: 21022
+0: Epoch: [3]  [4240/4571]  eta: 0:00:21    time: 0.0666  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [4260/4571]  eta: 0:00:20    time: 0.0662  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4280/4571]  eta: 0:00:19    time: 0.0661  data: 0.0630  max mem: 21022
+0: Epoch: [3]  [4300/4571]  eta: 0:00:17    time: 0.0666  data: 0.0634  max mem: 21022
+0: Epoch: [3]  [4320/4571]  eta: 0:00:16    time: 0.0662  data: 0.0642  max mem: 21022
+0: Epoch: [3]  [4340/4571]  eta: 0:00:15    time: 0.0665  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4360/4571]  eta: 0:00:13    time: 0.0661  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4380/4571]  eta: 0:00:12    time: 0.0659  data: 0.0644  max mem: 21022
+0: Epoch: [3]  [4400/4571]  eta: 0:00:11    time: 0.0663  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [4420/4571]  eta: 0:00:10    time: 0.0665  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [4440/4571]  eta: 0:00:08    time: 0.0660  data: 0.0647  max mem: 21022
+0: Epoch: [3]  [4460/4571]  eta: 0:00:07    time: 0.0665  data: 0.0651  max mem: 21022
+0: Epoch: [3]  [4480/4571]  eta: 0:00:06    time: 0.0659  data: 0.0645  max mem: 21022
+0: Epoch: [3]  [4500/4571]  eta: 0:00:04    time: 0.0666  data: 0.0653  max mem: 21022
+0: Epoch: [3]  [4520/4571]  eta: 0:00:03    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [4540/4571]  eta: 0:00:02    time: 0.0663  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [4560/4571]  eta: 0:00:00    time: 0.0662  data: 0.0648  max mem: 21022
+0: Epoch: [3]  [4570/4571]  eta: 0:00:00    time: 0.0659  data: 0.0644  max mem: 21022
+0: Epoch: [3] Total time: 0:05:03 (0.0663 s / it)
+0: :::MLLOG {"namespace": "", "time_ms": 1745494544133, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": 3, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 330, "epoch_num": 3}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494544134, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 3861.093458537951, "max_memory_usage": 20.529}, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 334, "step": 4}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494544134, "event_type": "INTERVAL_START", "key": "eval_start", "value": 4, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 347, "epoch_num": 4}}
+0: Test:  [ 0/97]  eta: 0:00:18  model_time: 0.1881 (0.1881)  evaluator_time: 0.0034 (0.0034)  time: 0.1919  data: 0.0004  max mem: 21022
+0: Test:  [20/97]  eta: 0:00:15  model_time: 0.1905 (0.1918)  evaluator_time: 0.0020 (0.0086)  time: 0.2015  data: 0.0005  max mem: 21022
+0: Test:  [40/97]  eta: 0:00:11  model_time: 0.1901 (0.1915)  evaluator_time: 0.0019 (0.0053)  time: 0.1935  data: 0.0004  max mem: 21022
+0: Test:  [60/97]  eta: 0:00:07  model_time: 0.1933 (0.1929)  evaluator_time: 0.0018 (0.0042)  time: 0.1980  data: 0.0004  max mem: 21022
+0: Test:  [80/97]  eta: 0:00:03  model_time: 0.1938 (0.1928)  evaluator_time: 0.0022 (0.0038)  time: 0.1955  data: 0.0005  max mem: 21022
+0: Test:  [96/97]  eta: 0:00:00  model_time: 0.1912 (0.1924)  evaluator_time: 0.0034 (0.0052)  time: 0.2030  data: 0.0006  max mem: 21022
+0: Test: Total time: 0:00:19 (0.1982 s / it)
+0: Averaged stats: model_time: 0.1912 (0.1976)  evaluator_time: 0.0034 (0.0047)
+0: :::MLLOG {"namespace": "", "time_ms": 1745494564802, "event_type": "INTERVAL_START", "key": "epoch_start", "value": 4, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 158, "epoch_num": 4}}
+0: Epoch: [4]  [   0/4572]  eta: 0:00:13    time: 0.0030  data: 0.0011  max mem: 21022
+0: Epoch: [4]  [  20/4572]  eta: 0:04:38    time: 0.0641  data: 0.0614  max mem: 21022
+0: Epoch: [4]  [  40/4572]  eta: 0:04:47    time: 0.0658  data: 0.0631  max mem: 21022
+0: :::MLLOG {"namespace": "", "time_ms": 1745494567699, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.3441998342120899, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 440, "epoch_num": 4}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494567699, "event_type": "INTERVAL_END", "key": "eval_stop", "value": 4, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 441, "epoch_num": 4}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494568816, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 315, "status": "success"}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494568816, "event_type": "INTERVAL_END", "key": "epoch_stop", "value": 4, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 330, "epoch_num": 4}}
+0: :::MLLOG {"namespace": "", "time_ms": 1745494568817, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 3980.5827296198945, "max_memory_usage": 20.529}, "metadata": {"file": "/workspace/ssd/engine.py", "lineno": 334, "step": 5}}
+0: Run time 0:21:50
+0: :::MLLOG {"namespace": "", "time_ms": 1745494568817, "event_type": "POINT_IN_TIME", "key": "status", "value": "success", "metadata": {"file": "/workspace/ssd/train.py", "lineno": 783}}
+0: Loading annotations into memory...
+0: Done (t=0.28s)
+0: Creating index...
+0: Done (t=0.53s)
+0: Loading and preparing results...
+0: DONE (t=1.38s)
+0: Running per image evaluation...
+0: Evaluate annotation type *bbox*
+0: DONE (t=1.76s).
+0: Accumulating evaluation results...
+0: DONE (t=0.00s).
+0: IoU metric: bbox
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.23745
+0:  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.35941
+0:  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.25332
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.00479
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.06787
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.26280
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.36446
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.51870
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.54047
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.02021
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.20422
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.59086
+0: Loading and preparing results...
+0: DONE (t=1.26s)
+0: Running per image evaluation...
+0: Evaluate annotation type *bbox*
+0: DONE (t=2.23s).
+0: Accumulating evaluation results...
+0: DONE (t=0.00s).
+0: IoU metric: bbox
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.29662
+0:  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.43222
+0:  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.31986
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.00663
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.08467
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.32859
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.39041
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.55783
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.58472
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.02767
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.23639
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.63547
+0: Loading and preparing results...
+0: DONE (t=1.05s)
+0: Running per image evaluation...
+0: Evaluate annotation type *bbox*
+0: DONE (t=1.87s).
+0: Accumulating evaluation results...
+0: DONE (t=0.00s).
+0: IoU metric: bbox
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.33510
+0:  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.47966
+0:  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.36189
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.00829
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.08949
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.37076
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.40301
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.57037
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.59728
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.03176
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.24118
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.64988
+0: Loading and preparing results...
+0: DONE (t=1.00s)
+0: Running per image evaluation...
+0: Evaluate annotation type *bbox*
+0: DONE (t=1.81s).
+0: Accumulating evaluation results...
+0: DONE (t=0.00s).
+0: IoU metric: bbox
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.34420
+0:  Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.49096
+0:  Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.37010
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.00939
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.09195
+0:  Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.38205
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.40820
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.57963
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.60648
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = 0.03270
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.25221
+0:  Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.65876
+7: terminate called after throwing an instance of 'c10::DistBackendError'
+7:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+7: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+7: Last error:
+7: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+7: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+7: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x7d10af78b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+7: frame #1: <unknown function> + 0xcff25e (0x7d104c8ff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #2: <unknown function> + 0x90e8ad (0x7d104c50e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x7d104c93218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #4: <unknown function> + 0xd370d3 (0x7d104c9370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x7d104c9378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x7d104c9475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+7: frame #7: <unknown function> + 0x85a460 (0x7d0f7e45a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+7: frame #8: <unknown function> + 0x85ba9f (0x7d0f7e45ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+7: frame #9: python() [0x54c870]
+7: frame #10: python() [0x5761fe]
+7: frame #11: python() [0x575f4c]
+7: frame #12: python() [0x6a90dc]
+7: frame #13: python() [0x6b1b92]
+7: <omitting python frames>
+7: frame #17: <unknown function> + 0x2a1ca (0x7d10bfe2a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+7: frame #18: __libc_start_main + 0x8b (0x7d10bfe2a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+7: 
+4: terminate called after throwing an instance of 'c10::DistBackendError'
+4:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+4: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+4: Last error:
+4: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+4: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+4: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x7bd8b0f8b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+4: frame #1: <unknown function> + 0xcff25e (0x7bd84e0ff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #2: <unknown function> + 0x90e8ad (0x7bd84dd0e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x7bd84e13218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #4: <unknown function> + 0xd370d3 (0x7bd84e1370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x7bd84e1378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x7bd84e1475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+4: frame #7: <unknown function> + 0x85a460 (0x7bd77fc5a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+4: frame #8: <unknown function> + 0x85ba9f (0x7bd77fc5ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+4: frame #9: python() [0x54c870]
+4: frame #10: python() [0x5761fe]
+4: frame #11: python() [0x575f4c]
+4: frame #12: python() [0x6a90dc]
+4: frame #13: python() [0x6b1b92]
+4: <omitting python frames>
+4: frame #17: <unknown function> + 0x2a1ca (0x7bd8c162a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+4: frame #18: __libc_start_main + 0x8b (0x7bd8c162a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+4: 
+6: terminate called after throwing an instance of 'c10::DistBackendError'
+6:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+6: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+6: Last error:
+6: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+6: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+6: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x7875fdd8b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+6: frame #1: <unknown function> + 0xcff25e (0x78759aeff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #2: <unknown function> + 0x90e8ad (0x78759ab0e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x78759af3218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #4: <unknown function> + 0xd370d3 (0x78759af370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x78759af378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x78759af475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+6: frame #7: <unknown function> + 0x85a460 (0x7874cca5a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+6: frame #8: <unknown function> + 0x85ba9f (0x7874cca5ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+6: frame #9: python() [0x54c870]
+6: frame #10: python() [0x5761fe]
+6: frame #11: python() [0x575f4c]
+6: frame #12: python() [0x6a90dc]
+6: frame #13: python() [0x6b1b92]
+6: <omitting python frames>
+6: frame #17: <unknown function> + 0x2a1ca (0x78760e62a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+6: frame #18: __libc_start_main + 0x8b (0x78760e62a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+6: 
+5: terminate called after throwing an instance of 'c10::DistBackendError'
+5:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+5: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+5: Last error:
+5: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+5: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+5: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x71ace038b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+5: frame #1: <unknown function> + 0xcff25e (0x71ac7d4ff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #2: <unknown function> + 0x90e8ad (0x71ac7d10e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x71ac7d53218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #4: <unknown function> + 0xd370d3 (0x71ac7d5370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x71ac7d5378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x71ac7d5475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+5: frame #7: <unknown function> + 0x85a460 (0x71abaf05a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+5: frame #8: <unknown function> + 0x85ba9f (0x71abaf05ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+5: frame #9: python() [0x54c870]
+5: frame #10: python() [0x5761fe]
+5: frame #11: python() [0x575f4c]
+5: frame #12: python() [0x6a90dc]
+5: frame #13: python() [0x6b1b92]
+5: <omitting python frames>
+5: frame #17: <unknown function> + 0x2a1ca (0x71acf0c2a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+5: frame #18: __libc_start_main + 0x8b (0x71acf0c2a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+5: 
+1: terminate called after throwing an instance of 'c10::DistBackendError'
+1:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+1: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+1: Last error:
+1: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+1: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+1: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x79355e98b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+1: frame #1: <unknown function> + 0xcff25e (0x7934fbaff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #2: <unknown function> + 0x90e8ad (0x7934fb70e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x7934fbb3218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #4: <unknown function> + 0xd370d3 (0x7934fbb370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x7934fbb378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x7934fbb475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+1: frame #7: <unknown function> + 0x85a460 (0x79342d65a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+1: frame #8: <unknown function> + 0x85ba9f (0x79342d65ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+1: frame #9: python() [0x54c870]
+1: frame #10: python() [0x5761fe]
+1: frame #11: python() [0x575f4c]
+1: frame #12: python() [0x6a90dc]
+1: frame #13: python() [0x6b1b92]
+1: <omitting python frames>
+1: frame #17: <unknown function> + 0x2a1ca (0x79356f22a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+1: frame #18: __libc_start_main + 0x8b (0x79356f22a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+1: 
+2: terminate called after throwing an instance of 'c10::DistBackendError'
+2:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+2: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+2: Last error:
+2: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+2: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+2: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x723bcd18b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+2: frame #1: <unknown function> + 0xcff25e (0x723b6a2ff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #2: <unknown function> + 0x90e8ad (0x723b69f0e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x723b6a33218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #4: <unknown function> + 0xd370d3 (0x723b6a3370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x723b6a3378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x723b6a3475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+2: frame #7: <unknown function> + 0x85a460 (0x723a9be5a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+2: frame #8: <unknown function> + 0x85ba9f (0x723a9be5ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+2: frame #9: python() [0x54c870]
+2: frame #10: python() [0x5761fe]
+2: frame #11: python() [0x575f4c]
+2: frame #12: python() [0x6a90dc]
+2: frame #13: python() [0x6b1b92]
+2: <omitting python frames>
+2: frame #17: <unknown function> + 0x2a1ca (0x723bdd82a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+2: frame #18: __libc_start_main + 0x8b (0x723bdd82a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+2: 
+3: terminate called after throwing an instance of 'c10::DistBackendError'
+3:   what():  NCCL error in: /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77, invalid usage (run with NCCL_DEBUG=WARN for details), NCCL version 2.25.1
+3: ncclInvalidUsage: This usually reflects invalid usage of NCCL library.
+3: Last error:
+3: NET/IB : Requested properties for vNic 4, only 4 vNics have been created
+3: Exception raised from create at /opt/pytorch/pytorch/torch/csrc/distributed/c10d/NCCLUtils.cpp:77 (most recent call first):
+3: frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x98 (0x78873a78b5e8 in /usr/local/lib/python3.12/dist-packages/torch/lib/libc10.so)
+3: frame #1: <unknown function> + 0xcff25e (0x7886d78ff25e in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #2: <unknown function> + 0x90e8ad (0x7886d750e8ad in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #3: c10d::ProcessGroupNCCL::initNCCLComm(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::Device&, c10d::OpType, int, bool) + 0x17dd (0x7886d793218d in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #4: <unknown function> + 0xd370d3 (0x7886d79370d3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #5: c10d::ProcessGroupNCCL::allreduce_impl(at::Tensor&, char const*, c10d::AllreduceOptions const&) + 0xee (0x7886d79378be in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #6: c10d::ProcessGroupNCCL::barrier(c10d::BarrierOptions const&) + 0x683 (0x7886d79475a3 in /usr/local/lib/python3.12/dist-packages/torch/lib/libtorch_cuda.so)
+3: frame #7: <unknown function> + 0x85a460 (0x78860945a460 in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+3: frame #8: <unknown function> + 0x85ba9f (0x78860945ba9f in /usr/local/lib/python3.12/dist-packages/nvfuser-0.2.27a0+5111d3b-py3.12-linux-x86_64.egg/nvfuser/_C.cpython-312-x86_64-linux-gnu.so)
+3: frame #9: python() [0x54c870]
+3: frame #10: python() [0x5761fe]
+3: frame #11: python() [0x575f4c]
+3: frame #12: python() [0x6a90dc]
+3: frame #13: python() [0x6b1b92]
+3: <omitting python frames>
+3: frame #17: <unknown function> + 0x2a1ca (0x78874b02a1ca in /usr/lib/x86_64-linux-gnu/libc.so.6)
+3: frame #18: __libc_start_main + 0x8b (0x78874b02a28b in /usr/lib/x86_64-linux-gnu/libc.so.6)
+3: 
+7: /workspace/ssd/run_and_time.sh: line 95: 298750 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 7: Exited with exit code 134
+4: /workspace/ssd/run_and_time.sh: line 95: 298766 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 4: Exited with exit code 134
+6: /workspace/ssd/run_and_time.sh: line 95: 298758 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 6: Exited with exit code 134
+5: /workspace/ssd/run_and_time.sh: line 95: 298790 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 5: Exited with exit code 134
+1: /workspace/ssd/run_and_time.sh: line 95: 298803 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 1: Exited with exit code 134
+2: /workspace/ssd/run_and_time.sh: line 95: 298782 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 2: Exited with exit code 134
+3: /workspace/ssd/run_and_time.sh: line 95: 298781 Aborted                 (core dumped) ${LOGGER:-} "${CMD[@]}" train.py "${PARAMS[@]}" ${EXTRA_PARAMS}
+srun: error: as-a126gs-tnbr: task 3: Exited with exit code 134
+0: slurmstepd: error: *** STEP 82.12 ON as-a126gs-tnbr CANCELLED AT 2025-04-24T11:46:38 DUE TO TIME LIMIT ***
+srun: error: as-a126gs-tnbr: task 0: Terminated
+srun: Force Terminated StepId=82.12
+++ date +%s
++ echo 'RUNANDTIME_STOP 1745495201'
+RUNANDTIME_STOP 1745495201
++ set -e

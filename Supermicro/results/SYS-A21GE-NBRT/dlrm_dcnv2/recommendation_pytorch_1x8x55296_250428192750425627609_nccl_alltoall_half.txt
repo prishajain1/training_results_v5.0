@@ -1,0 +1,15 @@
++ srun --mpi=pmix --ntasks-per-node=1 --time=10 --container-name=recommendation_36 --no-container-mount-home --container-remap-root --container-writable alltoall_perf_mpi -b 4.1M -e 8.2M -f 2 -d half
+# nThread 1 nGpus 1 minBytes 4299161 maxBytes 8598323 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 297260 on sys-a21ge-nbrt device  0 [0x1b] NVIDIA B200
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+     4299152       2149576      half    none      -1     7.09  605.97    0.00      0     0.79  5429.94    0.00    N/A
+     8598320       4299160      half    none      -1     8.94  961.34    0.00      0     0.79  10947.00    0.00    N/A
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 0 
+#
+

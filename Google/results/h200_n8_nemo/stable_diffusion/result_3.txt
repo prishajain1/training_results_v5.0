@@ -1,0 +1,1188 @@
+++ date +%s
++ echo 'PROLOG_START 1745964971'
+PROLOG_START 1745964971
++ : DGXH200_08x08x04
++ : /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh
++ : 50
++ : 4.1.0
++ : ''\''unknown'\'''
++ : ''\''unknown'\'''
++ : ''\''unknown'\'''
++ : 1
+++ date +%y%m%d%H%M%S%N
++ : 250429221611163897960
++ : 1
++ : 1
++ : /workspace/sd
++ : /home/justinpan_google_com/private-sd/logdir/
++ : ./api_logs
++ : /home/justinpan_google_com/private-sd/results
++ : ''\'' '\'''
++ : 'echo '\''here'\'''
++ : 0
++ : 0
++ : 29500
++ export MASTER_PORT
+++ scontrol show hostnames 'a3u5702-a3ultranodeset-[2,0,8-9,1,4,3,15]'
+++ head -n1
++ export MASTER_ADDR=a3u5702-a3ultranodeset-2
++ MASTER_ADDR=a3u5702-a3ultranodeset-2
++ echo 'using MASTER_ADDR "a3u5702-a3ultranodeset-2" of list "a3u5702-a3ultranodeset-[2,0,8-9,1,4,3,15]"'
+using MASTER_ADDR "a3u5702-a3ultranodeset-2" of list "a3u5702-a3ultranodeset-[2,0,8-9,1,4,3,15]"
++ trap cleanup_pyxis TERM EXIT
++ cleanup_pyxis
++ srun --ntasks=8 /bin/bash -c 'if [[ "$(enroot list)" ]]; then enroot remove -f $(enroot list); fi'
++ TIME_TAGS=0
++ NVTX_FLAG=0
++ NCCL_TEST=1
++ SYNTH_DATA=0
++ EPOCH_PROF=0
++ DISABLE_CG=0
++ export MODEL_NAME=stable_diffusion
++ MODEL_NAME=stable_diffusion
++ export MODEL_FRAMEWORK=pytorch
++ MODEL_FRAMEWORK=pytorch
++ LOGBASE=250429221611163897960
++ SPREFIX=stable_diffusion_pytorch_8x8x4_250429221611163897960
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ '[' 0 -gt 0 ']'
++ readonly _logfile_base=/home/justinpan_google_com/private-sd/logdir//250429221611163897960
++ _logfile_base=/home/justinpan_google_com/private-sd/logdir//250429221611163897960
++ readonly _cont_name=stable_diffusion_188
++ _cont_name=stable_diffusion_188
++ _cont_mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home
++ mkdir -p /home/justinpan_google_com/private-sd/nemologs/
++ cont_mounts_to_verify=''\''/datasets'\'', '\''/checkpoints'\'''
++ '[' '' -eq 1 ']'
+/var/spool/slurmd/job00188/slurm_script: line 122: [: : integer expression expected
+++ srun -N1 -n1 bash
+/usr/bin/bash: line 2: /etc/dgx-release: No such file or directory
++ MLPERF_HOST_OS='Ubuntu 22.04.5 LTS / ??? ???'
++ export MLPERF_HOST_OS
++ umask 0002
++ mkdir -p /home/justinpan_google_com/private-sd/logdir/
++ srun --ntasks=8 mkdir -p /home/justinpan_google_com/private-sd/logdir/
++ echo MELLANOX_VISIBLE_DEVICES=
+MELLANOX_VISIBLE_DEVICES=
++ srun --ntasks=8 --container-image=/home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh --container-name=stable_diffusion_188 true
++ srun -N1 -n1 --container-name=stable_diffusion_188 ibv_devinfo --list
+8 HCAs found:
+	rocep145s0
+	rocep146s0
+	rocep152s0
+	rocep153s0
+	rocep198s0
+	rocep199s0
+	rocep205s0
+	rocep206s0
+
++ srun -N1 -n1 --container-name=stable_diffusion_188 nvidia-smi topo -m
+	[4mGPU0	GPU1	GPU2	GPU3	GPU4	GPU5	GPU6	GPU7	NIC0	NIC1	NIC2	NIC3	NIC4	NIC5	NIC6	NIC7	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	NV18	NV18	NV18	NV18	NV18	NV18	NV18	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU1	NV18	 X 	NV18	NV18	NV18	NV18	NV18	NV18	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU2	NV18	NV18	 X 	NV18	NV18	NV18	NV18	NV18	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU3	NV18	NV18	NV18	 X 	NV18	NV18	NV18	NV18	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	0-55,112-167	0		N/A
+GPU4	NV18	NV18	NV18	NV18	 X 	NV18	NV18	NV18	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	56-111,168-223	1		N/A
+GPU5	NV18	NV18	NV18	NV18	NV18	 X 	NV18	NV18	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	56-111,168-223	1		N/A
+GPU6	NV18	NV18	NV18	NV18	NV18	NV18	 X 	NV18	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	56-111,168-223	1		N/A
+GPU7	NV18	NV18	NV18	NV18	NV18	NV18	NV18	 X 	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	56-111,168-223	1		N/A
+NIC0	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	 X 	PIX	NODE	NODE	SYS	SYS	SYS	SYS				
+NIC1	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	PIX	 X 	NODE	NODE	SYS	SYS	SYS	SYS				
+NIC2	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	 X 	PIX	SYS	SYS	SYS	SYS				
+NIC3	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	PIX	 X 	SYS	SYS	SYS	SYS				
+NIC4	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	 X 	PIX	NODE	NODE				
+NIC5	SYS	SYS	SYS	SYS	PIX	PIX	NODE	NODE	SYS	SYS	SYS	SYS	PIX	 X 	NODE	NODE				
+NIC6	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	 X 	PIX				
+NIC7	SYS	SYS	SYS	SYS	NODE	NODE	PIX	PIX	SYS	SYS	SYS	SYS	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: rocep145s0
+  NIC1: rocep146s0
+  NIC2: rocep152s0
+  NIC3: rocep153s0
+  NIC4: rocep198s0
+  NIC5: rocep199s0
+  NIC6: rocep205s0
+  NIC7: rocep206s0
+
++ [[ 0 -eq 1 ]]
++ [[ 1 -eq 1 ]]
++ tee /home/justinpan_google_com/private-sd/logdir//stable_diffusion_pytorch_8x8x4_250429221611163897960_mountcheck.log
++ srun --ntasks=8 --ntasks-per-node=1 --container-name=stable_diffusion_188 --container-mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home python3 -c 'from mlperf_common.mountcheck import main; main('\''cont-mount-info.json'\'', check=True)'
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
+Error: /datasets is incorrect. Incorrect size of /datasets/coco2014/val2014_512x512_30k. Expected 1412012 kB, but is 1357189 kB.
+Error: /checkpoints is incorrect. Incorrect number of elements in /checkpoints/sd. Expected 2, but found 1.
+Verification completed. See above for all warnings and errors.
++ echo 'NCCL_TEST = 1'
+NCCL_TEST = 1
++ [[ 1 -eq 1 ]]
++ tee /home/justinpan_google_com/private-sd/logdir//stable_diffusion_pytorch_8x8x4_250429221611163897960_nccl.log
++ srun --mpi=pmix --ntasks=64 --ntasks-per-node=8 --container-name=stable_diffusion_188 all_reduce_perf_mpi -b 1731821448 -e 1731821448 -d half -G 1 -f 2
+[a3u5702-a3ultranodeset-4:146609] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146607] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146608] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146613] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146610] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146612] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146606] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-4:146611] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262271] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262266] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262272] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262267] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262269] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262270] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262268] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-8:262273] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219962] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219965] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219966] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219967] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219964] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219960] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219961] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-0:219963] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142342] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142343] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142344] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142338] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142339] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142340] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142341] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-15:142345] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142229] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142232] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142234] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142230] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142231] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142236] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142233] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-3:142235] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164062] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164066] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164059] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164060] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164065] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164061] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164063] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-1:164064] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703120] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703121] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703124] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703117] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703118] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703119] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703122] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-2:1703123] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160731] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160733] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160734] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160737] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160735] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160736] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160730] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+[a3u5702-a3ultranodeset-9:160732] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+# nThread 1 nGpus 1 minBytes 1731821448 maxBytes 1731821448 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 1
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1703117 on a3u5702-a3ultranodeset-2 device  0 [0x8f] NVIDIA H200
+#  Rank  1 Group  0 Pid 1703118 on a3u5702-a3ultranodeset-2 device  1 [0x90] NVIDIA H200
+#  Rank  2 Group  0 Pid 1703119 on a3u5702-a3ultranodeset-2 device  2 [0x96] NVIDIA H200
+#  Rank  3 Group  0 Pid 1703120 on a3u5702-a3ultranodeset-2 device  3 [0x97] NVIDIA H200
+#  Rank  4 Group  0 Pid 1703121 on a3u5702-a3ultranodeset-2 device  4 [0xc4] NVIDIA H200
+#  Rank  5 Group  0 Pid 1703122 on a3u5702-a3ultranodeset-2 device  5 [0xc5] NVIDIA H200
+#  Rank  6 Group  0 Pid 1703123 on a3u5702-a3ultranodeset-2 device  6 [0xcb] NVIDIA H200
+#  Rank  7 Group  0 Pid 1703124 on a3u5702-a3ultranodeset-2 device  7 [0xcc] NVIDIA H200
+#  Rank  8 Group  0 Pid 219960 on a3u5702-a3ultranodeset-0 device  0 [0x8f] NVIDIA H200
+#  Rank  9 Group  0 Pid 219961 on a3u5702-a3ultranodeset-0 device  1 [0x90] NVIDIA H200
+#  Rank 10 Group  0 Pid 219962 on a3u5702-a3ultranodeset-0 device  2 [0x96] NVIDIA H200
+#  Rank 11 Group  0 Pid 219963 on a3u5702-a3ultranodeset-0 device  3 [0x97] NVIDIA H200
+#  Rank 12 Group  0 Pid 219964 on a3u5702-a3ultranodeset-0 device  4 [0xc4] NVIDIA H200
+#  Rank 13 Group  0 Pid 219965 on a3u5702-a3ultranodeset-0 device  5 [0xc5] NVIDIA H200
+#  Rank 14 Group  0 Pid 219966 on a3u5702-a3ultranodeset-0 device  6 [0xcb] NVIDIA H200
+#  Rank 15 Group  0 Pid 219967 on a3u5702-a3ultranodeset-0 device  7 [0xcc] NVIDIA H200
+#  Rank 16 Group  0 Pid 262266 on a3u5702-a3ultranodeset-8 device  0 [0x8f] NVIDIA H200
+#  Rank 17 Group  0 Pid 262267 on a3u5702-a3ultranodeset-8 device  1 [0x90] NVIDIA H200
+#  Rank 18 Group  0 Pid 262268 on a3u5702-a3ultranodeset-8 device  2 [0x96] NVIDIA H200
+#  Rank 19 Group  0 Pid 262269 on a3u5702-a3ultranodeset-8 device  3 [0x97] NVIDIA H200
+#  Rank 20 Group  0 Pid 262270 on a3u5702-a3ultranodeset-8 device  4 [0xc4] NVIDIA H200
+#  Rank 21 Group  0 Pid 262271 on a3u5702-a3ultranodeset-8 device  5 [0xc5] NVIDIA H200
+#  Rank 22 Group  0 Pid 262272 on a3u5702-a3ultranodeset-8 device  6 [0xcb] NVIDIA H200
+#  Rank 23 Group  0 Pid 262273 on a3u5702-a3ultranodeset-8 device  7 [0xcc] NVIDIA H200
+#  Rank 24 Group  0 Pid 160730 on a3u5702-a3ultranodeset-9 device  0 [0x8f] NVIDIA H200
+#  Rank 25 Group  0 Pid 160731 on a3u5702-a3ultranodeset-9 device  1 [0x90] NVIDIA H200
+#  Rank 26 Group  0 Pid 160732 on a3u5702-a3ultranodeset-9 device  2 [0x96] NVIDIA H200
+#  Rank 27 Group  0 Pid 160733 on a3u5702-a3ultranodeset-9 device  3 [0x97] NVIDIA H200
+#  Rank 28 Group  0 Pid 160734 on a3u5702-a3ultranodeset-9 device  4 [0xc4] NVIDIA H200
+#  Rank 29 Group  0 Pid 160735 on a3u5702-a3ultranodeset-9 device  5 [0xc5] NVIDIA H200
+#  Rank 30 Group  0 Pid 160736 on a3u5702-a3ultranodeset-9 device  6 [0xcb] NVIDIA H200
+#  Rank 31 Group  0 Pid 160737 on a3u5702-a3ultranodeset-9 device  7 [0xcc] NVIDIA H200
+#  Rank 32 Group  0 Pid 164059 on a3u5702-a3ultranodeset-1 device  0 [0x8f] NVIDIA H200
+#  Rank 33 Group  0 Pid 164060 on a3u5702-a3ultranodeset-1 device  1 [0x90] NVIDIA H200
+#  Rank 34 Group  0 Pid 164061 on a3u5702-a3ultranodeset-1 device  2 [0x96] NVIDIA H200
+#  Rank 35 Group  0 Pid 164062 on a3u5702-a3ultranodeset-1 device  3 [0x97] NVIDIA H200
+#  Rank 36 Group  0 Pid 164063 on a3u5702-a3ultranodeset-1 device  4 [0xc4] NVIDIA H200
+#  Rank 37 Group  0 Pid 164064 on a3u5702-a3ultranodeset-1 device  5 [0xc5] NVIDIA H200
+#  Rank 38 Group  0 Pid 164065 on a3u5702-a3ultranodeset-1 device  6 [0xcb] NVIDIA H200
+#  Rank 39 Group  0 Pid 164066 on a3u5702-a3ultranodeset-1 device  7 [0xcc] NVIDIA H200
+#  Rank 40 Group  0 Pid 146606 on a3u5702-a3ultranodeset-4 device  0 [0x8f] NVIDIA H200
+#  Rank 41 Group  0 Pid 146607 on a3u5702-a3ultranodeset-4 device  1 [0x90] NVIDIA H200
+#  Rank 42 Group  0 Pid 146608 on a3u5702-a3ultranodeset-4 device  2 [0x96] NVIDIA H200
+#  Rank 43 Group  0 Pid 146609 on a3u5702-a3ultranodeset-4 device  3 [0x97] NVIDIA H200
+#  Rank 44 Group  0 Pid 146610 on a3u5702-a3ultranodeset-4 device  4 [0xc4] NVIDIA H200
+#  Rank 45 Group  0 Pid 146611 on a3u5702-a3ultranodeset-4 device  5 [0xc5] NVIDIA H200
+#  Rank 46 Group  0 Pid 146612 on a3u5702-a3ultranodeset-4 device  6 [0xcb] NVIDIA H200
+#  Rank 47 Group  0 Pid 146613 on a3u5702-a3ultranodeset-4 device  7 [0xcc] NVIDIA H200
+#  Rank 48 Group  0 Pid 142229 on a3u5702-a3ultranodeset-3 device  0 [0x8f] NVIDIA H200
+#  Rank 49 Group  0 Pid 142230 on a3u5702-a3ultranodeset-3 device  1 [0x90] NVIDIA H200
+#  Rank 50 Group  0 Pid 142231 on a3u5702-a3ultranodeset-3 device  2 [0x96] NVIDIA H200
+#  Rank 51 Group  0 Pid 142232 on a3u5702-a3ultranodeset-3 device  3 [0x97] NVIDIA H200
+#  Rank 52 Group  0 Pid 142233 on a3u5702-a3ultranodeset-3 device  4 [0xc4] NVIDIA H200
+#  Rank 53 Group  0 Pid 142234 on a3u5702-a3ultranodeset-3 device  5 [0xc5] NVIDIA H200
+#  Rank 54 Group  0 Pid 142235 on a3u5702-a3ultranodeset-3 device  6 [0xcb] NVIDIA H200
+#  Rank 55 Group  0 Pid 142236 on a3u5702-a3ultranodeset-3 device  7 [0xcc] NVIDIA H200
+#  Rank 56 Group  0 Pid 142338 on a3u5702-a3ultranodeset-15 device  0 [0x8f] NVIDIA H200
+#  Rank 57 Group  0 Pid 142339 on a3u5702-a3ultranodeset-15 device  1 [0x90] NVIDIA H200
+#  Rank 58 Group  0 Pid 142340 on a3u5702-a3ultranodeset-15 device  2 [0x96] NVIDIA H200
+#  Rank 59 Group  0 Pid 142341 on a3u5702-a3ultranodeset-15 device  3 [0x97] NVIDIA H200
+#  Rank 60 Group  0 Pid 142342 on a3u5702-a3ultranodeset-15 device  4 [0xc4] NVIDIA H200
+#  Rank 61 Group  0 Pid 142343 on a3u5702-a3ultranodeset-15 device  5 [0xc5] NVIDIA H200
+#  Rank 62 Group  0 Pid 142344 on a3u5702-a3ultranodeset-15 device  6 [0xcb] NVIDIA H200
+#  Rank 63 Group  0 Pid 142345 on a3u5702-a3ultranodeset-15 device  7 [0xcc] NVIDIA H200
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+  1731821448     865910724      half     sum      -1    10531  164.45  323.75      0    10616  163.13  321.16      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 322.457 
+#
+
++ '[' -f ''\'' '\''/power_monitor.sh' ']'
++ [[ 0 == \1 ]]
++ [[ 0 == \1 ]]
+++ date +%s
++ echo 'PROLOG_STOP 1745965513'
+PROLOG_STOP 1745965513
+++ seq -w 1 1
++ for _experiment_index in $(seq -w 1 "${NEXP}")
+++ date +%s
++ echo 'EXPERIMENT_START 1745965513'
+EXPERIMENT_START 1745965513
++ tee /home/justinpan_google_com/private-sd/logdir//250429221611163897960_1.log
++ echo 'Beginning trial 1 of 1'
+Beginning trial 1 of 1
++ echo ':::DLPAL /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh 188 8 a3u5702-a3ultranodeset-[2,0,8-9,1,4,3,15] '\''unknown'\'' DGXH200_08x08x04'
+:::DLPAL /home/justinpan_google_com/private-sd/mlperf+stable_diffusion+latest.sqsh 188 8 a3u5702-a3ultranodeset-[2,0,8-9,1,4,3,15] 'unknown' DGXH200_08x08x04
+++ srun --ntasks=1 --container-name=stable_diffusion_188 mlperf-sysjson.sh
+srun: warning: can't run 1 processes on 8 nodes, setting nnodes to 1
++ echo ':::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"8","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz","host_processor_core_count":"56","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"2.8 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA H200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"143771 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 24.09","framework_name":"","other_software_stack":{"cuda_version":"12.6.1.006","cuda_driver_version":"560.35.03","nccl_version":"2.22.3","cublas_version":"12.6.3.1002","cudnn_version":"9.4.0.58","trt_version":"10.4.0.26","dali_version":"1.41.0","mofed_version":"5.4-rdmacore39.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-gcp","nvidia_kernel_driver":"570.86.15"},"operating_system":"Ubuntu 22.04.4 LTS","sw_notes":""}'
+:::SYSJSON {"submitter":"UNKNOWN_MLPERF_SUBMITTER","division":"closed","status":"Available on-premise","system_name":"UNKNOWN_MLPERF_SYSTEM_NAME","number_of_nodes":"8","host_processors_per_node":"2","host_processor_model_name":"INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.10GHz","host_processor_core_count":"56","host_processor_vcpu_count":"","host_processor_frequency":"","host_processor_caches":"","host_processor_interconnect":"","host_memory_capacity":"2.8 TB","host_storage_type":"","host_storage_capacity":"","host_networking":"","host_networking_topology":"","host_memory_configuration":"","accelerators_per_node":"8","accelerator_model_name":"NVIDIA H200","accelerator_host_interconnect":"","accelerator_frequency":"","accelerator_on-chip_memories":"","accelerator_memory_configuration":"","accelerator_memory_capacity":"143771 MiB","accelerator_interconnect":"","accelerator_interconnect_topology":"","cooling":"","hw_notes":"","framework":"PyTorch NVIDIA Release 24.09","framework_name":"","other_software_stack":{"cuda_version":"12.6.1.006","cuda_driver_version":"560.35.03","nccl_version":"2.22.3","cublas_version":"12.6.3.1002","cudnn_version":"9.4.0.58","trt_version":"10.4.0.26","dali_version":"1.41.0","mofed_version":"5.4-rdmacore39.0","openmpi_version":"4.1.7","kernel_version":"Linux 6.8.0-1026-gcp","nvidia_kernel_driver":"570.86.15"},"operating_system":"Ubuntu 22.04.4 LTS","sw_notes":""}
++ srun --ntasks=1 --container-name=stable_diffusion_188 bash -c 'echo ":::GITCOMMITID ${GIT_COMMIT_ID} ${LAUNCHER_GIT_COMMIT_ID}"'
+srun: warning: can't run 1 processes on 8 nodes, setting nnodes to 1
+:::GITCOMMITID  
++ '[' 1 -eq 1 ']'
++ srun --ntasks=8 --mpi=pmix bash -c 'echo -n '\''Clearing cache on '\'' && hostname && sync && echo '\''here'\'''
+Clearing cache on a3u5702-a3ultranodeset-4
+here
+Clearing cache on a3u5702-a3ultranodeset-8
+here
+Clearing cache on a3u5702-a3ultranodeset-1
+here
+Clearing cache on a3u5702-a3ultranodeset-2
+here
+Clearing cache on a3u5702-a3ultranodeset-0
+here
+Clearing cache on a3u5702-a3ultranodeset-3
+here
+Clearing cache on a3u5702-a3ultranodeset-9
+here
+Clearing cache on a3u5702-a3ultranodeset-15
+here
++ srun --ntasks=8 --mpi=pmix --container-name=stable_diffusion_188 python -c '
+from mlperf_logging import mllog
+mllogger = mllog.get_mllogger()
+mllogger.event(key=mllog.constants.CACHE_CLEAR, value=True)'
+:::MLLOG {"namespace": "", "time_ms": 1745965540670, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965540722, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965540735, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965540881, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965540972, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965541229, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965541591, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
+:::MLLOG {"namespace": "", "time_ms": 1745965541788, "event_type": "POINT_IN_TIME", "key": "cache_clear", "value": true, "metadata": {"file": "<string>", "lineno": 4}}
++ export RANDOM_SEED=1585
++ RANDOM_SEED=1585
++ export EXP_NAME=stable-diffusion2-train-250429221611163897960-1
++ EXP_NAME=stable-diffusion2-train-250429221611163897960-1
++ set +e
+++ date +%s
++ echo 'RUNANDTIME_START 1745965541'
+RUNANDTIME_START 1745965541
++ srun -l --mpi=pmix --ntasks=64 --ntasks-per-node=8 --time=50 --container-name=stable_diffusion_188 --container-mounts=/home/justinpan_google_com/private-sd/logdir/:/results,/home/justinpan_google_com/gcs:/datasets,/home/justinpan_google_com/private-sd/checkpoints:/checkpoints,/home/justinpan_google_com/private-sd/nemologs/:/nemologs,/home/justinpan_google_com/private-sd/hf_home/:/hf_home --container-workdir=/workspace/sd --container-env=MASTER_PORT,MASTER_ADDR --container-writable slurm2pytorch ./run_and_time.sh
+28: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+30: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+44: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+31: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+22: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+15: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+27: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+12: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+25: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+47: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+21: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+26: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+29: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+24: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+20: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+13: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+38: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 0: STARTING TIMING RUN AT 2025-04-29 10:25:55 PM
+ 0: RANDOM_SEED=1585
+48: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+36: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+10: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+41: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+45: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+42: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+46: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+40: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+43: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+17: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+18: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+23: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+16: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+19: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 9: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 8: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+11: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+14: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+54: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+55: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+53: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+32: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+39: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+33: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+34: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+37: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+35: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+49: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+51: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+52: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+50: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 1: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+58: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 3: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 6: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 5: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 4: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 2: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 7: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 0: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+60: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+62: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+61: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+56: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+63: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+59: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+57: num_gpus=8 num_sockets = 2 num_nodes=2 cores_per_socket=56
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965590345, "event_type": "INTERVAL_START", "key": "init_start", "value": null, "metadata": {"file": "/workspace/sd/main.py", "lineno": 77}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965590533, "event_type": "POINT_IN_TIME", "key": "seed", "value": 3430238231, "metadata": {"file": "/workspace/sd/main.py", "lineno": 95}}
+ 0: [NeMo E 2025-04-29 22:26:30 exp_manager:652] You are running multi-node training without SLURM handling the processes. Please note that this is not tested in NeMo and could result in errors.
+ 0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/64
+43: Initializing distributed: GLOBAL_RANK: 43, MEMBER: 44/64
+33: Initializing distributed: GLOBAL_RANK: 33, MEMBER: 34/64
+41: Initializing distributed: GLOBAL_RANK: 41, MEMBER: 42/64
+25: Initializing distributed: GLOBAL_RANK: 25, MEMBER: 26/64
+18: Initializing distributed: GLOBAL_RANK: 18, MEMBER: 19/64
+23: Initializing distributed: GLOBAL_RANK: 23, MEMBER: 24/64
+58: Initializing distributed: GLOBAL_RANK: 58, MEMBER: 59/64
+ 8: Initializing distributed: GLOBAL_RANK: 8, MEMBER: 9/64
+16: Initializing distributed: GLOBAL_RANK: 16, MEMBER: 17/64
+ 1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/64
+19: Initializing distributed: GLOBAL_RANK: 19, MEMBER: 20/64
+17: Initializing distributed: GLOBAL_RANK: 17, MEMBER: 18/64
+32: Initializing distributed: GLOBAL_RANK: 32, MEMBER: 33/64
+26: Initializing distributed: GLOBAL_RANK: 26, MEMBER: 27/64
+10: Initializing distributed: GLOBAL_RANK: 10, MEMBER: 11/64
+62: Initializing distributed: GLOBAL_RANK: 62, MEMBER: 63/64
+42: Initializing distributed: GLOBAL_RANK: 42, MEMBER: 43/64
+56: Initializing distributed: GLOBAL_RANK: 56, MEMBER: 57/64
+39: Initializing distributed: GLOBAL_RANK: 39, MEMBER: 40/64
+27: Initializing distributed: GLOBAL_RANK: 27, MEMBER: 28/64
+24: Initializing distributed: GLOBAL_RANK: 24, MEMBER: 25/64
+45: Initializing distributed: GLOBAL_RANK: 45, MEMBER: 46/64
+46: Initializing distributed: GLOBAL_RANK: 46, MEMBER: 47/64
+37: Initializing distributed: GLOBAL_RANK: 37, MEMBER: 38/64
+11: Initializing distributed: GLOBAL_RANK: 11, MEMBER: 12/64
+40: Initializing distributed: GLOBAL_RANK: 40, MEMBER: 41/64
+34: Initializing distributed: GLOBAL_RANK: 34, MEMBER: 35/64
+35: Initializing distributed: GLOBAL_RANK: 35, MEMBER: 36/64
+22: Initializing distributed: GLOBAL_RANK: 22, MEMBER: 23/64
+36: Initializing distributed: GLOBAL_RANK: 36, MEMBER: 37/64
+38: Initializing distributed: GLOBAL_RANK: 38, MEMBER: 39/64
+21: Initializing distributed: GLOBAL_RANK: 21, MEMBER: 22/64
+20: Initializing distributed: GLOBAL_RANK: 20, MEMBER: 21/64
+48: Initializing distributed: GLOBAL_RANK: 48, MEMBER: 49/64
+47: Initializing distributed: GLOBAL_RANK: 47, MEMBER: 48/64
+44: Initializing distributed: GLOBAL_RANK: 44, MEMBER: 45/64
+14: Initializing distributed: GLOBAL_RANK: 14, MEMBER: 15/64
+29: Initializing distributed: GLOBAL_RANK: 29, MEMBER: 30/64
+31: Initializing distributed: GLOBAL_RANK: 31, MEMBER: 32/64
+49: Initializing distributed: GLOBAL_RANK: 49, MEMBER: 50/64
+ 2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/64
+ 9: Initializing distributed: GLOBAL_RANK: 9, MEMBER: 10/64
+57: Initializing distributed: GLOBAL_RANK: 57, MEMBER: 58/64
+59: Initializing distributed: GLOBAL_RANK: 59, MEMBER: 60/64
+61: Initializing distributed: GLOBAL_RANK: 61, MEMBER: 62/64
+ 5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/64
+ 3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/64
+50: Initializing distributed: GLOBAL_RANK: 50, MEMBER: 51/64
+15: Initializing distributed: GLOBAL_RANK: 15, MEMBER: 16/64
+51: Initializing distributed: GLOBAL_RANK: 51, MEMBER: 52/64
+13: Initializing distributed: GLOBAL_RANK: 13, MEMBER: 14/64
+30: Initializing distributed: GLOBAL_RANK: 30, MEMBER: 31/64
+28: Initializing distributed: GLOBAL_RANK: 28, MEMBER: 29/64
+63: Initializing distributed: GLOBAL_RANK: 63, MEMBER: 64/64
+55: Initializing distributed: GLOBAL_RANK: 55, MEMBER: 56/64
+54: Initializing distributed: GLOBAL_RANK: 54, MEMBER: 55/64
+12: Initializing distributed: GLOBAL_RANK: 12, MEMBER: 13/64
+52: Initializing distributed: GLOBAL_RANK: 52, MEMBER: 53/64
+ 7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/64
+60: Initializing distributed: GLOBAL_RANK: 60, MEMBER: 61/64
+53: Initializing distributed: GLOBAL_RANK: 53, MEMBER: 54/64
+ 6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/64
+ 4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/64
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621672, "event_type": "POINT_IN_TIME", "key": "gradient_accumulation_steps", "value": 1, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 255}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621688, "event_type": "POINT_IN_TIME", "key": "global_batch_size", "value": 256, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 259}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621688, "event_type": "POINT_IN_TIME", "key": "opt_name", "value": "adamw", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 263}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621688, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_1", "value": 0.9, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 264}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "opt_adamw_beta_2", "value": 0.999, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 265}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "opt_adamw_epsilon", "value": 1e-08, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 266}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "opt_adamw_weight_decay", "value": 0.01, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 267}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "opt_base_learning_rate", "value": 7.168e-05, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 269}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "opt_learning_rate_warmup_steps", "value": 1000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 270}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "train_samples", "value": 6513144, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 275}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "eval_samples", "value": 30000, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 276}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "submission_benchmark", "value": "stable_diffusion", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "submission_org", "value": "SUBMISSION_ORG_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "submission_division", "value": "closed", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621689, "event_type": "POINT_IN_TIME", "key": "submission_status", "value": "onprem", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965621690, "event_type": "POINT_IN_TIME", "key": "submission_platform", "value": "8xSUBMISSION_PLATFORM_PLACEHOLDER", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 278}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965811826, "event_type": "INTERVAL_END", "key": "init_stop", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 405}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965811827, "event_type": "INTERVAL_START", "key": "run_start", "value": null, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 405}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965811829, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 0}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965815927, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 25600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965815928, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6245.7321446484375}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965815929, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 25600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965820932, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 51200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965820932, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5116.568670451077}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965820933, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 51200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965825940, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 76800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965825940, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.192003608506}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965825941, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 76800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965830955, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 102400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965830955, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5105.793435048342}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965830956, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 102400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965835957, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 128000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965835958, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5118.942863625438}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965837487, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 128000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965841646, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 153600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965841646, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6156.252299875354}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965841648, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 153600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965846576, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 179200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965846576, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5194.452737337677}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965846577, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 179200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965851580, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 204800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965851580, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.430647664679}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965851581, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 204800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965856670, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 230400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965856671, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5030.382339219117}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965856672, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 230400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965861603, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 256000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965861604, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5190.749970875327}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965863648, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 256000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965867741, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 281600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965867742, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6253.145194592981}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965867743, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 281600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965872754, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 307200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965872754, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5108.464032798862}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965872755, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 307200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965877760, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 332800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965877761, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.509047711755}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965877762, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 332800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965882765, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 358400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965882765, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5116.555302649081}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965882766, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 358400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965887768, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 384000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965887768, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5118.252974422552}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965889805, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 384000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965893909, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 409600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965893909, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6238.617353213838}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965893910, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 409600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965898916, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 435200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965898916, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.224726860903}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965898917, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 435200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965903920, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 460800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965903921, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5116.496406484389}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965903922, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 460800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965908924, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 486400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965908925, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.576693287063}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 1900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965908926, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 486400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965913931, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 512000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965913932, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.939304837525}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965915969, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 512000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965920067, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 537600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965920067, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6246.539644101953}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965920068, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 537600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965925076, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 563200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965925076, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5112.299107624845}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965925077, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 563200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965930084, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 588800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965930084, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5112.899806017528}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965930085, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 588800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965935091, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 614400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965935091, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.853293470762}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965935092, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 614400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965940112, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 640000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965940112, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5099.650172384635}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965942181, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 640000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965946284, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 665600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965946284, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6238.923198542081}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965946285, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 665600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965951286, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 691200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965951286, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5119.172727402367}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965951287, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 691200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965956290, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 716800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965956290, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.13778421138}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965956292, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 716800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965961293, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 742400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965961294, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.932906807032}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 2900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965961295, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 742400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965966296, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 768000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965966297, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5118.071190434339}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965968036, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 768000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965972129, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 793600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965972129, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6254.416042243963}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965972130, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 793600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965977128, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 819200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965977129, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5121.658608168094}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965977130, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 819200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965983454, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 844800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965983455, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 4047.815296980976}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965983456, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 844800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965988470, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 870400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965988470, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5105.792625598201}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965988471, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 870400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965993473, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 896000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965993474, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.245518744657}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965995126, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 896000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965999223, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 921600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965999224, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6248.606897882614}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745965999225, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 921600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966004227, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 947200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966004227, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5118.091440112916}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966004228, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 947200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966009413, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 972800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966009413, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 4937.372736345558}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966009414, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 972800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966014242, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 998400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966014242, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5303.112107254476}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 3900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966014243, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 998400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966019242, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1024000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966019242, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5121.599687618833}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966020873, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1024000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966024970, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1049600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966024970, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6249.078305301739}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966024971, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1049600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966029981, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1075200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966029982, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5109.252205733747}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966029983, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1075200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966034986, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1100800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966034986, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5116.793868199224}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966034987, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1100800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966039990, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1126400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966039990, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5117.551940276902}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966039991, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1126400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966044996, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1152000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966044997, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.236341546935}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966046619, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1152000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966050711, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1177600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966050711, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6256.436764367322}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966050712, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1177600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966055718, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1203200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966055718, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.006811561686}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966055719, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1203200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966060730, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1228800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966060730, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5109.161554486186}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966060731, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1228800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966065735, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1254400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966065735, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5115.869027824363}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 4900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966065736, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1254400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966070736, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1280000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966070737, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5119.741755041022}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966072364, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1280000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966076456, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1305600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966076456, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6256.239523631403}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966076457, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1305600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966081663, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1331200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966081663, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 4918.141227919142}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966081664, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1331200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966086466, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1356800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966086467, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5330.552833722143}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966086468, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1356800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966091486, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1382400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966091487, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5100.81200917261}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966091488, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1382400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966096498, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1408000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966096498, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5109.51748868545}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966098128, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1408000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966102230, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1433600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966102230, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6240.740064236137}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966102231, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1433600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966107284, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1459200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966107284, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5066.441675266297}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966107285, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1459200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966112248, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1484800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966112249, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5157.985317489814}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966112250, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1484800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966117256, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1510400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966117256, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.319112101108}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 5900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966117257, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1510400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966122264, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1536000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966122264, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.110033076749}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966123903, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1536000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966127994, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1561600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966127995, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6257.81057400584}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6100}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966127996, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1561600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966133002, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1587200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966133003, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5113.075479389386}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966133004, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1587200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966138009, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1612800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966138009, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.382224407377}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6300}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966138010, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1612800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966143011, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1638400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966143011, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5119.389614163982}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966143013, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1638400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966148069, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1664000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966148069, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5062.718098937648}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6500}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966151199, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1664000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966155295, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1689600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966155295, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 6249.4100227557}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966155296, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1689600}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966160301, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1715200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966160302, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5114.8889073290065}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6700}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966160303, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1715200}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966165310, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1740800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966165311, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5111.931438916097}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966165312, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1740800}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966170313, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1766400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966170314, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5118.134466655498}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 6900}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966170315, "event_type": "INTERVAL_START", "key": "block_start", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 415, "samples_count": 1766400}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966175314, "event_type": "INTERVAL_END", "key": "block_stop", "value": "training_step", "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 449, "samples_count": 1792000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966175314, "event_type": "POINT_IN_TIME", "key": "tracked_stats", "value": {"throughput": 5121.307488223484}, "metadata": {"file": "/workspace/sd/callbacks.py", "lineno": 471, "step_num": 7000}}
+ 0: [rank0]:[W429 22:36:27.887479129 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 8: [rank8]:[W429 22:36:27.872219492 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+16: [rank16]:[W429 22:36:28.843104602 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+24: [rank24]:[W429 22:36:28.319711860 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+32: [rank32]:[W429 22:36:28.553665971 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+40: [rank40]:[W429 22:36:28.753321402 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+48: [rank48]:[W429 22:36:28.964500694 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+56: [rank56]:[W429 22:36:28.676155847 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 1: [rank1]:[W429 22:36:28.403508215 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 2: [rank2]:[W429 22:36:28.413589215 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 3: [rank3]:[W429 22:36:28.423896504 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 4: [rank4]:[W429 22:36:28.433774093 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 5: [rank5]:[W429 22:36:28.443907263 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 6: [rank6]:[W429 22:36:28.453883359 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 7: [rank7]:[W429 22:36:28.464307231 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 9: [rank9]:[W429 22:36:28.419791489 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+10: [rank10]:[W429 22:36:28.439215304 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+11: [rank11]:[W429 22:36:28.449678014 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+12: [rank12]:[W429 22:36:28.450144444 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+13: [rank13]:[W429 22:36:28.460110830 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+14: [rank14]:[W429 22:36:28.479824167 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+15: [rank15]:[W429 22:36:28.489567549 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+17: [rank17]:[W429 22:36:28.380551147 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+18: [rank18]:[W429 22:36:28.395820091 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+20: [rank20]:[W429 22:36:28.404955703 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+19: [rank19]:[W429 22:36:28.404980037 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+21: [rank21]:[W429 22:36:28.415709865 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+22: [rank22]:[W429 22:36:28.425428590 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+23: [rank23]:[W429 22:36:28.435538508 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+27: [rank27]:[W429 22:36:28.841901593 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+28: [rank28]:[W429 22:36:28.842109238 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+25: [rank25]:[W429 22:36:28.842675723 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+26: [rank26]:[W429 22:36:28.843166948 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+31: [rank31]:[W429 22:36:28.851083510 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+29: [rank29]:[W429 22:36:28.851582119 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+30: [rank30]:[W429 22:36:28.851908560 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+38: [rank38]:[W429 22:36:28.023975306 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+35: [rank35]:[W429 22:36:28.024155946 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+36: [rank36]:[W429 22:36:28.024343833 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+37: [rank37]:[W429 22:36:28.024851393 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+33: [rank33]:[W429 22:36:28.025350978 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+34: [rank34]:[W429 22:36:28.025464956 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+39: [rank39]:[W429 22:36:28.034508518 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+41: [rank41]:[W429 22:36:28.181229278 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+42: [rank42]:[W429 22:36:28.182189176 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+44: [rank44]:[W429 22:36:28.191676571 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+43: [rank43]:[W429 22:36:28.191997808 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+45: [rank45]:[W429 22:36:28.201569099 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+46: [rank46]:[W429 22:36:28.201940609 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+47: [rank47]:[W429 22:36:28.211335123 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+49: [rank49]:[W429 22:36:28.380540295 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+50: [rank50]:[W429 22:36:28.380480972 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+51: [rank51]:[W429 22:36:28.380559677 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+52: [rank52]:[W429 22:36:28.380609687 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+53: [rank53]:[W429 22:36:28.390720305 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+54: [rank54]:[W429 22:36:28.390709724 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+55: [rank55]:[W429 22:36:28.400782120 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+57: [rank57]:[W429 22:36:28.065574450 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+58: [rank58]:[W429 22:36:28.065634333 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+59: [rank59]:[W429 22:36:28.065639927 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+61: [rank61]:[W429 22:36:28.075662215 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+60: [rank60]:[W429 22:36:28.075719675 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+63: [rank63]:[W429 22:36:28.085819267 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+62: [rank62]:[W429 22:36:28.085896700 ProcessGroupNCCL.cpp:1218] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+ 0: Moving checkpoints to nemologs
+ 0: total 0
+ 0: drwxrwxr-x 5 justinpan_google_com justinpan_google_com 260 Apr 29 22:30 stable-diffusion2-train-250429221611163897960-1
+ 3: [a3u5702-a3ultranodeset-2:1753050] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+45: [a3u5702-a3ultranodeset-4:193749] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+24: [a3u5702-a3ultranodeset-9:350204] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+38: [a3u5702-a3ultranodeset-1:211219] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+22: [a3u5702-a3ultranodeset-8:309354] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+47: [a3u5702-a3ultranodeset-4:193754] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+60: [a3u5702-a3ultranodeset-15:189479] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+36: [a3u5702-a3ultranodeset-1:211224] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+40: [a3u5702-a3ultranodeset-4:193759] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+52: [a3u5702-a3ultranodeset-3:189337] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+63: [a3u5702-a3ultranodeset-15:189484] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+16: [a3u5702-a3ultranodeset-8:309360] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 5: [a3u5702-a3ultranodeset-2:1753059] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+27: [a3u5702-a3ultranodeset-9:350211] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+55: [a3u5702-a3ultranodeset-3:189342] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+39: [a3u5702-a3ultranodeset-1:211230] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+61: [a3u5702-a3ultranodeset-15:189489] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 8: [a3u5702-a3ultranodeset-0:267111] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+18: [a3u5702-a3ultranodeset-8:309365] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+25: [a3u5702-a3ultranodeset-9:350216] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+48: [a3u5702-a3ultranodeset-3:189347] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+37: [a3u5702-a3ultranodeset-1:211235] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 7: [a3u5702-a3ultranodeset-2:1753064] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+19: [a3u5702-a3ultranodeset-8:309370] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+43: [a3u5702-a3ultranodeset-4:193768] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+56: [a3u5702-a3ultranodeset-15:189495] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+11: [a3u5702-a3ultranodeset-0:267116] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+49: [a3u5702-a3ultranodeset-3:189352] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+26: [a3u5702-a3ultranodeset-9:350221] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+32: [a3u5702-a3ultranodeset-1:211240] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 6: [a3u5702-a3ultranodeset-2:1753074] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+17: [a3u5702-a3ultranodeset-8:309375] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+42: [a3u5702-a3ultranodeset-4:193774] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+13: [a3u5702-a3ultranodeset-0:267121] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+51: [a3u5702-a3ultranodeset-3:189357] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+57: [a3u5702-a3ultranodeset-15:189500] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+31: [a3u5702-a3ultranodeset-9:350226] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+33: [a3u5702-a3ultranodeset-1:211245] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 1: [a3u5702-a3ultranodeset-2:1753079] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+41: [a3u5702-a3ultranodeset-4:193779] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+21: [a3u5702-a3ultranodeset-8:309380] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 9: [a3u5702-a3ultranodeset-0:267126] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+50: [a3u5702-a3ultranodeset-3:189362] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+58: [a3u5702-a3ultranodeset-15:189505] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+30: [a3u5702-a3ultranodeset-9:350231] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+35: [a3u5702-a3ultranodeset-1:211250] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 4: [a3u5702-a3ultranodeset-2:1753084] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+20: [a3u5702-a3ultranodeset-8:309385] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+46: [a3u5702-a3ultranodeset-4:193784] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+10: [a3u5702-a3ultranodeset-0:267131] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+54: [a3u5702-a3ultranodeset-3:189367] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+59: [a3u5702-a3ultranodeset-15:189510] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+29: [a3u5702-a3ultranodeset-9:350236] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+34: [a3u5702-a3ultranodeset-1:211256] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 2: [a3u5702-a3ultranodeset-2:1753089] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+23: [a3u5702-a3ultranodeset-8:309391] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+44: [a3u5702-a3ultranodeset-4:193789] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+15: [a3u5702-a3ultranodeset-0:267136] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+53: [a3u5702-a3ultranodeset-3:189372] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+28: [a3u5702-a3ultranodeset-9:350241] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+62: [a3u5702-a3ultranodeset-15:189515] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+12: [a3u5702-a3ultranodeset-0:267141] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+14: [a3u5702-a3ultranodeset-0:267146] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 0: [a3u5702-a3ultranodeset-2:1753466] PMIX ERROR: ERROR in file gds_ds12_lock_pthread.c at line 168
+ 0: CKPT_PATH=/nemologs/stable-diffusion2-train-250429221611163897960-1/checkpoints/
+ 0: setting number of microbatches to constant 1
+52: Initializing distributed: GLOBAL_RANK: 52, MEMBER: 53/64
+50: Initializing distributed: GLOBAL_RANK: 50, MEMBER: 51/64
+53: Initializing distributed: GLOBAL_RANK: 53, MEMBER: 54/64
+46: Initializing distributed: GLOBAL_RANK: 46, MEMBER: 47/64
+57: Initializing distributed: GLOBAL_RANK: 57, MEMBER: 58/64
+35: Initializing distributed: GLOBAL_RANK: 35, MEMBER: 36/64
+ 8: Initializing distributed: GLOBAL_RANK: 8, MEMBER: 9/64
+47: Initializing distributed: GLOBAL_RANK: 47, MEMBER: 48/64
+ 2: Initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/64
+ 2: [W429 22:39:45.592487417 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.592851344 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.593177435 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.593499563 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.593805325 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.594130179 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.594455949 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.594767286 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.595083886 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.595414368 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:45.595744752 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+24: Initializing distributed: GLOBAL_RANK: 24, MEMBER: 25/64
+17: Initializing distributed: GLOBAL_RANK: 17, MEMBER: 18/64
+25: Initializing distributed: GLOBAL_RANK: 25, MEMBER: 26/64
+12: Initializing distributed: GLOBAL_RANK: 12, MEMBER: 13/64
+58: Initializing distributed: GLOBAL_RANK: 58, MEMBER: 59/64
+ 3: Initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/64
+30: Initializing distributed: GLOBAL_RANK: 30, MEMBER: 31/64
+ 3: [W429 22:39:46.035940002 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.036087936 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.036456497 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.036577066 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.036967424 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.037111430 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.037491282 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.037622468 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.038054216 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.038185517 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.038574697 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.038702228 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.039099183 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.039229068 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.039600357 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.039722411 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.040117145 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.040250322 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.040628700 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.040751745 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.041160108 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.041289837 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: Initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/64
+ 4: [W429 22:39:46.058757893 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.059098527 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.059426583 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.059739680 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.060051916 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.060358510 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.060670628 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.060974006 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.061277686 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.061587001 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.061925429 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+56: Initializing distributed: GLOBAL_RANK: 56, MEMBER: 57/64
+40: Initializing distributed: GLOBAL_RANK: 40, MEMBER: 41/64
+44: Initializing distributed: GLOBAL_RANK: 44, MEMBER: 45/64
+ 7: Initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/64
+18: Initializing distributed: GLOBAL_RANK: 18, MEMBER: 19/64
+63: Initializing distributed: GLOBAL_RANK: 63, MEMBER: 64/64
+38: Initializing distributed: GLOBAL_RANK: 38, MEMBER: 39/64
+ 7: [W429 22:39:46.265874938 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.266244847 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.266592824 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.266902566 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.267215068 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.267522885 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.267846413 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.268163896 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.268471695 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.268786601 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.269113912 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+34: Initializing distributed: GLOBAL_RANK: 34, MEMBER: 35/64
+14: Initializing distributed: GLOBAL_RANK: 14, MEMBER: 15/64
+54: Initializing distributed: GLOBAL_RANK: 54, MEMBER: 55/64
+ 3: [W429 22:39:46.373997804 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.374370489 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.374686379 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.374991898 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.375297269 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.375606429 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.375905480 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.376229076 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.376527262 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.376831881 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.377169204 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+26: Initializing distributed: GLOBAL_RANK: 26, MEMBER: 27/64
+13: Initializing distributed: GLOBAL_RANK: 13, MEMBER: 14/64
+ 7: [W429 22:39:46.568110387 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.568440858 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.568752430 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.569068466 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.569384697 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.569695987 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.570015642 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.570320561 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.570626069 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.570937377 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:46.571281899 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+23: Initializing distributed: GLOBAL_RANK: 23, MEMBER: 24/64
+11: Initializing distributed: GLOBAL_RANK: 11, MEMBER: 12/64
+48: Initializing distributed: GLOBAL_RANK: 48, MEMBER: 49/64
+15: Initializing distributed: GLOBAL_RANK: 15, MEMBER: 16/64
+ 5: Initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/64
+ 2: [W429 22:39:46.792745580 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.792880727 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.793033347 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.793515983 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.793634801 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.793762315 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.794285999 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.794419526 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.794551476 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.795068688 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.795190252 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.795323286 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.795820909 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.795940768 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.796068595 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.796566346 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.796690928 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.796820307 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.797382446 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.797527080 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.797664774 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.798175400 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.798297349 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.798413683 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.798914276 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.799042840 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.799163236 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.799656139 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.799776481 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.799899285 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:46.800429730 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:46.800560333 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:46.800685012 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+60: Initializing distributed: GLOBAL_RANK: 60, MEMBER: 61/64
+ 3: [W429 22:39:46.834346775 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.834771670 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.835202952 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.835610733 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.836017676 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.836404902 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.836810693 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+45: Initializing distributed: GLOBAL_RANK: 45, MEMBER: 46/64
+ 3: [W429 22:39:46.837214160 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.837607964 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.838015980 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 3: [W429 22:39:46.838446641 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+43: Initializing distributed: GLOBAL_RANK: 43, MEMBER: 44/64
+61: Initializing distributed: GLOBAL_RANK: 61, MEMBER: 62/64
+27: Initializing distributed: GLOBAL_RANK: 27, MEMBER: 28/64
+33: Initializing distributed: GLOBAL_RANK: 33, MEMBER: 34/64
+36: Initializing distributed: GLOBAL_RANK: 36, MEMBER: 37/64
+62: Initializing distributed: GLOBAL_RANK: 62, MEMBER: 63/64
+42: Initializing distributed: GLOBAL_RANK: 42, MEMBER: 43/64
+41: Initializing distributed: GLOBAL_RANK: 41, MEMBER: 42/64
+ 7: [W429 22:39:47.127070439 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.127395785 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.127719402 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.128052586 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.128374007 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.128684542 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.129005835 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.129314544 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.129616949 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.129920271 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 7: [W429 22:39:47.130245971 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.190243256 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.190571811 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.190898616 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.191218788 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.191508353 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.191804220 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.192124811 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.192423300 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.192714321 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.193026250 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:47.193340733 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 9: Initializing distributed: GLOBAL_RANK: 9, MEMBER: 10/64
+51: Initializing distributed: GLOBAL_RANK: 51, MEMBER: 52/64
+39: Initializing distributed: GLOBAL_RANK: 39, MEMBER: 40/64
+29: Initializing distributed: GLOBAL_RANK: 29, MEMBER: 30/64
+20: Initializing distributed: GLOBAL_RANK: 20, MEMBER: 21/64
+ 5: [W429 22:39:47.519081474 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.519406853 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.519758640 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.520082764 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.520409160 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.520714391 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.521028769 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.521340421 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.521639778 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.521936422 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:47.522263447 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+49: Initializing distributed: GLOBAL_RANK: 49, MEMBER: 50/64
+ 6: Initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/64
+ 6: [W429 22:39:47.657930062 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.658288163 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.658611176 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.658932810 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.659261057 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.659586093 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.659922048 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.660240378 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.660554929 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.660846898 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 6: [W429 22:39:47.661187747 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: Initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/64
+ 1: [W429 22:39:47.715445834 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.715760731 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.716108334 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.716430893 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.716740081 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.717056366 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.717376339 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.717671924 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.717973529 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.718290564 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:47.718615734 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.792078112 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.792403475 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.792725643 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.793033439 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.793342426 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.793644169 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.793956717 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.794271517 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.794584397 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.794892318 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 2: [W429 22:39:47.795268209 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+28: Initializing distributed: GLOBAL_RANK: 28, MEMBER: 29/64
+19: Initializing distributed: GLOBAL_RANK: 19, MEMBER: 20/64
+55: Initializing distributed: GLOBAL_RANK: 55, MEMBER: 56/64
+59: Initializing distributed: GLOBAL_RANK: 59, MEMBER: 60/64
+ 1: [W429 22:39:48.041919969 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.042273211 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.042591410 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.042895211 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.043209052 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.043501921 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.043814553 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.044120749 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.044426940 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.044729952 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 1: [W429 22:39:48.045054022 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.097090160 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.097421928 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.097750371 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.098079143 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.098377340 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.098689058 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.100850456 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.101199312 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.101504059 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.101860193 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 5: [W429 22:39:48.102224245 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.114545351 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.114880874 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.115228206 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.115529241 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.115824248 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.116145864 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.116457915 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.116756216 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.117067172 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.117380083 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+ 4: [W429 22:39:48.117715577 socket.cpp:752] [c10d] The client socket has failed to connect to [a3u5702-a3ultranodeset-2]:29500 (errno: 22 - Invalid argument).
+37: Initializing distributed: GLOBAL_RANK: 37, MEMBER: 38/64
+ 0: Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/64
+21: Initializing distributed: GLOBAL_RANK: 21, MEMBER: 22/64
+22: Initializing distributed: GLOBAL_RANK: 22, MEMBER: 23/64
+10: Initializing distributed: GLOBAL_RANK: 10, MEMBER: 11/64
+31: Initializing distributed: GLOBAL_RANK: 31, MEMBER: 32/64
+32: Initializing distributed: GLOBAL_RANK: 32, MEMBER: 33/64
+16: Initializing distributed: GLOBAL_RANK: 16, MEMBER: 17/64
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966396373, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 768000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966537615, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 768000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966547450, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 168.82709597332138, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 768000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966555796, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.0924515649676323, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 768000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966588213, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 896000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966728678, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 896000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966737825, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 139.92025522836303, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 896000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966745978, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.11464324593544006, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 896000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966778546, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1024000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966919071, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1024000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966928363, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 116.26855647441687, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1024000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966936574, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1281176507472992, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1024000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966969032, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1152000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967109633, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1152000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967118878, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 105.49320124597887, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1152000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967127339, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.14162664115428925, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1152000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967160853, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1280000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967301304, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1280000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967310762, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 94.66199879158034, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1280000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967318730, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.1446133852005005, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1280000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967351741, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1408000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967492408, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1408000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967502007, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 93.95165418747627, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1408000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967510590, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.15379495918750763, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1408000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967544490, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1536000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967685118, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1536000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967694328, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 94.14161370496959, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1536000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967702583, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.15300767123699188, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1536000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967736503, "event_type": "INTERVAL_START", "key": "eval_start", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 98, "samples_count": 1664000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967877147, "event_type": "INTERVAL_END", "key": "eval_stop", "value": null, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 155, "samples_count": 1664000}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967886435, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 88.0335109240844, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 199, "samples_count": 1664000, "metric": "FID"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745967894272, "event_type": "POINT_IN_TIME", "key": "eval_accuracy", "value": 0.15533070266246796, "metadata": {"file": "/workspace/sd/infer_and_eval.py", "lineno": 229, "samples_count": 1664000, "metric": "CLIP"}}
+ 0: :::MLLOG {"namespace": "", "time_ms": 1745966148068, "event_type": "INTERVAL_END", "key": "run_stop", "value": null, "metadata": {"file": "/usr/local/lib/python3.10/dist-packages/hydra/core/utils.py", "lineno": 186, "status": "success", "step_num": 6500}}
+ 0: ENDING TIMING RUN AT 2025-04-29 11:05:01 PM
+ 0: RESULT,stable_diffusion,2346,justinpan_google_com,2025-04-29 10:25:55 PM
+++ date +%s
++ echo 'RUNANDTIME_STOP 1745967904'
+RUNANDTIME_STOP 1745967904
++ set -e
++ rm -rf /home/justinpan_google_com/private-sd/nemologs//stable-diffusion2-train-250428235304191124778/inference
++ '[' 1 -eq 1 ']'
+++ realpath /home/justinpan_google_com/private-sd/logdir/
++ srun --ntasks=1 --nodes=1 --container-name=stable_diffusion_188 --container-mounts=/home/justinpan_google_com/private-sd/logdir:/results --container-workdir=/results python3 -m mlperf_logging.compliance_checker --usage training --ruleset 4.1.0 --log_output /results/compliance_250429221611163897960.out /results/250429221611163897960_1.log
+INFO - Running compliance on file: /results/250429221611163897960_1.log
+INFO -  Compliance checks: training_4.1.0/common.yaml
+INFO -  Compliance checks: training_4.1.0/closed_common.yaml
+INFO -  Compliance checks: training_4.1.0/closed_stable_diffusion.yaml
+INFO - SUCCESS
+** Logging output also at /results/compliance_250429221611163897960.out
+++ date +%s
++ echo 'EXPERIMENT_STOP 1745967908'
+EXPERIMENT_STOP 1745967908
++ cleanup_pyxis
++ srun --ntasks=8 /bin/bash -c 'if [[ "$(enroot list)" ]]; then enroot remove -f $(enroot list); fi'

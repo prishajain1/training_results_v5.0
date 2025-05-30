@@ -1,0 +1,8 @@
+{
+    "switches": [
+      { "asic":"g200","platform":"nexus","name": "leaf1-nexus", "ip": "172.22.37.25" },
+      { "asic":"g200","platform":"nexus","name": "leaf2-nexus", "ip": "172.22.37.26" },
+      { "asic":"g200","platform":"nexus","name": "spine1-nexus", "ip": "172.22.37.27" },
+      { "asic":"g200","platform":"nexus","name": "spine2-nexus", "ip": "172.22.37.28" }
+    ]
+}

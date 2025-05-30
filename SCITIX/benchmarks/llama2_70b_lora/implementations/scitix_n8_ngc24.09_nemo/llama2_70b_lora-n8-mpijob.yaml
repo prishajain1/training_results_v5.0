@@ -1,0 +1,129 @@
+apiVersion: kubeflow.org/v1
+kind: MPIJob
+metadata:
+  name: llama2-70b-lora-n8-mpijob
+  namespace: default
+spec:
+  slotsPerWorker: 8
+  runPolicy:
+    cleanPodPolicy: Running
+  mpiReplicaSpecs:
+    Launcher:
+      replicas: 1
+      template:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                    - "scitix-controlplane002"
+          tolerations:
+          - key: node.kubernetes.io/unschedulable
+            operator: Exists
+            effect: NoSchedule
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+            effect: NoSchedule
+          - key: scitix.ai/nodecheck
+            operator: Exists
+            effect: NoSchedule
+          containers:
+          - name: main
+            image: registry-ap-southeast.scitix.ai/hpc/mlperf-scitix:llama2_70b_lora-pyt
+            imagePullPolicy: Always
+            command: [ "/usr/bin/env", "bash", "-c" ]
+            args:
+            - |-
+              sleep inf
+            env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: TZ
+              value: CST-8
+            volumeMounts:
+            - mountPath: /dev/shm
+              name: shm
+            - mountPath: /data/mlperf_training
+              name: training
+          volumes:
+          - name: shm
+            emptyDir:
+              medium: Memory
+          - name: training
+            hostPath:
+              path: /data/mlperf_training
+              type: Directory
+    Worker:
+      replicas: 8
+      template:
+        spec:
+          affinity:
+            nodeAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                nodeSelectorTerms:
+                - matchExpressions:
+                  - key: scitix.ai/gpu-type #kubernetes.io/hostname
+                    operator: In
+                    values:
+                    - h100nvlink80
+          tolerations:
+          - key: node.kubernetes.io/unschedulable
+            operator: Exists
+            effect: NoSchedule
+          - key: node-role.kubernetes.io/control-plane
+            operator: Exists
+            effect: NoSchedule
+          - key: scitix.ai/nodecheck
+            operator: Exists
+            effect: NoSchedule
+          containers:
+          - name: main
+            image: registry-ap-southeast.scitix.ai/hpc/mlperf-scitix:llama2_70b_lora-pyt
+            imagePullPolicy: Always
+            env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: TZ
+              value: CST-8
+            resources:
+              requests:
+                nvidia.com/gpu: 8
+                rdma/hca_shared_devices_all: "1"
+              limits:
+                nvidia.com/gpu: 8
+                rdma/hca_shared_devices_all: "1"
+            securityContext:
+              capabilities:
+                add:
+                - IPC_LOCK
+            volumeMounts:
+            - mountPath: /dev/shm
+              name: shm
+            - mountPath: /data/dataset
+              name: dataset
+            - mountPath: /data/mlperf_training
+              name: training
+          volumes:
+          - name: shm
+            emptyDir:
+              medium: Memory
+          - name: dataset
+            hostPath:
+              path: /data/dataset
+              type: Directory
+          - name: training
+            hostPath:
+              path: /data/mlperf_training
+              type: Directory
