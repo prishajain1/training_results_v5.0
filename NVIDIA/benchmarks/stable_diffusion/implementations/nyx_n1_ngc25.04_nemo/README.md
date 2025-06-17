@@ -20,7 +20,7 @@ This file contains the instructions for running the NVIDIA NeMo Stable Diffusion
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:stable_diffusion-pyt
+docker build -t <docker/registry>/mlperf-nvidia:stable_diffusion-pyt .
 ```
 
 ### 3.2 Download and preprocess datasets and checkpoints

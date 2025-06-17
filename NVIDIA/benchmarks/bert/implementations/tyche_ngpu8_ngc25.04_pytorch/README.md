@@ -20,7 +20,7 @@ This file contains the instructions for running the NVIDIA BERT PyTorch MLPerf B
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:language_model-pyt
+docker build -t <docker/registry>/mlperf-nvidia:language_model-pyt .
 ```
 
 ### 3.2 Prepare dataset

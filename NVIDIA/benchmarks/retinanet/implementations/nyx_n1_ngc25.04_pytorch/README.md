@@ -20,7 +20,7 @@ This file contains the instructions for running the NVIDIA SSD PyTorch MLPerf Be
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:single_stage_detector-pyt
+docker build -t <docker/registry>/mlperf-nvidia:single_stage_detector-pyt .
 ```
 
 ### 3.2 Download dataset

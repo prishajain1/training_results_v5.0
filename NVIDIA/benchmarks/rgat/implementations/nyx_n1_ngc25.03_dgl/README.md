@@ -21,7 +21,7 @@ This file contains the instructions for running the NVIDIA DGL GNN GATConv MLPer
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:graph_neural_network-dgl
+docker build -t <docker/registry>/mlperf-nvidia:graph_neural_network-dgl .
 ```
 
 ### 3.2 Download and preprocess dataset

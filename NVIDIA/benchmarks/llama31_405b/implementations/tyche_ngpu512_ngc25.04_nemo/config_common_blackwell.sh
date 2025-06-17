@@ -1,0 +1,13 @@
+# Add Min/max NCCL CTAs for NCCL communicators
+export NCCL_MIN_CTAS=16
+export NCCL_MAX_CTAS=32
+
+export NVTE_FWD_LAYERNORM_SM_MARGIN=16
+export NVTE_BWD_LAYERNORM_SM_MARGIN=16
+
+export NVTE_NORM_FWD_USE_CUDNN=1
+export NVTE_NORM_BWD_USE_CUDNN=1
+
+export FP8_RECIPE="delayed"
+export FP8_PARAM_GATHER=True
+
