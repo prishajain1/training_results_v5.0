@@ -20,7 +20,7 @@ This file contains the instructions for running the NVIDIA HugeCTR DLRM DCNv2 ML
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:recommendation-hugectr
+docker build -t <docker/registry>/mlperf-nvidia:recommendation-hugectr .
 ```
 
 ### 3.2 Download dataset

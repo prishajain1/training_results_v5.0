@@ -20,7 +20,7 @@ This file contains the instructions for running the NVIDIA NeMo LLama2-70B LoRA 
 Replace `<docker/registry>` with your container registry and build:
 
 ```bash
-docker build -t <docker/registry>/mlperf-nvidia:llama2_70b_lora-pyt
+docker build -t <docker/registry>/mlperf-nvidia:llama2_70b_lora-pyt .
 ```
 
 ### 3.2 Download dataset and model + preprocessing
