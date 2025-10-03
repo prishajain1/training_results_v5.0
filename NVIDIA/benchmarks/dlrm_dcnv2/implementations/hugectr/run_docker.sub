@@ -1,0 +1,90 @@
+#!/bin/bash
+#SBATCH --nodes=16
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:8
+#SBATCH --time=01:00:00  # Will be overridden by WALLTIME from env
+#SBATCH --job-name=mlperf_dlrm_docker
+#SBATCH --output=%x-%j.out
+
+set -eu
+
+export CONT="us-west1-docker.pkg.dev/tpu-prod-env-multipod/dlrm/dlrm_hugectr_a3mega_custom:latest"
+
+export DATADIR LOGDIR DGXNNODES DGXNGPU RUN_SCRIPT BATCHSIZE BATCHSIZE_EVAL
+export LEARNING_RATE USE_MIXED_PRECISION SCALER TRAIN_DATA VAL_DATA MODE
+export WARMUP_STEPS BENCHMARK_STEPS
+export SHARDING_PLAN MEM_COMM_BW_RATIO GEN_LOSS_SUMMARY DP_SHARDING_THRESHOLD SEED
+
+NODE_SCRIPT_PATH="$(pwd)/srun_node_script_${SLURM_JOB_ID}.sh"
+
+cat << 'EOF' > "${NODE_SCRIPT_PATH}"
+#!/bin/bash
+set -eu
+
+echo "--- Node $(hostname): SLURM_NODEID=${SLURM_NODEID} ---"
+MASTER_ADDR=$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)
+MASTER_PORT=29500
+HOST_NODE_LOGDIR="${LOGDIR}/node_${SLURM_NODEID}"
+mkdir -p "${HOST_NODE_LOGDIR}"
+CONTAINER_WORKSPACE="/workspace"
+CONTAINER_DATADIR="/data"
+CONTAINER_LOGDIR="/logs"
+
+gcloud auth configure-docker us-west1-docker.pkg.dev -q > /dev/null 2>&1
+
+# Mounts for data and logs
+VOLUME_MOUNTS="-v ${DATADIR}:${CONTAINER_DATADIR}:ro"
+VOLUME_MOUNTS="${VOLUME_MOUNTS} -v $(pwd):${CONTAINER_WORKSPACE}"
+VOLUME_MOUNTS="${VOLUME_MOUNTS} -v ${HOST_NODE_LOGDIR}:${CONTAINER_LOGDIR}"
+
+# --- TCPXO Plugin DISABLED ---
+# We are NOT mounting /var/lib/tcpxo/lib64
+# We are NOT setting NCCL_NET_PLUGIN
+
+docker run \
+  --gpus all \
+  --rm \
+  --network=host \
+  --ipc=host \
+  --ulimit=memlock=-1 \
+  --privileged=true \
+  ${VOLUME_MOUNTS} \
+  --shm-size=1g \
+  --workdir ${CONTAINER_WORKSPACE} \
+  -e MASTER_ADDR=${MASTER_ADDR} \
+  -e MASTER_PORT=${MASTER_PORT} \
+  -e SLURM_NTASKS=${SLURM_NTASKS} \
+  -e SLURM_PROCID=${SLURM_PROCID} \
+  -e SLURM_NODEID=${SLURM_NODEID} \
+  -e SLURM_LOCALID=${SLURM_LOCALID} \
+  -e SLURM_NNODES=${SLURM_NNODES} \
+  -e LD_LIBRARY_PATH=/usr/local/hugectr/lib:/usr/local/nvidia/lib64:/usr/lib/x86_64-linux-gnu \
+  -e NCCL_SOCKET_IFNAME=enp0s12 \
+  -e MODE="${MODE}" \
+  -e WARMUP_STEPS="${WARMUP_STEPS}" \
+  -e BENCHMARK_STEPS="${BENCHMARK_STEPS}" \
+  -e RUN_SCRIPT="${RUN_SCRIPT}" \
+  -e BATCHSIZE="${BATCHSIZE}" \
+  -e BATCHSIZE_EVAL="${BATCHSIZE_EVAL}" \
+  -e LEARNING_RATE="${LEARNING_RATE}" \
+  -e USE_MIXED_PRECISION="${USE_MIXED_PRECISION}" \
+  -e SCALER="${SCALER}" \
+  -e SHARDING_PLAN="${SHARDING_PLAN:-auto}" \
+  -e MEM_COMM_BW_RATIO="${MEM_COMM_BW_RATIO:-9}" \
+  -e GEN_LOSS_SUMMARY="${GEN_LOSS_SUMMARY:-false}" \
+  -e DP_SHARDING_THRESHOLD="${DP_SHARDING_THRESHOLD:-0.008}" \
+  -e DGXNNODES="${DGXNNODES}" \
+  -e DGXNGPU="${DGXNGPU}" \
+  -e TRAIN_DATA="${TRAIN_DATA}" \
+  -e VAL_DATA="${VAL_DATA}" \
+  -e SEED=${SEED:-$RANDOM} \
+  -e LOGDIR="${CONTAINER_LOGDIR}" \
+  -e PYTHONUNBUFFERED=1 \
+  "${CONT}" \
+  bash ${CONTAINER_WORKSPACE}/run_and_time.sh
+EOF
+
+chmod +x "${NODE_SCRIPT_PATH}"
+srun --export=ALL "${NODE_SCRIPT_PATH}"
+echo "--- srun command finished ---"
+rm "${NODE_SCRIPT_PATH}"
